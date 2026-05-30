@@ -1564,20 +1564,12 @@ button { border: none; cursor: pointer; background: none; }
    TESTIMONIALS — scroll-driven video (300vh) + sticky
    ================================================ */
 
-/* Seção: 300vh = espaço de scroll para a animação da lata */
 #testimonials {
   position: relative;
-  height: 300vh;
   background: var(--white);
 }
 
-/* Container fixo 100vh — fica "colado" no viewport enquanto o scroll
-   percorre os 300vh da seção. É aqui que toda a UI vive. */
 .testi-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
   background: var(--white);
   display: flex;
   flex-direction: column;
