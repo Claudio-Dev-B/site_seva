@@ -6,11 +6,79 @@
   <title data-i18n="meta.title.home">Sevá Cervejaria e Restaurante — Praia de Camburi</title>
   <meta name="description" data-i18n="meta.desc.home" content="Cervejaria artesanal e restaurante na Praia de Camburi, São Sebastião. Cervejas autorais, pratos autorais e vista para o mar.">
   <link rel="icon" href="images/logo_seva.png" type="image/png">
+
+  <!-- Canonical e hreflang (atualize o domínio conforme necessário) -->
+  <link rel="canonical" href="https://sevacervejaria.com.br/">
+  <link rel="alternate" hreflang="pt-BR" href="https://sevacervejaria.com.br/">
+  <link rel="alternate" hreflang="en" href="https://sevacervejaria.com.br/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://sevacervejaria.com.br/?lang=es">
+
+  <!-- Open Graph / Compartilhamento social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sevá Cervejaria e Restaurante">
+  <meta property="og:title" content="Sevá Cervejaria e Restaurante — Praia de Camburi">
+  <meta property="og:description" content="Cervejaria artesanal e restaurante na Praia de Camburi, São Sebastião. Cervejas autorais, pratos autorais e vista para o mar.">
+  <meta property="og:url" content="https://sevacervejaria.com.br/">
+  <meta property="og:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sevá Cervejaria e Restaurante — Praia de Camburi">
+  <meta name="twitter:description" content="Cervejaria artesanal e restaurante na Praia de Camburi, São Sebastião. Cervejas autorais, pratos autorais e vista para o mar.">
+  <meta name="twitter:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+
+  <!-- Schema.org JSON-LD (Rich Snippets no Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "Sevá Cervejaria e Restaurante",
+    "description": "Cervejaria artesanal e restaurante na Praia de Camburi, São Sebastião.",
+    "url": "https://sevacervejaria.com.br/",
+    "logo": "https://sevacervejaria.com.br/images/logo_seva.png",
+    "image": "https://sevacervejaria.com.br/images/og_home.jpg",
+    "telephone": "",
+    "priceRange": "$$",
+    "servesCuisine": ["Brasileira", "Contemporânea", "Mediterrânea"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Praia de Camburi",
+      "addressLocality": "São Sebastião",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-23.6533",
+      "longitude": "-45.4233"
+    },
+    "sameAs": [
+      "https://instagram.com/seva.camburi"
+    ],
+    "hasMenu": "https://sevacervejaria.com.br/cardapio.html"
+  }
+  </script>
+
+  <!-- Performance: preconnect para fontes e CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <!-- Pré-carrega a imagem crítica do hero (LCP) -->
+  <link rel="preload" as="image" href="images/Pratos/Banner%20Pratos.png" fetchpriority="high">
+  <!-- Fontes: carregadas como <link> (evita bloqueio do @import em CSS) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap"></noscript>
+
   <link rel="stylesheet" href="css/style.css">
-  <!-- Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 </head>
 <body>
+
+  <!-- Skip link: acessibilidade para teclado/leitores de tela -->
+  <a class="skip-link" href="#hero">Ir para o conteúdo principal</a>
 
   <!-- LOADER -->
   <div id="loader">
@@ -60,7 +128,7 @@
   </nav>
 
   <!-- HERO -->
-  <section id="hero">
+  <section id="hero" tabindex="-1">
 
     <!-- Imagem de fundo única -->
     <div class="hero-slides-wrapper">
@@ -112,19 +180,19 @@
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_doubleneipa.png" alt="Encontro Amarelo Double NEIPA">
+            <img src="images/cervejas/lata_doubleneipa.png" alt="Encontro Amarelo Double NEIPA" loading="lazy" decoding="async">
           </div>
         </article>
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_hzyipa.png" alt="Coqueiro Hazy IPA">
+            <img src="images/cervejas/lata_hzyipa.png" alt="Coqueiro Hazy IPA" loading="lazy" decoding="async">
           </div>
         </article>
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_imperialstout.png" alt="Baixa Temporada Imperial Stout">
+            <img src="images/cervejas/lata_imperialstout.png" alt="Baixa Temporada Imperial Stout" loading="lazy" decoding="async">
           </div>
         </article>
 
@@ -254,7 +322,7 @@
       <!-- Imagem: entra de baixo, para centralizada -->
       <div class="essencia-img-card">
         <div class="essencia-img-inner">
-          <img src="images/artistico_loja_2.jpg" alt="A Sevá em Camburi">
+          <img src="images/artistico_loja_2.jpg" alt="A Sevá em Camburi" loading="lazy" decoding="async">
         </div>
         <div class="essencia-img-overlay"></div>
       </div>
@@ -563,9 +631,9 @@
 
   </footer>
 
-  <script src="js/vendor/gsap.min.js"></script>
-  <script src="js/vendor/ScrollTrigger.min.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

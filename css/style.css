@@ -3,7 +3,24 @@
    Design inspirado no template Lambert
    ================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap');
+/* Fontes carregadas via <link> no HTML para evitar bloqueio de renderização */
+
+/* === SKIP LINK (acessibilidade) === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--verde, #2d5a27);
+  color: #fff;
+  padding: .5rem 1rem;
+  font-family: var(--sans, sans-serif);
+  font-size: .9rem;
+  border-radius: 0 0 4px 4px;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus { top: 0; }
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
