@@ -62,7 +62,7 @@
       'home.brewery.headline': 'A Cervejaria',
       'home.brewery.taps':     'Sempre temos 8 taps disponíveis — cada chope com história própria.',
       'home.brewery.script':   'A Cervejaria',
-      'home.brewery.caps':     'Cinco anos brassando',
+      'home.brewery.caps':     'Cinco anos e contando',
       'home.brewery.p1':       'Cada rótulo da Sevá leva o nome de uma ave e nasce com tempo contado.',
       'home.brewery.p2':       'Já foram mais de 40 chopes lançados, todos diferentes entre si. Nenhuma receita se repete. Cada criação é única, feita para aquele momento.',
       'home.brewery.p3':       'A base está sempre presente, com IPAs, Sours, Pilsen, Lagers e Stouts, mas nunca da mesma forma.',
@@ -75,7 +75,7 @@
       /* Home Restaurant section */
       'home.restaurant.headline':      'O Restaurante',
       'home.restaurant.autoral':       'Culinária Autoral',
-      'home.restaurant.intro':         'Na Sevá, cozinha é ato de criação. Raízes brasileiras que encontram o mediterrâneo e ganham cor tropical — cada prato é uma descoberta pensada do início ao fim, sem pressa e sem receitas prontas.',
+      'home.restaurant.intro':         'Na Sevá, cozinha é ato de criação. Raízes brasileiras que encontram o mediterrâneo e ganham sabor tropical, cada prato é uma experiência pensada do início ao fim, sem pressa e sem receitas prontas.',
       'home.restaurant.card.entradas':  'Entradas',
       'home.restaurant.card.lanche':    'Lanches',
       'home.restaurant.card.executivos':'Executivos',
@@ -118,7 +118,7 @@
       'home.insta': 'Siga-nos no Instagram @sevacerveja',
 
       /* Footer */
-      'footer.about':           'Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, seis cervejas autorais e uma cozinha que faz o verão durar mais.',
+      'footer.about':           'Cervejaria e Restaurante na Praia de Camburi. Cinco anos de história, mais de 40 cervejas autorais e uma cozinha que faz o verão durar mais e ser mais gostoso.',
       'footer.findus':          'Nos encontre',
       'footer.address':         'Shopping Dois Amores, Praia de Camburi\nSão Sebastião – SP',
       'footer.hours':           'Dom–Qui: 12h–23h  |  Sex–Sáb–Fer: 12h–00h',
@@ -287,7 +287,7 @@
 
       /* Não Alcoólicos */
       'cardapio.naolc.script': 'Para todos',
-      'cardapio.naolc.title':  'Não Alcoólicos',
+      'cardapio.naolc.title':  'Bebidas',
       'cardapio.agua.name':         'Água natural ou com gás',
       'cardapio.cha_gelado.name':   'Chá gelado da casa',
       'cardapio.refrigerante.name': 'Refrigerante',
@@ -392,8 +392,8 @@
       'brewery.hero.sub':   'Cervejas autorais, com a alma de Camburí',
       'brewery.intro.script': 'Nossa Cervejaria',
       'brewery.intro.caps':   'Artesanal desde o início',
-      'brewery.intro.p1':     'A Sevá começou como cerveja artesanal feita em casa e nunca deixou de ser isso — mesmo depois de ganhar endereço fixo. Cada lote é pensado, cada ingrediente é escolhido, cada estilo carrega a identidade da cervejaria.',
-      'brewery.intro.p2':     'Os rótulos levam nomes de aves porque, assim como elas, as cervejas da Sevá têm liberdade de ser o que precisam ser — leve ou intensa, tropical ou robusta.',
+      'brewery.intro.p1':     'A Sevá nasceu da paixão pela cerveja artesanal. O que começou com produções caseiras e experimentações entre receitas, ingredientes e estilos evoluiu para uma cervejaria com identidade própria, mas sem perder sua essência.',
+      'brewery.intro.p2':     'Cada cerveja é desenvolvida com atenção aos detalhes, da escolha dos insumos ao equilíbrio de aromas e sabores. Não seguimos fórmulas prontas. Criamos rótulos que refletem nossa busca constante por originalidade, qualidade e liberdade criativa.',
       'brewery.beer.pilsen.desc': 'Leve e refrescante. Levemente maltada com final limpo. A parceira perfeita para o sol de Camburi.',
       'brewery.beer.ipa.desc':    'Aroma tropical intenso, amargor suave e muito refrescante. Feita para quem quer sabor sem excessos.',
       'brewery.beer.sour.desc':   'Acidez suave, frutas tropicais em destaque. Leveza que surpreende a cada gole.',
@@ -420,24 +420,24 @@
       'story.hero.sub':   'A história de quem nasceu nas ondas e encontrou porto',
       'story.intro.script': 'Nossa História',
       'story.intro.caps':   'Do quintal ao restaurante',
-      'story.intro.p1':     'A Sevá é uma história de amor pela fermentação, pela praia e pela liberdade de criar. Tudo começou em novembro de 2020, durante a pandemia, quando o fundador João decidiu que o confinamento seria uma oportunidade — e começou a brassar cerveja em casa.',
-      'story.intro.p2':     'Do que nasceu como hobby virou obsessão, depois propósito, depois negócio. A cada rótulo criado, uma ave ganhava nome e personalidade. A cada evento nas praias de Camburi, mais pessoas descobriam a Sevá.',
+      'story.intro.p1':     'A Sevá nasceu da paixão pela fermentação, pela natureza e pela liberdade de criar. O que começou em 2020, em meio a um período de transformação e incertezas, rapidamente se tornou algo maior do que uma simples produção caseira de cerveja.',
+      'story.intro.p2':     'Entre receitas, experimentações e descobertas, surgiu uma identidade própria. Cada cerveja ganhou personalidade, cada rótulo recebeu o nome de uma ave da Mata Atlântica e cada novo encontro com o público reforçou a mesma ideia: oferecer experiências autênticas para quem busca algo além do óbvio.',
       'story.name.script': 'Sevá',
-      'story.name.caps':   'Aves ao contrário',
-      'story.name.p1':     'O nome Sevá é "aves" ao contrário — uma homenagem direta aos rótulos que carregam nomes de pássaros brasileiros. Mas vai além: em sânscrito, sevā significa "serviço com devoção".',
+      'story.name.caps':   'Sevá Aves ao contrário',
+      'story.name.p1':     'O nome Sevá é "aves" ao contrário, uma homenagem direta aos rótulos que carregam nomes de pássaros brasileiros. Mas vai além: em sânscrito, sevā significa "serviço com devoção".',
       'story.name.p2':     'É exatamente isso que tentamos fazer em cada chope, em cada prato, em cada experiência que proporcionamos em Camburi. Serviço com presença, com cuidado, com alegria.',
       'story.timeline.script': 'A Jornada',
       'story.timeline.caps':   'Marco a Marco',
       'story.t1.title': 'O Começo',
-      'story.t1.text':  'Em plena pandemia, João começa a brassar cerveja artesanal em casa. O primeiro rótulo — a Basilon Pilsen — é servido para amigos e vizinhos.',
+      'story.t1.text':  'Em plena pandemia, João começa a brassar cerveja artesanal em casa. O primeiro rótulo, a Basilon Pilsen, é servido para amigos e vizinhos.',
       'story.t2.title': 'A Praia como Palco',
-      'story.t2.text':  'Com um carrinho e geleiras, a Sevá começa a aparecer nas praias e eventos de Camburi. O boca a boca cresce e os rótulos se multiplicam.',
-      'story.t3.title': 'A Van dos Quatro Torneiras',
-      'story.t3.text':  'Uma van adaptada com quatro torneiras de chope passa a percorrer festas, feiras e eventos no litoral norte. A cervejaria itinerante ganha identidade visual e reconhecimento.',
-      'story.t4.title': 'Hub Cultural',
-      'story.t4.text':  'A Sevá passa a co-organizar eventos culturais em Camburi — shows, saraus, feiras de artesanato. A cerveja vira pretexto para reunir comunidade.',
-      'story.t5.title': 'Endereço Fixo',
-      'story.t5.text':  'Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja — tudo num só lugar.',
+      'story.t2.text':  'Com um carrinho e uma chopeira, a Sevá chegou à praia de Camburi. Primeira cervejaria artesanal a ganhar as areias.',
+      'story.t3.title': 'Uma kombi, 4 torneiras e um sonho',
+      'story.t3.text':  'Uma kombinha adaptada com quatro torneiras de chope passa a fazer festas, eventos e as tradicionais sextas no Pomona. A cervejaria itinerante ganha o litoral norte.',
+      'story.t4.title': 'Um show a parte',
+      'story.t4.text':  'A Sevá passa a co-organizar eventos em Camburi e região, muitos shows e histórias para a memória. A cerveja vira pretexto para reunir comunidade.',
+      'story.t5.title': 'Construímos nossa casa',
+      'story.t5.text':  'Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja, tudo num só lugar.',
       'story.founder.script': 'Quem faz a Sevá',
       'story.founder.caps':   'O Fundador',
       'story.founder.p1':     'João é cervejeiro, cozinheiro e sonhador. Formado em gastronomia e autodidata em fermentação, passou anos experimentando antes de transformar a Sevá em realidade.',
@@ -477,7 +477,7 @@
       'restaurant.hero.subtitle':    'Gastronomia autoral em Camburi',
       'restaurant.section2.heading': 'Experiência Gastronômica',
       'restaurant.section2.body1':   'A Sevá é um restaurante em Camburi que reúne culinária brasileira contemporânea, influências mediterrâneas e claro, tropical.',
-      'restaurant.section2.body2':   'Com um cardápio desenvolvido com cuidado, da entrada, porções para dividir, pratos e lanches que proporcionam uma experiência gastronômica diferente no litoral norte de São Paulo.',
+      'restaurant.section2.body2':   'Com um cardápio cuidadosamente elaborado, que vai das entradas e tapas para compartilhar aos pratos e sanduíches autorais, a Sevá entrega uma experiência gastronômica que foge do comum e se tornou parada obrigatória para quem visita o litoral norte de São Paulo.',
       'restaurant.section2.cta':     'Ver Cardápio',
       'restaurant.parallax.title':   'Culinária brasileira com influência mediterrânea',
       'restaurant.parallax.p1':      'Nosso cardápio conta com peixes, frutos do mar, carnes selecionadas, tapas, sanduíches em pratos autorais inspirados na riqueza da cozinha brasileira e nos sabores do Mediterrâneo.',
@@ -487,6 +487,51 @@
       'restaurant.cta.sub':          'Uma experiência gastronômica diferente no litoral norte de São Paulo.',
       'restaurant.cta.directions':   'Como Chegar',
       'restaurant.cta.menu':         'Ver Cardápio',
+
+      /* Como Chegar section */
+      'chegar.title.line1': 'Como',
+      'chegar.title.line2': 'Chegar',
+      'chegar.label.address': 'Endereço',
+      'chegar.label.hours': 'Horários',
+      'chegar.label.contact': 'Contato',
+      'chegar.hours.text': 'Dom – Qui: 12h às 23h | Sex · Sáb · Feriados: 12h às 00h',
+      'chegar.cta': 'Traçar Rota',
+      'chegar.map': 'Ver no Google Maps',
+
+      /* Testimonials */
+      'testi.title.line1': 'Nossas',
+      'testi.title.line2': 'Avaliações',
+
+      /* Footer */
+      'footer.explore': 'Explore',
+
+      /* Brewery intro p3 + styles */
+      'brewery.intro.p3': 'Nossas cervejas recebem nomes de aves da Mata Atlântica, uma homenagem à natureza que inspira a marca desde sua origem em Camburi. Assim como os pássaros que observamos todos os dias, cada rótulo tem personalidade própria. Alguns são leves e refrescantes, outros intensos e marcantes, mas todos carregam o mesmo espírito: o de voar fora do comum.',
+      'brewery.styles.eyebrow': 'Nossos Estilos',
+      'brewery.styles.title': 'Cerveja com Identidade',
+      'brewery.pilsen.name': 'A base de tudo',
+      'brewery.pilsen.desc': 'Leve, cristalina e incrivelmente refrescante. Malte suave, amargor mínimo e aquele final limpo que pede o próximo gole. A parceira perfeita para o sol de Camburi, elegante na simplicidade.',
+      'brewery.session_ipa.name': 'Sabor sem excessos',
+      'brewery.session_ipa.desc': 'Aroma tropical intenso, amargor suave e muita refrescância. Lúpulos expressivos que entregam sabor sem pesar. Feita para beber em boa companhia, a tarde toda.',
+      'brewery.sour.name': 'Acidez que encanta',
+      'brewery.sour.desc': 'Acidez vibrante com frutas tropicais em destaque. Cada gole é uma surpresa: leveza que não engana, complexidade que prende. O estilo favorito de quem quer sair do óbvio.',
+      'brewery.ipa.name': 'O lúpulo em todo poder',
+      'brewery.ipa.desc': 'American IPA: pinheiro e resina, amargor firme e longo. Australian IPA: maracujá, pêssego e lima com amargor equilibrado. Dois continentes, uma paixão em comum.',
+      'brewery.hazy_ipa.name': 'Turva por natureza',
+      'brewery.hazy_ipa.desc': 'Veludo líquido. Corpo suave e cremoso, aroma explosivo de frutas tropicais, amargor quase ausente. A experiência mais sensorial que a Sevá pode oferecer em um copo.',
+      'brewery.double_ipa.name': 'Para os verdadeiros',
+      'brewery.double_ipa.desc': 'Intensa, aromática e encorpada. Lupulagem massiva que entrega resina, frutas e amargor duradouro em camadas. Alta graduação que respeita o paladar.',
+      'brewery.stout.name': 'A mais forte da Família',
+      'brewery.stout.desc': 'Café, chocolate amargo, alcaçuz e caramelo queimado. Corpo robusto, espuma cremosa cor de chocolate e final longo que aquece. A Sevá na sua forma mais profunda.',
+
+      /* Gallery section */
+      'gallery.hero.line1': 'Nossa',
+      'gallery.hero.line2': 'Galeria',
+      'gallery.section.eyebrow': 'Registros da Sevá',
+      'gallery.section.title': 'Momentos',
+
+      /* Story intro p3 */
+      'story.intro.p3': 'Hoje, a Sevá é cervejaria, restaurante e ponto de encontro em Camburi. Um lugar onde gastronomia autoral, cervejas artesanais e o estilo de vida do litoral se encontram para criar momentos que só poderiam existir aqui.',
     },
 
     /* ── ENGLISH ───────────────────────────────────────────── */
@@ -947,6 +992,42 @@
       'restaurant.cta.sub':          'A different gastronomic experience on the northern coast of São Paulo.',
       'restaurant.cta.directions':   'Get Directions',
       'restaurant.cta.menu':         'View Menu',
+
+      /* How to Get There */
+      'chegar.title.line1': 'How to',
+      'chegar.title.line2': 'Get There',
+      'chegar.label.address': 'Address',
+      'chegar.label.hours': 'Hours',
+      'chegar.label.contact': 'Contact',
+      'chegar.hours.text': 'Sun – Thu: 12pm to 11pm | Fri · Sat · Holidays: 12pm to midnight',
+      'chegar.cta': 'Get Directions',
+      'chegar.map': 'View on Google Maps',
+
+      /* Testimonials */
+      'testi.title.line1': 'Our',
+      'testi.title.line2': 'Reviews',
+
+      /* Footer */
+      'footer.explore': 'Explore',
+
+      /* Brewery intro p3 + styles */
+      'brewery.intro.p3': 'Our beers are named after birds of the Atlantic Forest, a tribute to the nature that has inspired the brand since its origins in Camburi. Like the birds we watch every day, each label has its own personality. Some are light and refreshing, others intense and bold — but all carry the same spirit: to fly beyond the ordinary.',
+      'brewery.styles.eyebrow': 'Our Styles',
+      'brewery.styles.title': 'Beer with Identity',
+      'brewery.pilsen.name': 'The foundation of everything',
+      'brewery.pilsen.desc': 'Light, crystal-clear and incredibly refreshing. Soft malt, minimal bitterness and that clean finish that calls for the next sip. The perfect companion for Camburi\'s sunshine, elegant in its simplicity.',
+      'brewery.session_ipa.name': 'Flavor without excess',
+      'brewery.session_ipa.desc': 'Intense tropical aroma, soft bitterness and great refreshment. Expressive hops delivering flavor without weight. Made to drink in good company, all afternoon long.',
+      'brewery.sour.name': 'Captivating acidity',
+      'brewery.sour.desc': 'Vibrant acidity with tropical fruits in the spotlight. Each sip is a surprise: lightness that doesn\'t deceive, complexity that holds attention. The favorite style for those who want to go beyond the obvious.',
+      'brewery.ipa.name': 'Hops at full power',
+      'brewery.ipa.desc': 'American IPA: pine and resin, firm and lasting bitterness. Australian IPA: passion fruit, peach and lime with balanced bitterness. Two continents, one shared passion.',
+      'brewery.hazy_ipa.name': 'Hazy by nature',
+      'brewery.hazy_ipa.desc': 'Liquid velvet. Soft and creamy body, explosive tropical fruit aroma, bitterness almost absent. The most sensory experience Sevá can offer in a glass.',
+      'brewery.double_ipa.name': 'For the true believers',
+      'brewery.double_ipa.desc': 'Intense, aromatic and full-bodied. Massive hopping that delivers resin, fruit and lasting bitterness in layers. High ABV that still respects the palate.',
+      'brewery.stout.name': 'The strongest of the Family',
+      'brewery.stout.desc': 'Coffee, dark chocolate, liquorice and burnt caramel. Robust body, chocolate-colored creamy foam and a long warming finish. Sevá in its deepest form.',
     },
 
     /* ── ESPAÑOL ────────────────────────────────────────────── */
@@ -1340,6 +1421,42 @@
       'restaurant.cta.sub':          'Una experiencia gastronómica diferente en la costa norte de São Paulo.',
       'restaurant.cta.directions':   'Cómo Llegar',
       'restaurant.cta.menu':         'Ver Menú',
+
+      /* Cómo Llegar */
+      'chegar.title.line1': 'Cómo',
+      'chegar.title.line2': 'Llegar',
+      'chegar.label.address': 'Dirección',
+      'chegar.label.hours': 'Horarios',
+      'chegar.label.contact': 'Contacto',
+      'chegar.hours.text': 'Dom – Jue: 12h a 23h | Vie · Sáb · Feriados: 12h a medianoche',
+      'chegar.cta': 'Cómo Llegar',
+      'chegar.map': 'Ver en Google Maps',
+
+      /* Testimonials */
+      'testi.title.line1': 'Nuestras',
+      'testi.title.line2': 'Reseñas',
+
+      /* Footer */
+      'footer.explore': 'Explorar',
+
+      /* Brewery intro p3 + styles */
+      'brewery.intro.p3': 'Nuestras cervezas reciben nombres de aves de la Mata Atlántica, un homenaje a la naturaleza que inspira la marca desde su origen en Camburi. Al igual que los pájaros que observamos cada día, cada etiqueta tiene personalidad propia. Algunas son ligeras y refrescantes, otras intensas y marcadas, pero todas llevan el mismo espíritu: el de volar más allá de lo ordinario.',
+      'brewery.styles.eyebrow': 'Nuestros Estilos',
+      'brewery.styles.title': 'Cerveza con Identidad',
+      'brewery.pilsen.name': 'La base de todo',
+      'brewery.pilsen.desc': 'Ligera, cristalina e increíblemente refrescante. Malta suave, amargor mínimo y ese final limpio que pide el próximo sorbo. La compañera perfecta para el sol de Camburi, elegante en su simplicidad.',
+      'brewery.session_ipa.name': 'Sabor sin excesos',
+      'brewery.session_ipa.desc': 'Aroma tropical intenso, amargor suave y mucho frescor. Lúpulos expresivos que aportan sabor sin pesar. Hecha para beber en buena compañía, toda la tarde.',
+      'brewery.sour.name': 'Acidez que encanta',
+      'brewery.sour.desc': 'Acidez vibrante con frutas tropicales en primer plano. Cada sorbo es una sorpresa: ligereza que no engaña, complejidad que atrapa. El estilo favorito de quien quiere salir de lo obvio.',
+      'brewery.ipa.name': 'El lúpulo en todo su poder',
+      'brewery.ipa.desc': 'American IPA: pino y resina, amargor firme y duradero. Australian IPA: maracuyá, melocotón y lima con amargor equilibrado. Dos continentes, una pasión en común.',
+      'brewery.hazy_ipa.name': 'Turbia por naturaleza',
+      'brewery.hazy_ipa.desc': 'Terciopelo líquido. Cuerpo suave y cremoso, aroma explosivo de frutas tropicales, amargor casi ausente. La experiencia más sensorial que Sevá puede ofrecer en un vaso.',
+      'brewery.double_ipa.name': 'Para los verdaderos',
+      'brewery.double_ipa.desc': 'Intensa, aromática y con cuerpo. Lupulado masivo que aporta resina, frutas y amargor duradero en capas. Alta graduación que respeta el paladar.',
+      'brewery.stout.name': 'La más fuerte de la Familia',
+      'brewery.stout.desc': 'Café, chocolate amargo, regaliz y caramelo quemado. Cuerpo robusto, espuma cremosa color chocolate y final largo que calienta. Sevá en su forma más profunda.',
     }
   };
 
