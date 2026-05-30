@@ -453,9 +453,17 @@
     @media (max-width: 768px) {
       .menu-hero-content h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
       .cardapio-nav { padding: 0 16px; }
-      .cardapio-section { padding: 56px 0 64px; }
+      /* Desativa sticky em mobile: top negativo em seções altas causa bug visual */
+      .cardapio-section {
+        position: relative !important;
+        top: auto !important;
+        padding: 56px 0 64px;
+      }
       .section-inner { padding: 0 20px; }
       .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+      /* Sem hover em touch: remove overflow visible para evitar glitch de clip-path */
+      .menu-card { overflow: hidden; }
+      .menu-card-img { clip-path: none !important; }
       .cat-count { display: none; }
       .regua-card { flex-direction: column; text-align: center; }
     }
@@ -691,7 +699,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1piobowl%20camarao.png" alt="Bowl Camarão Rosa">
+                <img src="images/Pratos/card%C3%A1pio/bowl%20camarao.png" alt="Bowl Camarão Rosa">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
