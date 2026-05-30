@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.brewery">Cervejaria — Sevá Cervejaria e Restaurante</title>
+  <meta name="description" data-i18n="meta.desc.brewery" content="Cinco anos de cervejas artesanais autorais. Sevá Cervejaria, Praia de Camburi.">
+  <link rel="icon" href="images/logo_seva.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================================================
+       CERVEJARIA PAGE
+       ================================================ */
+
+    /* ── Lúpulos flutuantes: camada global ── */
+    .lupulos-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;   /* maiores/frente ficam aqui */
+      overflow: hidden;
+    }
+
+    /* lúpulos pequenos vão ATRÁS dos cards */
+    .lupulos-layer.lupulos-back {
+      z-index: 1;
+    }
+
+    .lupulo {
+      position: absolute;
+      background-image: url('images/cervejas/lupulo.webp');
+      background-size: contain;
+      background-repeat: no-repeat;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    /* ── HERO com vídeo ── */
+    .brew-page-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+
+    .brew-page-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .brew-page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(5,18,10,0.92) 0%, rgba(5,18,10,0.52) 38%, rgba(5,18,10,0.18) 68%, rgba(5,18,10,0.35) 100%),
+        linear-gradient(to right, rgba(5,18,10,0.38) 0%, transparent 60%);
+    }
+
+    .brew-page-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      padding: 0 24px;
+    }
+
+    /* Título hero — branco, grande */
+    .brew-page-hero-content .brew-hero-title {
+      display: block;
+      font-family: var(--caps);
+      font-size: clamp(4rem, 13vw, 14rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 0.88;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.30);
+    }
+
+    .brew-page-hero-content .brew-hero-sub {
+      font-family: var(--caps);
+      font-size: clamp(1.1rem, 2.2vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 1;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.30);
+    }
+
+    /* ── "5 anos…" acima do banner ── */
+    .brewery-intro-block {
+      background: var(--white);
+      padding: 100px 40px 48px;
+      text-align: center;
+    }
+
+    .brewery-banner-heading { text-align: center; }
+
+    .brewery-banner-script {
+      display: block;
+      font-family: var(--caps);
+      font-size: clamp(3.5rem, 11vw, 10rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--verde-dark);
+      letter-spacing: -0.025em;
+      line-height: 0.88;
+    }
+
+    /* ── Banner com textos sobrepostos ── */
+    .brewery-banner-section {
+      background: var(--white);
+      padding: 0 40px 100px;
+    }
+
+    .brewery-intro-text {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 64px);
+    }
+
+    .brewery-intro-text p {
+      font-family: var(--caps);
+      font-size: clamp(1.3rem, 2.2vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.90);
+      text-shadow: 0 2px 18px rgba(0,0,0,0.60);
+      line-height: 1.15;
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .brewery-intro-text p.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .brewery-intro-text p:nth-child(2) { transition-delay: 0.18s; }
+
+    /* ── Bloco texto sobre a imagem do banner ── */
+    .brewery-banner-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: clamp(500px, 82vh, 900px);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.28), 0 8px 28px rgba(0,0,0,0.14);
+    }
+
+    .brewery-banner-img {
+      position: absolute;
+      inset: -15% 0;
+      background-image: url('images/cervejas/banner_copos.webp');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    .brewery-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(5,18,10,0.97) 0%,
+        rgba(5,18,10,0.80) 38%,
+        rgba(5,18,10,0.45) 68%,
+        rgba(5,18,10,0.12) 100%
+      );
+    }
+
+    .brewery-banner-text-over {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: clamp(24px,4vw,60px) clamp(28px,6vw,80px) clamp(40px,5vw,64px);
+      text-align: center;
+    }
+
+    .brewery-banner-caps {
+      display: block;
+      font-family: var(--caps);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 2rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: var(--verde-light);
+      margin-bottom: 28px;
+    }
+
+    .brewery-banner-text-over .brewery-intro-text {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── Beer styles section ── */
+    .beer-styles-section {
+      background: var(--white);
+      padding: 0 40px 100px;
+      position: relative;
+    }
+
+    .beer-styles-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .beer-styles-eyebrow {
+      display: block;
+      font-family: var(--caps);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--verde-mid);
+      margin-bottom: 16px;
+    }
+
+    .beer-styles-title {
+      display: block;
+      font-family: var(--caps);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--verde-dark);
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+    }
+
+    /* Grid */
+    .beer-styles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Card base */
+    .bsc {
+      position: relative;
+      background: linear-gradient(155deg, var(--verde-mid) 0%, var(--verde) 60%, var(--verde-dark) 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: default;
+      will-change: transform;
+      box-shadow:
+        0 24px 60px rgba(27,67,50,0.38),
+        0 6px 18px rgba(0,0,0,0.14);
+      transition: box-shadow 0.5s ease, transform 0.5s ease;
+      min-height: 420px;
+    }
+    .bsc:hover {
+      box-shadow: 0 40px 90px rgba(27,67,50,0.52), 0 10px 30px rgba(0,0,0,0.20);
+      transform: translateY(-6px) scale(1.012);
+    }
+
+    /* Foto de fundo do card */
+    .bsc-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform;
+    }
+    .bsc:hover .bsc-photo { transform: scale(1.07); }
+
+    /* Overlay verde sobre a foto */
+    .bsc-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13,40,24,0.97) 0%,
+        rgba(13,40,24,0.78) 45%,
+        rgba(13,40,24,0.42) 75%,
+        rgba(13,40,24,0.18) 100%
+      );
+      transition: background 0.5s ease;
+    }
+    .bsc:hover .bsc-photo-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(13,40,24,0.98) 0%,
+        rgba(13,40,24,0.84) 50%,
+        rgba(13,40,24,0.50) 78%,
+        rgba(13,40,24,0.22) 100%
+      );
+    }
+
+    /* Textura/gradiente quando não tem foto */
+    .bsc::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 110% -10%, rgba(116,198,157,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at -10% 110%, rgba(27,67,50,0.35) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    .bsc-inner {
+      position: relative;
+      z-index: 1;
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+      min-height: 420px;
+      justify-content: flex-end;
+    }
+
+    .bsc-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      margin-bottom: 4px;
+    }
+    .bsc.in-view .bsc-icon { opacity: 1; transform: translateY(0); }
+
+    .bsc-style {
+      font-family: var(--caps);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--verde-light);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.08s, transform 0.6s ease 0.08s;
+    }
+    .bsc.in-view .bsc-style { opacity: 1; transform: translateY(0); }
+
+    .bsc-name {
+      font-family: var(--caps);
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease 0.14s, transform 0.6s ease 0.14s;
+    }
+    .bsc.in-view .bsc-name { opacity: 1; transform: translateY(0); }
+
+    .bsc-divider {
+      width: 36px;
+      height: 1px;
+      background: rgba(116,198,157,0.45);
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: opacity 0.5s ease 0.22s, transform 0.5s ease 0.22s;
+    }
+    .bsc.in-view .bsc-divider { opacity: 1; transform: scaleX(1); }
+
+    .bsc-desc {
+      font-family: var(--caps);
+      font-size: clamp(0.75rem, 1vw, 0.88rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.30s, transform 0.6s ease 0.30s;
+    }
+    .bsc.in-view .bsc-desc { opacity: 1; transform: translateY(0); }
+
+    .bsc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease 0.40s, transform 0.6s ease 0.40s;
+    }
+    .bsc.in-view .bsc-tags { opacity: 1; transform: translateY(0); }
+
+    .bsc-tag {
+      font-family: var(--caps);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--verde-light);
+      border: 1px solid rgba(116,198,157,0.35);
+      border-radius: 100px;
+      padding: 4px 12px;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .bsc:hover .bsc-tag {
+      background: rgba(116,198,157,0.12);
+      border-color: rgba(116,198,157,0.60);
+    }
+
+    /* Todos os cards com mesma altura */
+    .bsc--wide { grid-column: span 1; }
+    .bsc-icon  { display: none; }
+
+    /* Stout dark */
+    .bsc--dark {
+      background: linear-gradient(155deg, #1a1a1a 0%, #0f0f0f 60%, #080808 100%);
+    }
+    .bsc--dark .bsc-style { color: var(--gold-light); }
+    .bsc--dark .bsc-tag { color: var(--gold-light); border-color: rgba(196,150,58,0.35); }
+    .bsc--dark:hover .bsc-tag { background: rgba(196,150,58,0.10); border-color: rgba(196,150,58,0.55); }
+    .bsc--dark .bsc-divider { background: rgba(196,150,58,0.40); }
+    .bsc--dark .bsc-photo-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(5,5,5,0.98) 0%,
+        rgba(5,5,5,0.82) 50%,
+        rgba(5,5,5,0.50) 78%,
+        rgba(5,5,5,0.22) 100%
+      );
+    }
+
+    /* ── insta-band ── */
+    .insta-band {
+      background: var(--verde-dark);
+      padding: 18px 0;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      z-index: 4;
+    }
+    .insta-band a {
+      font-family: var(--caps);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.3s;
+    }
+    .insta-band a:hover { color: var(--verde-light); }
+
+    /* Lúpulos centrais só no desktop, z-index acima do banner mas abaixo dos cards */
+    .lupulo--desktop { display: block; }
+    @media (max-width: 1024px) { .lupulo--desktop { display: none; } }
+
+    /* Layer específica para os lúpulos centrais de desktop */
+    #lupulosLayerMid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;   /* acima do banner (z:1) mas abaixo dos cards (z:3) */
+      overflow: hidden;
+    }
+
+    /* ── Responsivo ── */
+    @media (max-width: 1024px) {
+      .beer-styles-grid { grid-template-columns: repeat(2, 1fr); }
+      .bsc--wide { grid-column: span 2; }
+    }
+    @media (max-width: 768px) {
+      .brewery-banner-section { padding: 0 16px 80px; }
+      .brewery-banner-wrap { border-radius: 16px; height: clamp(340px, 60vh, 560px); }
+      .beer-styles-section { padding: 0 16px 80px; }
+      .beer-styles-grid { grid-template-columns: 1fr; gap: 14px; }
+      .bsc--wide { grid-column: span 1; }
+      .brewery-intro-block { padding: 60px 24px 60px; }
+    }
+    @media (max-width: 480px) {
+      .brewery-banner-wrap { border-radius: 12px; }
+      .bsc-inner { padding: 28px 24px 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+
+  <!-- ── LÚPULOS FRENTE (z-index 3) — nítidos, margens ── -->
+  <div class="lupulos-layer" id="lupulosLayerFront" aria-hidden="true">
+    <div class="lupulo" id="lup1"  style="width:220px;height:220px;top:12vh; left:6vw;  opacity:0.55;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup4"  style="width:100px;height:100px;top:65vh; right:4vw; opacity:0.62;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup7"  style="width:120px;height:120px;top:145vh;left:20vw; opacity:0.58;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup9"  style="width:160px;height:160px;top:200vh;left:8vw;  opacity:0.52;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup11" style="width:90px; height:90px; top:260vh;left:30vw; opacity:0.64;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup13" style="width:150px;height:150px;top:320vh;left:5vw;  opacity:0.54;filter:blur(0px);"></div>
+    <div class="lupulo" id="lup14" style="width:110px;height:110px;top:340vh;right:3vw; opacity:0.60;filter:blur(0px);"></div>
+  </div>
+
+  <!-- ── LÚPULOS ATRÁS (z-index 1) — desfocados, atrás dos cards ── -->
+  <div class="lupulos-layer" id="lupulosLayerBack" style="z-index:1;" aria-hidden="true">
+    <div class="lupulo" id="lup2"  style="width:140px;height:140px;top:28vh; right:8vw; opacity:0.30;filter:blur(3px);"></div>
+    <div class="lupulo" id="lup3"  style="width:320px;height:320px;top:50vh; left:2vw;  opacity:0.26;filter:blur(5px);"></div>
+    <div class="lupulo" id="lup5"  style="width:180px;height:180px;top:90vh; left:14vw; opacity:0.32;filter:blur(2px);"></div>
+    <div class="lupulo" id="lup6"  style="width:260px;height:260px;top:115vh;right:10vw; opacity:0.24;filter:blur(4px);"></div>
+    <div class="lupulo" id="lup8"  style="width:200px;height:200px;top:170vh;right:18vw; opacity:0.28;filter:blur(3px);"></div>
+    <div class="lupulo" id="lup10" style="width:280px;height:280px;top:230vh;right:5vw;  opacity:0.22;filter:blur(6px);"></div>
+    <div class="lupulo" id="lup12" style="width:240px;height:240px;top:290vh;right:22vw; opacity:0.26;filter:blur(4px);"></div>
+    <div class="lupulo" id="lup15" style="width:300px;height:300px;top:370vh;left:18vw; opacity:0.20;filter:blur(7px);"></div>
+  </div>
+
+  <!-- ── LÚPULOS CENTRAIS DESKTOP (z-index 2): acima banner, abaixo dos cards ── -->
+  <div id="lupulosLayerMid" aria-hidden="true">
+    <div class="lupulo lupulo--desktop" id="lup16" style="width:240px;height:240px;top:160vh;left:40vw; opacity:0.28;filter:blur(2px);"></div>
+    <div class="lupulo lupulo--desktop" id="lup17" style="width:200px;height:200px;top:310vh;left:48vw; opacity:0.24;filter:blur(4px);"></div>
+  </div>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá"></a>
+      <nav class="nav-links">
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+        <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+        <a href="cervejaria.html" class="active" data-i18n="nav.brewery">Cervejaria</a>
+        <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+        <a href="historia.html" data-i18n="nav.story">História</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav.home">Início</a>
+    <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+    <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+    <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+    <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+    <a href="historia.html" data-i18n="nav.story">História</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       HERO — vídeo full-screen
+  ══════════════════════════════════════════════ -->
+  <section class="brew-page-hero">
+    <video class="brew-page-hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="images/cervejas/banner_cervejaria.webm" type="video/webm">
+      <!-- fallback: imagem estática -->
+      <div style="position:absolute;inset:0;background-image:url('images/cervejas/artistico_chop.jpg');background-size:cover;background-position:center;"></div>
+    </video>
+    <div class="brew-page-hero-overlay"></div>
+    <div class="brew-page-hero-content">
+      <h1 class="brew-hero-title" data-i18n="brewery.intro.script">A Cervejaria</h1>
+      <p class="brew-hero-sub" data-i18n="brewery.hero.sub">Cervejas autorais, com a alma de Camburí</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       INTRO: heading centralizado + textos + banner
+  ══════════════════════════════════════════════ -->
+  <!-- "5 anos..." centralizado acima do banner -->
+  <div class="brewery-intro-block">
+    <div class="brewery-banner-heading">
+      <span class="brewery-banner-script" data-i18n="brewery.hero.title">5 anos, mais de 40 rótulos</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BANNER — imagem com todos os textos sobrepostos
+  ══════════════════════════════════════════════ -->
+  <div class="brewery-banner-section">
+    <div class="brewery-banner-wrap" id="brewBanner">
+      <div class="brewery-banner-img" id="brewBannerImg"></div>
+      <div class="brewery-banner-overlay"></div>
+
+      <!-- Textos sobre a imagem -->
+      <div class="brewery-banner-text-over">
+        <div class="brewery-intro-text in-view" id="brewIntroText">
+          <p data-i18n="brewery.intro.p1">A Sevá começou como cerveja artesanal feita em casa e nunca deixou de ser isso — mesmo depois de ganhar endereço fixo. Cada lote é pensado, cada ingrediente é escolhido, cada estilo carrega a identidade da cervejaria.</p>
+          <p data-i18n="brewery.intro.p2">Os rótulos levam nomes de aves porque, assim como elas, as cervejas da Sevá têm liberdade de ser o que precisam ser — leve ou intensa, tropical ou robusta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BEER STYLES GRID
+  ══════════════════════════════════════════════ -->
+  <div class="beer-styles-section">
+    <div class="beer-styles-header">
+      <span class="beer-styles-eyebrow">Nossos Estilos</span>
+      <span class="beer-styles-title">Cerveja com Identidade</span>
+    </div>
+
+    <div class="beer-styles-grid" id="beerStylesGrid">
+
+      <!-- Lager & Pilsen — wide -->
+      <div class="bsc bsc--wide">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/basilon_pilsen.jpeg');"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">🌾</span>
+          <span class="bsc-style">Lager &amp; Pilsen</span>
+          <span class="bsc-name">A base de tudo</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Leve, cristalina e incrivelmente refrescante. Malte suave, amargor mínimo e aquele final limpo que pede o próximo gole. A parceira perfeita para o sol de Camburi — elegante na simplicidade.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Refrescante</span>
+            <span class="bsc-tag">Leve</span>
+            <span class="bsc-tag">Maltada</span>
+            <span class="bsc-tag">Final Limpo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session IPA -->
+      <div class="bsc">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/gaviao_neipinha_session_neipa.jpg');"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">🌿</span>
+          <span class="bsc-style">Session IPA</span>
+          <span class="bsc-name">Sabor sem excessos</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Aroma tropical intenso, amargor suave e muita refrescância. Lúpulos expressivos que entregam sabor sem pesar. Feita para beber em boa companhia, a tarde toda.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Tropical</span>
+            <span class="bsc-tag">Amargor Suave</span>
+            <span class="bsc-tag">Lupulada</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sour -->
+      <div class="bsc">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/benedito_sour.jpeg');background-position:center top;"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">🍋</span>
+          <span class="bsc-style">Sour</span>
+          <span class="bsc-name">Acidez que encanta</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Acidez vibrante com frutas tropicais em destaque. Cada gole é uma surpresa — leveza que não engana, complexidade que prende. O estilo favorito de quem quer sair do óbvio.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Ácido</span>
+            <span class="bsc-tag">Frutal</span>
+            <span class="bsc-tag">Vivo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IPA (American + Australian) -->
+      <div class="bsc">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/pardal_australian_ipa.jpg');"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">🌏</span>
+          <span class="bsc-style">IPA — American &amp; Australian</span>
+          <span class="bsc-name">O lúpulo em todo poder</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">American IPA: pinheiro e resina, amargor firme e longo. Australian IPA: maracujá, pêssego e lima com amargor equilibrado. Dois continentes, uma paixão em comum.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Resinoso</span>
+            <span class="bsc-tag">Cítrico</span>
+            <span class="bsc-tag">Tropical</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hazy IPA — wide -->
+      <div class="bsc bsc--wide">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/coqueiro_hazy_ipa.jpeg');"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">☁️</span>
+          <span class="bsc-style">Hazy IPA / NEIPA</span>
+          <span class="bsc-name">Turva por natureza</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Veludo líquido. Corpo suave e cremoso, aroma explosivo de frutas tropicais, amargor quase ausente. A experiência mais sensorial que a Sevá pode oferecer em um copo.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Cremoso</span>
+            <span class="bsc-tag">Mango</span>
+            <span class="bsc-tag">Suave</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Double IPA -->
+      <div class="bsc">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/coro_coro_double_ipa.jpeg');"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">⚡</span>
+          <span class="bsc-style">Double IPA</span>
+          <span class="bsc-name">Para os verdadeiros</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Intensa, aromática e encorpada. Lupulagem massiva que entrega resina, frutas e amargor duradouro em camadas. Alta graduação que respeita o paladar.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Intensa</span>
+            <span class="bsc-tag">Encorpada</span>
+            <span class="bsc-tag">Alto IBU</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stout -->
+      <div class="bsc bsc--dark">
+        <div class="bsc-photo" style="background-image:url('images/cervejas/baixa_temporada_imperial_stout.jpeg');background-position:center top;"></div>
+        <div class="bsc-photo-overlay"></div>
+        <div class="bsc-inner">
+          <span class="bsc-icon">🍫</span>
+          <span class="bsc-style">Stout &amp; Imperial Stout</span>
+          <span class="bsc-name">A mais escura da família</span>
+          <div class="bsc-divider"></div>
+          <p class="bsc-desc">Café, chocolate amargo, alcaçuz e caramelo queimado. Corpo robusto, espuma cremosa cor de chocolate e final longo que aquece. A Sevá na sua forma mais profunda.</p>
+          <div class="bsc-tags">
+            <span class="bsc-tag">Café</span>
+            <span class="bsc-tag">Chocolate</span>
+            <span class="bsc-tag">Robusto</span>
+            <span class="bsc-tag">Caramelo</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INSTA BAND -->
+  <div class="insta-band">
+    <a href="https://instagram.com/sevacerveja" target="_blank" data-i18n="home.insta">
+      ✦ &nbsp; Siga-nos no Instagram @sevacerveja &nbsp; ✦
+    </a>
+  </div>
+
+  <!-- FOOTER — idêntico ao index -->
+  <footer id="footer">
+
+    <div class="footer-top-bar"></div>
+
+    <div class="footer-main">
+
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo">
+          <img src="images/logo_seva.png" alt="Sevá">
+        </div>
+        <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-eyebrow">Nos Encontre</span>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+            <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa fa-clock"></i></span>
+            <span data-i18n="footer.hours">Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <a href="https://wa.me/5511953505016">(11) 95350-5016</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-eyebrow">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="cardapio.html" data-i18n="nav.menu">Cardápio</a></li>
+          <li><a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a></li>
+          <li><a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a></li>
+
+          <li><a href="galeria.html" data-i18n="nav.gallery">Galeria</a></li>
+          <li><a href="historia.html" data-i18n="nav.story">História</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
+      <span class="footer-dev">Desenvolvido por <a href="https://instagram.com/cria.dev" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+    </div>
+
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ────────────────────────────────────────────
+       1. Parallax do banner de copos
+    ──────────────────────────────────────────── */
+    var bannerImg = document.getElementById('brewBannerImg');
+    var banner    = document.getElementById('brewBanner');
+
+    function updateBanner () {
+      if (!bannerImg || !banner) return;
+      var rect     = banner.getBoundingClientRect();
+      var progress = 1 - (rect.bottom / (window.innerHeight + rect.height));
+      bannerImg.style.transform = 'translateY(' + (progress * 120) + 'px)';
+    }
+
+    /* ────────────────────────────────────────────
+       2. Lúpulos: parallax de "queda" com velocidades
+          diferentes para cada elemento
+    ──────────────────────────────────────────── */
+
+    // Configuração: [id, velocidade-relativa, rotação-base-graus]
+    var lupuloConfig = [
+      // frente (nítidos)
+      ['lup1',  0.18,  12],
+      ['lup4',  0.45, -30],
+      ['lup7',  0.38,  35],
+      ['lup9',  0.28,  10],
+      ['lup11', 0.50,  42],
+      ['lup13', 0.33,  18],
+      ['lup14', 0.48, -40],
+      // atrás (com blur)
+      ['lup2',  0.32, -18],
+      ['lup3',  0.10,   8],
+      ['lup5',  0.25,  20],
+      ['lup6',  0.08,  -5],
+      ['lup8',  0.15, -15],
+      ['lup10', 0.07,  -8],
+      ['lup12', 0.12, -22],
+      ['lup15', 0.06,   6],
+      // desktop — centrais
+      ['lup16', 0.14,  28],
+      ['lup17', 0.09, -12],
+    ];
+
+    var lupuloEls = lupuloConfig.map(function (cfg) {
+      return { el: document.getElementById(cfg[0]), speed: cfg[1], rot: cfg[2] };
+    }).filter(function (l) { return !!l.el; });
+
+    function updateLupulos () {
+      var sy = window.scrollY;
+      lupuloEls.forEach(function (l) {
+        var dy  = sy * l.speed;           // deslocamento vertical (queda)
+        var rot = l.rot + sy * 0.025 * l.speed * 10; // rotação lenta
+        l.el.style.transform = 'translateY(' + dy + 'px) rotate(' + rot + 'deg)';
+      });
+    }
+
+    /* ────────────────────────────────────────────
+       3. Scroll listener unificado
+    ──────────────────────────────────────────── */
+    window.addEventListener('scroll', function () {
+      updateBanner();
+      updateLupulos();
+    }, { passive: true });
+
+    updateBanner();
+    updateLupulos();
+
+    /* ────────────────────────────────────────────
+       4. Reveal: intro texts + beer cards
+    ──────────────────────────────────────────── */
+    var revealTargets = document.querySelectorAll(
+      '.brewery-intro-text p, .bsc'
+    );
+
+    if (revealTargets.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var delay = 0;
+          var parent = e.target.parentElement;
+          if (parent && parent.id === 'beerStylesGrid') {
+            var siblings = Array.from(parent.children);
+            delay = siblings.indexOf(e.target) * 90;
+          }
+          setTimeout(function () { e.target.classList.add('in-view'); }, delay);
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12 });
+
+      revealTargets.forEach(function (t) { io.observe(t); });
+    }
+
+  })();
+  </script>
+</body>
+</html>

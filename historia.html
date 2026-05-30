@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.story">Nossa História — Sevá Cervejaria e Restaurante</title>
+  <meta name="description" data-i18n="meta.desc.story" content="A história da Sevá: de cerveja artesanal caseira em 2020 a cervejaria e restaurante na Praia de Camburi.">
+  <link rel="icon" href="images/logo_seva.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* =============================================
+       HISTÓRIA — SOMENTE ESTILOS NOVOS
+       (não sobrescreve style.css)
+       ============================================= */
+
+    /* ── Parallax section stacking ── */
+    .hs-layer {
+      position: relative;
+      will-change: transform;
+    }
+    .hs-layer-1  { z-index: 1; }
+    .hs-layer-2  { z-index: 2;  box-shadow: 0 -28px 80px rgba(0,0,0,0.28); }
+    .hs-layer-3  { z-index: 3;  box-shadow: 0 -28px 80px rgba(0,0,0,0.32); }
+    .hs-layer-4  { z-index: 4;  box-shadow: 0 -50px 120px rgba(0,0,0,0.65), 0 -4px 0 rgba(0,0,0,0.4); }
+    .hs-layer-5  { z-index: 5;  box-shadow: 0 -28px 80px rgba(0,0,0,0.38); }
+    .hs-layer-6  { z-index: 6;  box-shadow: 0 -28px 80px rgba(0,0,0,0.38); }
+
+    /* ── Video Hero ── */
+    .historia-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .historia-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .historia-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top,  rgba(5,18,10,0.92) 0%, rgba(5,18,10,0.45) 40%, rgba(5,18,10,0.20) 70%, rgba(5,18,10,0.35) 100%),
+        linear-gradient(to right, rgba(5,18,10,0.35) 0%, transparent 60%);
+    }
+    .historia-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      padding: 0 24px;
+    }
+    .historia-hero-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.4s forwards;
+    }
+    .historia-hero-eyebrow::before,
+    .historia-hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+    }
+    .historia-hero-eyebrow span {
+      font-family: var(--caps);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.60);
+    }
+    .historia-hero-title {
+      font-family: var(--caps);
+      font-size: clamp(3.2rem, 9vw, 9rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      color: var(--white);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.6s forwards;
+    }
+    .historia-hero-sub {
+      font-family: var(--caps);
+      font-style: normal;
+      font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.9s forwards;
+    }
+    .historia-hero-scroll {
+      position: absolute;
+      left: clamp(24px, 6vw, 96px);
+      bottom: 36px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .historia-hero-scroll-track {
+      width: 1px;
+      height: 56px;
+      background: rgba(255,255,255,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+    .historia-hero-scroll-thumb {
+      position: absolute;
+      top: 0; width: 100%; height: 100%;
+      background: var(--verde-light);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    .historia-hero-scroll-label {
+      font-family: var(--caps);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+      writing-mode: vertical-lr;
+    }
+
+    /* ── Intro wrapper (o style.css não aplica bg, só layout) ── */
+    .history-intro-wrap {
+      background: var(--sand);
+      padding: 0;
+    }
+
+    /* ── Imagem com card arredondado ── */
+    .img-card-rounded {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 72px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .img-card-rounded img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .img-card-rounded:hover img { transform: scale(1.04); }
+
+    /* name-origin: torna a imagem um card arredondado sem alterar o grid */
+    .name-origin-image .img-card-rounded {
+      height: 100%;
+      min-height: 380px;
+    }
+    /* fundador */
+    .fundador-image-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+    .fundador-image-wrap .img-card-rounded {
+      position: absolute;
+      inset: 40px;
+      height: auto;
+      min-height: 0;
+    }
+
+    /* ── Seção O Nome: sticky — a timeline (hs-layer-4) passa por cima ── */
+    .nome-section {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--verde-dark);
+    }
+
+    /* belt container — full bleed, por baixo do texto */
+    .nome-belt-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .nome-belt-track {
+      display: flex;
+      height: 100%;
+      /* 14 items × 280px = 3920px → anima metade (7 items) */
+      animation: nomeBeltScroll 28s linear infinite;
+      will-change: transform;
+    }
+    .nome-belt-item {
+      flex-shrink: 0;
+      width: 260px;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0 10px 80px;
+    }
+    .nome-belt-item img {
+      width: 230px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.45));
+    }
+    @keyframes nomeBeltScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-1820px); } /* 7 × 260px */
+    }
+
+    /* texto centralizado — invisível por padrão, JS controla via .nome-content--visible */
+    .nome-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 90px clamp(24px, 8vw, 140px);
+      max-width: 760px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .nome-content--visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .nome-content .script,
+    .nome-content .caps-label,
+    .nome-content p {
+      text-shadow:
+        0 2px 24px rgba(10,25,15,0.95),
+        0 0 48px rgba(10,25,15,0.85),
+        0 0 80px rgba(10,25,15,0.70);
+    }
+    .nome-content .script {
+      display: block;
+      font-size: clamp(5rem, 13vw, 13rem) !important;
+      color: var(--white) !important;
+      margin-bottom: 10px;
+    }
+    .nome-content .caps-label {
+      display: block;
+      font-family: var(--caps);
+      font-size: clamp(0.78rem, 1.1vw, 1rem);
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 36px;
+    }
+    .nome-content p {
+      font-family: var(--caps);
+      font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 20px;
+    }
+    .nome-content p:last-child { margin-bottom: 0; }
+
+    /* ── TIMELINE DARK SECTION ── */
+    .timeline-dark {
+      background: var(--dark);
+      padding: 100px 40px 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* fundo parallax */
+    .timeline-dark-bg {
+      position: absolute;
+      inset: -20%;
+      background-image: url('images/cervejas/artistico_chop (2).jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      z-index: 0;
+      will-change: transform;
+    }
+    .timeline-dark-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* heading dentro da timeline dark */
+    .timeline-dark .section-heading .script { color: var(--verde-light); }
+    .timeline-dark .section-heading .caps   { color: rgba(255,255,255,0.40); }
+    .timeline-dark .section-heading .ornament::before,
+    .timeline-dark .section-heading .ornament::after { background: rgba(116,198,157,0.30); }
+    .timeline-dark .section-heading .ornament-icon   { color: var(--verde-mid); }
+
+    /* ── Trilha vertical ── */
+    .tl-track {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .tl-track::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(116,198,157,0.28) 8%,
+        rgba(116,198,157,0.28) 92%,
+        transparent 100%
+      );
+      transform: translateX(-50%);
+    }
+
+    /* item */
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 64px 1fr;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+    .tl-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: rgba(116,198,157,0.20);
+      border: 1px solid rgba(116,198,157,0.30);
+      transition: background 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+      flex-shrink: 0;
+    }
+    .tl-item.is-active .tl-dot {
+      background: var(--verde-mid);
+      border-color: var(--verde-light);
+      transform: scale(1.5);
+      box-shadow: 0 0 20px rgba(64,145,108,0.55);
+    }
+    .tl-year {
+      font-family: var(--caps);
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      text-align: center;
+      line-height: 1.2;
+      transition: color 0.5s ease;
+    }
+    .tl-item.is-active .tl-year { color: var(--verde-light); }
+
+    .tl-side {
+      padding: 0 32px;
+    }
+    .tl-side.tl-left  { text-align: right; }
+    .tl-side.tl-right { text-align: left; }
+
+    /* card de imagem circular */
+    .tl-img-wrap {
+      margin-bottom: 18px;
+    }
+    .tl-side.tl-left  .tl-img-wrap { display: flex; justify-content: flex-end; }
+    .tl-side.tl-right .tl-img-wrap { display: flex; justify-content: flex-start; }
+
+    .tl-card {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(116,198,157,0.12);
+      transform: scale(0.70);
+      opacity: 0.25;
+      filter: saturate(0) brightness(0.55);
+      transition:
+        transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94),
+        opacity   0.65s ease,
+        filter    0.65s ease,
+        border-color 0.65s ease,
+        box-shadow   0.65s ease;
+    }
+    .tl-item.is-active .tl-card {
+      transform: scale(1.2);
+      opacity: 1;
+      filter: saturate(1.1) brightness(1.05);
+      border-color: rgba(116,198,157,0.55);
+      box-shadow: 0 10px 40px rgba(64,145,108,0.38), 0 0 0 4px rgba(116,198,157,0.12);
+    }
+    .tl-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .tl-text h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 8px;
+      transition: color 0.5s ease;
+    }
+    .tl-text p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.22);
+      line-height: 1.75;
+      transition: color 0.5s ease;
+    }
+    .tl-item.is-active .tl-text h3 { color: var(--white); }
+    .tl-item.is-active .tl-text p  { color: rgba(255,255,255,0.68); }
+
+    /* espaçadores para items alternados */
+    .tl-item.tl-left-item  > .tl-side.tl-right { visibility: hidden; pointer-events: none; }
+    .tl-item.tl-right-item > .tl-side.tl-left  { visibility: hidden; pointer-events: none; }
+
+    /* ── Card 3D do Fundador ── */
+    .fundador-img-outer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;   /* card encostado no centro (lado direito do slot esquerdo) */
+      padding: 48px 0 40px 56px;   /* espaço: topo e esquerda para a imagem vazar */
+      background: var(--light);
+    }
+
+    /* texto colado no centro, alinhado à esquerda, com padding mínimo */
+    .fundador-text {
+      padding: 80px 60px 80px 40px !important;
+      text-align: left !important;
+      justify-content: center;
+    }
+
+    /* card verde arredondado — menor que a imagem para o efeito 3D */
+    .fundador-card-3d {
+      position: relative;
+      width: 54%;
+      aspect-ratio: 3 / 4;
+      background: var(--verde);
+      border-radius: 20px;
+      overflow: visible;          /* imagem vaza para fora do card */
+      box-shadow: 0 20px 56px rgba(27,67,50,0.30);
+    }
+
+    /* imagem vaza pelo topo e esquerda — efeito tridimensional */
+    .fundador-card-3d img {
+      display: block;
+      width: calc(100% + 56px);
+      height: calc(100% + 48px);
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      will-change: transform;
+    }
+
+    @media (max-width: 1024px) {
+      .fundador-img-outer { padding: 36px 32px 32px 44px; }
+      .fundador-card-3d { width: 68%; }
+      .fundador-card-3d img { width: calc(100% + 44px); height: calc(100% + 36px); }
+    }
+    @media (max-width: 768px) {
+      .fundador-img-outer { padding: 28px 24px 24px 36px; }
+      .fundador-card-3d { width: 82%; }
+      .fundador-card-3d img { width: calc(100% + 36px); height: calc(100% + 28px); }
+    }
+
+    /* ── Insta Band ── */
+    .insta-band {
+      background: var(--verde-dark);
+      padding: 20px 40px;
+      text-align: center;
+    }
+    .insta-band a {
+      font-family: var(--caps);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.3s;
+    }
+    .insta-band a:hover { color: var(--verde-light); }
+
+    /* ── Títulos: Barlow Condensed 900 (igual brew-headline) ── */
+    /* Hero title — já está correto, reforça */
+    .historia-hero-title {
+      font-family: var(--caps) !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.02em !important;
+      line-height: 0.92 !important;
+    }
+    /* Section headings: script label */
+    .section-heading .script,
+    .history-intro .script,
+    .nome-content .script,
+    .split-text .script {
+      font-family: var(--caps) !important;
+      font-style: normal !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.02em !important;
+      line-height: 0.92 !important;
+      text-transform: uppercase !important;
+    }
+    /* Timeline dark heading script override */
+    .timeline-dark .section-heading .script {
+      font-size: clamp(2.8rem, 6vw, 6rem) !important;
+    }
+    /* Timeline item h3 titles */
+    .tl-text h3 {
+      font-family: var(--caps) !important;
+      font-style: normal !important;
+      font-weight: 900 !important;
+      font-size: clamp(1.1rem, 2vw, 1.55rem) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 0.95 !important;
+      text-transform: uppercase !important;
+    }
+
+    /* ── Tipografia: Barlow Condensed nos parágrafos (igual brew-video-text) ── */
+    /* Intro (fundo areia) */
+    .history-intro p {
+      font-family: var(--caps) !important;
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem) !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      line-height: 1.9 !important;
+      color: var(--gray) !important;
+    }
+    /* Seção O Nome (agora usa .nome-content p — regra acima) */
+    /* Timeline (fundo escuro) */
+    .tl-text p {
+      font-family: var(--caps);
+      font-size: clamp(0.85rem, 1.2vw, 1.0rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.9;
+    }
+    /* Fundador split (fundo claro) */
+    .split-text p {
+      font-family: var(--caps) !important;
+      font-size: clamp(0.9rem, 1.3vw, 1.05rem) !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      line-height: 1.9 !important;
+      color: var(--gray) !important;
+    }
+
+    /* ── Responsivo ── */
+    @media (max-width: 860px) {
+      .tl-track::before { left: 16px; transform: none; }
+      .tl-item {
+        grid-template-columns: 32px 1fr;
+        gap: 0;
+        margin-bottom: 52px;
+      }
+      .tl-item .tl-center { grid-column: 1; align-self: start; margin-top: 2px; }
+      .tl-item .tl-side.tl-right { grid-column: 2; text-align: left; padding: 0 0 0 18px; }
+      .tl-item.tl-left-item  > .tl-side.tl-right { visibility: visible; }
+      .tl-item.tl-right-item > .tl-side.tl-left  { display: none; }
+      .tl-item.tl-left-item  > .tl-side.tl-left  { display: none; }
+      .tl-item .tl-side.tl-right .tl-img-wrap { justify-content: flex-start; }
+      .tl-card { width: 80px; height: 80px; }
+      .tl-item.is-active .tl-card { transform: scale(1.12); }
+      .fundador-image-wrap .img-card-rounded { inset: 20px; }
+    }
+    @media (max-width: 540px) {
+      .historia-hero-title { font-size: clamp(2.6rem, 13vw, 5rem); }
+      .timeline-dark { padding: 70px 20px 90px; }
+      .fundador-image-wrap { min-height: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá"></a>
+      <nav class="nav-links">
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+        <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+        <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+        <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+        <a href="historia.html" class="active" data-i18n="nav.story">História</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav.home">Início</a>
+    <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+    <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+    <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+    <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+    <a href="historia.html" data-i18n="nav.story">História</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </nav>
+
+  <!-- ① VIDEO HERO — camada base -->
+  <section class="historia-hero hs-layer hs-layer-1">
+    <video
+      class="historia-hero-video"
+      src="images/Historia/banner_historia.webm"
+      autoplay muted loop playsinline
+      poster="images/cervejas/artistico_chop (2).jpg"
+    ></video>
+    <div class="historia-hero-overlay"></div>
+    <div class="historia-hero-content">
+      <div class="historia-hero-eyebrow">
+        <span>Sevá Cervejaria e Restaurante</span>
+      </div>
+      <h1 class="historia-hero-title" data-i18n="story.hero.title">A nossa história</h1>
+      <p class="historia-hero-sub" data-i18n="story.hero.sub">A história de quem nasceu nas ondas e encontrou porto</p>
+    </div>
+    <div class="historia-hero-scroll">
+      <div class="historia-hero-scroll-track">
+        <div class="historia-hero-scroll-thumb"></div>
+      </div>
+      <span class="historia-hero-scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ② INTRO — sobe sobre o hero -->
+  <div class="history-intro-wrap hs-layer hs-layer-2">
+    <div class="history-intro">
+      <span class="script" data-i18n="story.intro.script">Nossa História</span>
+      <span class="caps-label" data-i18n="story.intro.caps">Do quintal ao restaurante</span>
+      <div class="ornament"><span class="ornament-icon"></span></div>
+      <p data-i18n="story.intro.p1">A Sevá é uma história de amor pela fermentação, pela praia e pela liberdade de criar. Tudo começou em novembro de 2020, durante a pandemia, quando o fundador João decidiu que o confinamento seria uma oportunidade — e começou a brassar cerveja em casa.</p>
+      <p data-i18n="story.intro.p2">Do que nasceu como hobby virou obsessão, depois propósito, depois negócio. A cada rótulo criado, uma ave ganhava nome e personalidade. A cada evento nas praias de Camburi, mais pessoas descobriam a Sevá.</p>
+    </div>
+  </div>
+
+  <!-- ③ O NOME -->
+  <section class="nome-section hs-layer hs-layer-3">
+
+    <!-- belt infinito de latas no fundo — sem máscara -->
+    <div class="nome-belt-wrap" id="nomeBelt">
+      <div class="nome-belt-track">
+        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)"></div>
+        <!-- clone para loop seamless -->
+        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)"></div>
+      </div>
+    </div>
+
+    <!-- conteúdo centralizado -->
+    <div class="nome-content">
+      <span class="script" data-i18n="story.name.script">Sevá</span>
+      <span class="caps-label" data-i18n="story.name.caps">Aves ao contrário</span>
+      <p data-i18n="story.name.p1">O nome <em>Sevá</em> é "aves" ao contrário — uma homenagem direta aos rótulos que carregam nomes de pássaros brasileiros. Mas vai além: em sânscrito, <em>sevā</em> significa "serviço com devoção".</p>
+      <p data-i18n="story.name.p2">É exatamente isso que tentamos fazer em cada chope, em cada prato, em cada experiência que proporcionamos em Camburi. Serviço com presença, com cuidado, com alegria.</p>
+    </div>
+
+  </section>
+
+  <!-- ④ TIMELINE — sobe sobre o nome -->
+  <section class="timeline-dark hs-layer hs-layer-4">
+    <div class="timeline-dark-bg" id="tlBg"></div>
+    <div class="timeline-dark-inner">
+
+      <div class="section-heading reveal" style="margin-bottom:70px;">
+        <span class="script" data-i18n="story.timeline.script">A Jornada</span>
+        <span class="caps" data-i18n="story.timeline.caps">Marco a Marco</span>
+        <div class="ornament"><span class="ornament-icon"></span></div>
+      </div>
+
+      <div class="tl-track">
+
+        <!-- 2020 — esquerda -->
+        <div class="tl-item tl-left-item" data-tl>
+          <div class="tl-side tl-left">
+            <div class="tl-img-wrap">
+              <div class="tl-card"><img src="images/Historia/1.webp" alt="O Começo — 2020"></div>
+            </div>
+            <div class="tl-text">
+              <h3 data-i18n="story.t1.title">O Começo</h3>
+              <p data-i18n="story.t1.text">Em plena pandemia, João começa a brassar cerveja artesanal em casa. O primeiro rótulo — a Basilon Pilsen — é servido para amigos e vizinhos.</p>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot"></div>
+            <div class="tl-year">Nov<br>2020</div>
+          </div>
+          <div class="tl-side tl-right"><!-- vazio --></div>
+        </div>
+
+        <!-- 2021 — direita -->
+        <div class="tl-item tl-right-item" data-tl>
+          <div class="tl-side tl-left"><!-- vazio --></div>
+          <div class="tl-center">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2021</div>
+          </div>
+          <div class="tl-side tl-right">
+            <div class="tl-img-wrap">
+              <div class="tl-card"><img src="images/Historia/2.webp" alt="A Praia como Palco — 2021"></div>
+            </div>
+            <div class="tl-text">
+              <h3 data-i18n="story.t2.title">A Praia como Palco</h3>
+              <p data-i18n="story.t2.text">Com um carrinho e geleiras, a Sevá começa a aparecer nas praias e eventos de Camburi. O boca a boca cresce e os rótulos se multiplicam.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2022 — esquerda -->
+        <div class="tl-item tl-left-item" data-tl>
+          <div class="tl-side tl-left">
+            <div class="tl-img-wrap">
+              <div class="tl-card"><img src="images/Historia/3.webp" alt="A Van — 2022"></div>
+            </div>
+            <div class="tl-text">
+              <h3 data-i18n="story.t3.title">A Van dos Quatro Torneiras</h3>
+              <p data-i18n="story.t3.text">Uma van adaptada com quatro torneiras de chope passa a percorrer festas, feiras e eventos no litoral norte. A cervejaria itinerante ganha identidade visual e reconhecimento.</p>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2022</div>
+          </div>
+          <div class="tl-side tl-right"><!-- vazio --></div>
+        </div>
+
+        <!-- 2023 — direita -->
+        <div class="tl-item tl-right-item" data-tl>
+          <div class="tl-side tl-left"><!-- vazio --></div>
+          <div class="tl-center">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2023</div>
+          </div>
+          <div class="tl-side tl-right">
+            <div class="tl-img-wrap">
+              <div class="tl-card"><img src="images/Historia/4.webp" alt="Hub Cultural — 2023"></div>
+            </div>
+            <div class="tl-text">
+              <h3 data-i18n="story.t4.title">Hub Cultural</h3>
+              <p data-i18n="story.t4.text">A Sevá passa a co-organizar eventos culturais em Camburi — shows, saraus, feiras de artesanato. A cerveja vira pretexto para reunir comunidade.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024 — esquerda -->
+        <div class="tl-item tl-left-item" data-tl>
+          <div class="tl-side tl-left">
+            <div class="tl-img-wrap">
+              <div class="tl-card"><img src="images/Historia/5.webp" alt="Endereço Fixo — 2024"></div>
+            </div>
+            <div class="tl-text">
+              <h3 data-i18n="story.t5.title">Endereço Fixo</h3>
+              <p data-i18n="story.t5.text">Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja — tudo num só lugar. A itinerância virou permanência.</p>
+            </div>
+          </div>
+          <div class="tl-center">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+          </div>
+          <div class="tl-side tl-right"><!-- vazio --></div>
+        </div>
+
+      </div><!-- /tl-track -->
+    </div><!-- /inner -->
+  </section>
+
+  <!-- ⑤ O FUNDADOR — imagem esquerda, texto direita -->
+  <section class="split-section fundador-section hs-layer hs-layer-5" style="background: var(--light); overflow: visible;">
+    <div class="fundador-img-outer reveal-l">
+      <div class="fundador-card-3d">
+        <img src="images/joao.webp" alt="João — Fundador da Sevá">
+      </div>
+    </div>
+    <div class="split-text fundador-text reveal-r">
+      <span class="script" data-i18n="story.founder.script">Quem faz a Sevá</span>
+      <span class="caps-label" data-i18n="story.founder.caps">O Fundador</span>
+      <div class="split-ornament"></div>
+      <p data-i18n="story.founder.p1">João é cervejeiro, cozinheiro e sonhador. Formado em gastronomia e autodidata em fermentação, passou anos experimentando antes de transformar a Sevá em realidade.</p>
+      <p data-i18n="story.founder.p2">Cada cerveja da Sevá é um pedaço da sua visão: ingredientes locais, técnica apurada, e aquele algo a mais que só vem de quem faz com amor.</p>
+      <a href="restaurante.html" class="btn-gold-text" data-i18n="story.founder.cta">Venha nos conhecer</a>
+    </div>
+  </section>
+
+  <!-- ⑥ INSTA + FOOTER -->
+  <div class="hs-layer hs-layer-6">
+    <div class="insta-band">
+      <a href="https://instagram.com/sevacerveja" target="_blank" data-i18n="home.insta">
+        Siga-nos no Instagram @sevacerveja
+      </a>
+    </div>
+
+    <footer id="footer">
+
+      <div class="footer-top-bar"></div>
+
+      <div class="footer-main">
+
+        <div class="footer-col footer-col--brand">
+          <div class="footer-logo">
+            <img src="images/logo_seva.png" alt="Sevá">
+          </div>
+          <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-col footer-col--contact">
+          <span class="footer-col-eyebrow">Nos Encontre</span>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+              <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+            </li>
+            <li>
+              <span class="icon"><i class="fa fa-clock"></i></span>
+              <span data-i18n="footer.hours">Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span>
+            </li>
+            <li>
+              <span class="icon"><i class="fa-brands fa-whatsapp"></i></span>
+              <a href="https://wa.me/5511953505016">(11) 95350-5016</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col--nav">
+          <span class="footer-col-eyebrow">Explore</span>
+          <ul class="footer-nav-list">
+            <li><a href="cardapio.html" data-i18n="nav.menu">Cardápio</a></li>
+            <li><a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a></li>
+            <li><a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a></li>
+
+            <li><a href="galeria.html" data-i18n="nav.gallery">Galeria</a></li>
+            <li><a href="historia.html" data-i18n="nav.story">História</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
+        <span class="footer-dev">Desenvolvido por <a href="https://instagram.com/cria.dev" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+      </div>
+
+    </footer>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    /* =============================================
+       HISTÓRIA PAGE SCRIPTS
+       ============================================= */
+    (function() {
+
+      /* ── Revela elementos com .visible (padrão do style.css) ── */
+      const revEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+      const revObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.18 });
+      revEls.forEach(el => revObs.observe(el));
+
+      /* ── Timeline: ativa item ao entrar no centro da tela ── */
+      const tlItems = document.querySelectorAll('[data-tl]');
+      const tlObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          e.target.classList.toggle('is-active', e.isIntersecting);
+        });
+      }, { threshold: 0.40, rootMargin: '0px 0px -8% 0px' });
+      tlItems.forEach(el => tlObs.observe(el));
+
+      /* ── Parallax: fundo da timeline ── */
+      const tlBg = document.getElementById('tlBg');
+      const tlSec = tlBg ? tlBg.closest('.timeline-dark') : null;
+      function tlParallax() {
+        if (!tlBg || !tlSec) return;
+        const rect = tlSec.getBoundingClientRect();
+        const vh = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const p = (vh - rect.top) / (vh + rect.height);
+        tlBg.style.transform = 'translateY(' + ((p - 0.5) * 110) + 'px)';
+      }
+
+      /* ── Parallax: belt de latas — adiciona offset vertical ao rolar ── */
+      const nomeBeltWrap = document.getElementById('nomeBelt');
+      const nomeSection  = nomeBeltWrap ? nomeBeltWrap.closest('.nome-section') : null;
+
+      function beltParallax() {
+        if (!nomeBeltWrap || !nomeSection) return;
+        const rect = nomeSection.getBoundingClientRect();
+        const vh   = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const progress = (vh - rect.top) / (vh + rect.height);
+        const shift    = (progress - 0.5) * 120;
+        nomeBeltWrap.style.transform = 'translateY(' + shift + 'px)';
+        nomeBeltWrap.style.scale = '1.15';
+      }
+
+      /* ── Parallax scroll: seções sobem umas sobre as outras ── */
+      const layers = document.querySelectorAll('.hs-layer');
+
+      /* ── Visibilidade do texto das latas ──────────────────────────────────
+         Lógica: texto visível SOMENTE quando nenhuma outra seção da página
+         está na viewport. Observamos todas as seções que NÃO são a nome-section.
+         Quando qualquer uma delas está visível → texto oculto.
+         Quando nenhuma está visível → texto aparece (o usuário está na nome-section).
+      ──────────────────────────────────────────────────────────────────── */
+      const nomeContent = document.querySelector('.nome-content');
+
+      /* seções que COBREM a nome-section (surgem por cima com scroll) */
+      const coveringSections = [
+        document.querySelector('.timeline-dark'),
+        document.querySelector('.fundador-section'),
+        document.querySelector('.hs-layer-6'),
+      ].filter(Boolean);
+
+      let nomeIsVisible  = false;
+      let coveringCount  = 0;
+
+      function updateNomeText() {
+        if (!nomeContent) return;
+        const show = nomeIsVisible && coveringCount === 0;
+        nomeContent.classList.toggle('nome-content--visible', show);
+      }
+
+      /* 1) mostra quando a nome-section entra na viewport */
+      const nomeSecObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { nomeIsVisible = e.isIntersecting; });
+        updateNomeText();
+      }, { threshold: 0.05 });
+      if (nomeSection) nomeSecObs.observe(nomeSection);
+
+      /* 2) esconde quando seções cobertas entram */
+      const coverObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          coveringCount += e.isIntersecting ? 1 : -1;
+          coveringCount  = Math.max(0, coveringCount);
+        });
+        updateNomeText();
+      }, { threshold: 0.02 });
+      coveringSections.forEach(s => coverObs.observe(s));
+
+      /* ── Parallax imagem do Fundador ── */
+      const fundadorImg = document.querySelector('.fundador-card-3d img');
+      const fundadorCard = document.querySelector('.fundador-card-3d');
+
+      function fundadorParallax() {
+        if (!fundadorImg || !fundadorCard) return;
+        const rect = fundadorCard.getBoundingClientRect();
+        const vh   = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const progress = (vh - rect.top) / (vh + rect.height);
+        /* move dentro dos 48px extras que a imagem tem — sem vazar além */
+        const shift = (progress - 0.5) * 40;
+        fundadorImg.style.transform = `translateY(${shift}px)`;
+      }
+
+      function onScroll() {
+        tlParallax();
+        beltParallax();
+        fundadorParallax();
+
+        /* cada camada desloca levemente no eixo Y criando profundidade */
+        layers.forEach((layer, i) => {
+          if (i === 0) return; /* hero não mexe */
+          const rect = layer.getBoundingClientRect();
+          const vh = window.innerHeight;
+          if (rect.bottom < 0 || rect.top > vh * 1.5) return;
+          /* quando a seção está chegando, sobe ligeiramente (parallax sutil) */
+          const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
+          const shift = (1 - progress) * 40; /* max 40px de deslocamento */
+          layer.style.transform = `translateY(${shift}px)`;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+    })();
+  </script>
+</body>
+</html>

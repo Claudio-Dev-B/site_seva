@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.menu">Cardápio — Sevá Cervejaria e Restaurante</title>
+  <meta name="description" content="Cardápio da Sevá: cervejas artesanais, entradas, saladas, pratos, lanches, cumbucas, drinks e vinhos. Praia de Camburi, São Sebastião.">
+  <link rel="icon" href="images/logo_seva.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ══════════════════════════════════════════════════════
+       CARDÁPIO — ONE PAGE PARALLAX STACK
+    ══════════════════════════════════════════════════════ */
+
+    /* ── HERO vídeo sticky ─────────────────────────────── */
+    .menu-hero {
+      position: sticky;
+      top: 0;
+      z-index: 0;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .menu-hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .menu-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(245,240,232,.50) 0%,
+        rgba(245,240,232,.60) 45%,
+        rgba(27,67,50,.55) 80%,
+        rgba(0,0,0,.70) 100%
+      );
+    }
+    .menu-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 40px;
+    }
+    .menu-hero-eyebrow {
+      font-family: var(--caps);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--verde-light);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .menu-hero-eyebrow::before,
+    .menu-hero-eyebrow::after {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--verde-light);
+      display: block;
+    }
+    .menu-hero-content h1 {
+      font-family: var(--caps);
+      font-size: clamp(4rem, 14vw, 180px);
+      font-weight: 900;
+      line-height: .88;
+      text-transform: uppercase;
+      color: var(--verde-dark);
+      letter-spacing: -.02em;
+    }
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.45);
+      font-family: var(--caps);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      animation: bounceY 2s ease-in-out infinite;
+    }
+    @keyframes bounceY {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARDAPIO-PAGE — conteúdo sobre o hero
+    ══════════════════════════════════════════════════════ */
+    .cardapio-page {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── STICKY NAV ─────────────────────────────────────── */
+    .cardapio-nav-wrap {
+      position: sticky;
+      top: 80px;
+      z-index: 200;
+      background: var(--sand);
+      border-bottom: 1px solid var(--sand-mid);
+    }
+    .cardapio-nav {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .cardapio-nav::-webkit-scrollbar { display: none; }
+    .cardapio-nav a {
+      font-family: var(--caps);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gray);
+      padding: 17px 20px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+      transition: color .22s, border-color .22s;
+      display: block;
+    }
+    .cardapio-nav a:hover { color: var(--verde); }
+    .cardapio-nav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    /* ══════════════════════════════════════════════════════
+       PARALLAX STACK — cada seção empilha sobre a anterior
+    ══════════════════════════════════════════════════════ */
+    .sections-stack {
+      /* permite que seções se sobreponham */
+    }
+
+    .cardapio-section {
+      position: sticky;
+      top: 132px; /* fallback — substituído por JS */
+      background: var(--sand);
+      /* borda arredondada no topo cria visual de "card subindo" */
+      border-radius: 28px 28px 0 0;
+      /* sombra para cima — profundidade de empilhamento */
+      box-shadow: 0 -20px 60px rgba(0,0,0,.18), 0 -4px 16px rgba(0,0,0,.10);
+      padding: 80px 0 96px;
+      /* scroll-margin para anchor links */
+      scroll-margin-top: 132px;
+      /* z-index crescente via style inline: próxima seção cobre a atual */
+    }
+
+    /* interior max-width */
+    .section-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── SECTION HEADER ─────────────────────────────────── */
+    .cat-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--sand-mid);
+    }
+    .cat-script {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-style: italic;
+      color: var(--verde-mid);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .cat-title {
+      font-family: var(--caps);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--dark);
+      letter-spacing: -.015em;
+    }
+    .cat-note { font-family: var(--sans); font-size: .85rem; color: var(--gray); font-style: italic; margin-top: 8px; }
+    .cat-count {
+      font-family: var(--caps);
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--sand-dark);
+      line-height: 1;
+      letter-spacing: -.04em;
+      user-select: none;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CARD SYSTEM
+    ══════════════════════════════════════════════════════ */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 32px;
+    }
+
+    /* card base */
+    .menu-card {
+      background: var(--verde-dark);
+      border-radius: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 2px 4px  rgba(0,0,0,.10),
+        0 8px 24px rgba(0,0,0,.20),
+        0 24px 56px rgba(0,0,0,.22);
+      overflow: visible;
+      transition:
+        transform .40s cubic-bezier(.22,.61,.36,1),
+        box-shadow .40s cubic-bezier(.22,.61,.36,1);
+      will-change: transform;
+    }
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 4px 8px   rgba(0,0,0,.12),
+        0 16px 40px rgba(0,0,0,.28),
+        0 44px 88px rgba(0,0,0,.30);
+    }
+
+    /* área imagem — clip-path permite escape no hover */
+    .menu-card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 20px 20px 0 0;
+      flex-shrink: 0;
+      position: relative;
+      clip-path: inset(0% round 20px 20px 0 0);
+      transition: clip-path .45s cubic-bezier(.22,.61,.36,1);
+      overflow: hidden;
+    }
+    .menu-card:hover .menu-card-img {
+      clip-path: inset(-18px -18px 0 -18px round 24px 24px 0 0);
+    }
+    .menu-card-img img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+      background: var(--verde-dark);
+      transition: transform .55s cubic-bezier(.22,.61,.36,1);
+    }
+    .menu-card:hover .menu-card-img img { transform: scale(1.10); }
+
+    /* card para drinks/cervejas: cover em vez de contain */
+    .menu-card-img.img-cover img {
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* card DESTAQUE — horizontal */
+    .menu-card.card-featured {
+      grid-column: span 2;
+      flex-direction: row;
+    }
+    .menu-card.card-featured .menu-card-img {
+      width: 52%;
+      aspect-ratio: unset;
+      border-radius: 20px 0 0 20px;
+      clip-path: inset(0% round 20px 0 0 20px);
+    }
+    .menu-card.card-featured:hover .menu-card-img {
+      clip-path: inset(-18px 0 -18px -18px round 24px 0 0 24px);
+    }
+    .menu-card.card-featured .menu-card-body {
+      padding: 40px 36px;
+      justify-content: center;
+      border-radius: 0 20px 20px 0;
+    }
+
+    /* corpo do card */
+    .menu-card-body {
+      padding: 24px 26px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      position: relative;
+      border-radius: 0 0 20px 20px;
+      background: var(--verde-dark);
+    }
+
+    .card-star { position: absolute; top: 18px; right: 20px; font-size: .95rem; color: var(--gold); }
+    .card-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--caps); font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--verde-light);
+    }
+    .card-tag::before { content: ''; display: block; width: 18px; height: 1px; background: var(--verde-light); }
+    .card-name {
+      font-family: var(--caps); font-size: 1.2rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .03em; color: #fff; line-height: 1.1;
+    }
+    .menu-card.card-featured .card-name { font-size: 1.6rem; }
+    .card-desc { font-family: var(--sans); font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.58); flex: 1; }
+    .menu-card.card-featured .card-desc { font-size: .92rem; }
+    .card-sep { width: 32px; height: 1px; background: rgba(255,255,255,.15); margin: 2px 0; }
+    .card-price { font-family: var(--caps); font-size: 1.35rem; font-weight: 900; color: var(--verde-light); }
+    .menu-card.card-featured .card-price { font-size: 1.75rem; }
+
+    /* preço duplo para cervejas: 350ml / 500ml */
+    .card-price-row {
+      display: flex;
+      gap: 20px;
+      align-items: baseline;
+    }
+    .card-price-unit {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .card-price-label {
+      font-family: var(--caps);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase;
+    }
+    .card-price-val {
+      font-family: var(--caps);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--verde-light);
+    }
+    .card-price-div {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,.15);
+      align-self: center;
+    }
+
+    /* card sem foto */
+    .menu-card.card-noimg { background: var(--verde); min-height: 220px; }
+    .menu-card.card-noimg::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      background-image: repeating-linear-gradient(
+        45deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px,
+        transparent 1px, transparent 30px
+      );
+      pointer-events: none;
+    }
+    .menu-card.card-noimg .menu-card-body {
+      border-radius: 20px; background: transparent; justify-content: flex-end; padding-top: 56px;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       DRINKS — cards verdes (mesmo sistema de food)
+    ══════════════════════════════════════════════════════ */
+    /* drinks usam o mesmo .menu-card, .menu-card-img, .menu-card-body */
+
+    /* ══════════════════════════════════════════════════════
+       CHOPINHO — tabela + régua
+    ══════════════════════════════════════════════════════ */
+    .chop-table-wrap {
+      margin-top: 52px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .chop-table { width: 100%; border-collapse: collapse; }
+    .chop-table thead tr { background: var(--verde-dark); }
+    .chop-table thead th {
+      font-family: var(--caps); font-size: .75rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase; color: #fff;
+      padding: 16px 24px; text-align: left;
+    }
+    .chop-table thead th:not(:first-child) { text-align: center; }
+    .chop-table tbody tr { border-bottom: 1px solid var(--sand-mid); background: var(--sand); transition: background .18s; }
+    .chop-table tbody tr:last-child { border-bottom: none; }
+    .chop-table tbody tr:hover { background: rgba(45,106,79,.07); }
+    .chop-table tbody td { padding: 16px 24px; font-size: .95rem; color: var(--dark); font-weight: 600; }
+    .chop-table tbody td:not(:first-child) { text-align: center; font-family: var(--caps); font-size: 1.05rem; font-weight: 800; color: var(--verde); }
+
+    .regua-card {
+      margin-top: 28px;
+      background: var(--verde-dark);
+      border-radius: 20px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.18), 0 24px 56px rgba(0,0,0,.16);
+    }
+    .regua-card h3 { font-family: var(--caps); font-size: 1.4rem; font-weight: 900; text-transform: uppercase; color: #fff; }
+    .regua-card p { font-size: .88rem; color: rgba(255,255,255,.6); margin-top: 5px; }
+    .regua-price { font-family: var(--caps); font-size: 2.4rem; font-weight: 900; color: var(--verde-light); white-space: nowrap; }
+
+    /* ══════════════════════════════════════════════════════
+       VINHOS / NÃO ALCOÓLICOS
+    ══════════════════════════════════════════════════════ */
+    .wine-list { display: grid; gap: 0; max-width: 680px; }
+    .wine-entry { display: flex; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--sand-mid); gap: 16px; }
+    .wine-entry:last-child { border-bottom: none; }
+    .wine-name { font-family: var(--caps); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--dark); }
+    .wine-dot { flex: 1; border-top: 1px dashed var(--sand-mid); }
+    .wine-price { font-family: var(--caps); font-size: 1.15rem; font-weight: 800; color: var(--verde); white-space: nowrap; }
+
+    .simple-list { display: grid; gap: 0; max-width: 520px; }
+    .simple-entry { display: flex; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--sand-mid); gap: 16px; }
+    .simple-entry:last-child { border-bottom: none; }
+    .simple-name { font-family: var(--caps); font-size: .95rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--dark); }
+    .simple-dot { flex: 1; border-top: 1px dashed var(--sand-mid); }
+    .simple-price { font-family: var(--caps); font-size: 1.05rem; font-weight: 800; color: var(--verde); white-space: nowrap; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .menu-card.card-featured { grid-column: span 1; flex-direction: column; }
+      .menu-card.card-featured .menu-card-img { width: 100%; aspect-ratio: 4/3; border-radius: 20px 20px 0 0; clip-path: inset(0% round 20px 20px 0 0); }
+      .menu-card.card-featured:hover .menu-card-img { clip-path: inset(-18px -18px 0 -18px round 24px 24px 0 0); }
+      .menu-card.card-featured .menu-card-body { border-radius: 0 0 20px 20px; }
+    }
+    @media (max-width: 768px) {
+      .menu-hero-content h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+      .cardapio-nav { padding: 0 16px; }
+      .cardapio-section { padding: 56px 0 64px; }
+      .section-inner { padding: 0 20px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+      .cat-count { display: none; }
+      .regua-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá"></a>
+      <nav class="nav-links">
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+        <a href="cardapio.html" class="active" data-i18n="nav.menu">Cardápio</a>
+        <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+        <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+        <a href="historia.html" data-i18n="nav.story">História</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav.home">Início</a>
+    <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+    <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+    <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+    <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+    <a href="historia.html" data-i18n="nav.story">História</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO — vídeo sticky ══════════════════════════════ -->
+  <section class="menu-hero">
+    <video autoplay muted loop playsinline>
+      <source src="images/banner_cardapio.mp4" type="video/mp4">
+    </video>
+    <div class="menu-hero-overlay"></div>
+    <div class="menu-hero-content">
+      <div class="menu-hero-eyebrow">Camburi · São Sebastião · SP</div>
+      <h1><span data-i18n="cardapio.hero.line1">Conheça</span><br><span data-i18n="cardapio.hero.line2">nosso cardápio</span></h1>
+    </div>
+    <div class="hero-scroll-cue">
+      <i class="fa fa-chevron-down"></i>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══ CONTEÚDO — sobre o hero ══════════════════════════ -->
+  <div class="cardapio-page">
+
+    <!-- sticky nav -->
+    <div class="cardapio-nav-wrap">
+      <nav class="cardapio-nav" id="cardapioNav">
+        <a href="#entradas"  class="active" data-i18n="cardapio.nav.entradas">Entradas</a>
+        <a href="#saladas" data-i18n="cardapio.nav.saladas">Saladas</a>
+        <a href="#pratos" data-i18n="cardapio.nav.pratos">Pratos da Casa</a>
+        <a href="#lanches" data-i18n="cardapio.nav.lanches">Lanches</a>
+        <a href="#cumbucas" data-i18n="cardapio.nav.cumbucas">Cumbucas</a>
+        <a href="#kids" data-i18n="cardapio.nav.kids">Kids</a>
+        <a href="#drinks" data-i18n="cardapio.nav.drinks">Drinks</a>
+        <a href="#chopinho" data-i18n="cardapio.nav.chopinho">Chopinho</a>
+        <a href="#vinhos" data-i18n="cardapio.nav.vinhos">Vinhos</a>
+        <a href="#naolc" data-i18n="cardapio.nav.naolc">Não Alcoólicos</a>
+      </nav>
+    </div>
+
+    <!-- ════ SEÇÕES EMPILHADAS ══════════════════════════════
+         z-index crescente: cada seção pinta sobre a anterior
+    ═══════════════════════════════════════════════════════ -->
+    <div class="sections-stack">
+
+      <!-- ── ENTRADAS  z:10 ── -->
+      <section id="entradas" class="cardapio-section" style="z-index:10; background:#F5F0E8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.entradas.script">Para começar</span><h2 class="cat-title" data-i18n="cardapio.entradas.title">Entradas</h2></div>
+            <span class="cat-count">03</span>
+          </div>
+          <div class="cards-grid">
+
+            <div class="menu-card card-featured">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Tapa%20Mediterraneo.png" alt="Tapa Mediterrâneo">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.tapa_med.tag">Entrada</span>
+                <div class="card-name" data-i18n="cardapio.tapa_med.name">Tapa Mediterrâneo</div>
+                <div class="card-desc" data-i18n="cardapio.tapa_med.desc">3 fatias de pão artesanal com jamón serrano, rúcula fresca, tomate e molho de ervas aromáticas.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;49</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Cenoura%20Cenoura%20Grega.png" alt="Cenoura Grega">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.cenoura.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.cenoura.name">Cenoura Grega</div>
+                <div class="card-desc" data-i18n="cardapio.cenoura.desc">Cenoura assada lentamente com especiarias, homus cremoso, finalizada com páprica defumada e gergelim.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;49</div>
+              </div>
+            </div>
+
+            <div class="menu-card card-noimg">
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.tapa_sardella.tag">Entrada</span>
+                <div class="card-name" data-i18n="cardapio.tapa_sardella.name">Tapa Sardella</div>
+                <div class="card-desc" data-i18n="cardapio.tapa_sardella.desc">3 fatias de pão artesanal com pasta cremosa à base de pimentão vermelho, azeite, alho, pimenta e sardinha.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;35</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SALADAS  z:11 ── -->
+      <section id="saladas" class="cardapio-section" style="z-index:11; background:#F0EBE2;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.saladas.script">Frescor e leveza</span><h2 class="cat-title" data-i18n="cardapio.saladas.title">Saladas</h2></div>
+            <span class="cat-count">02</span>
+          </div>
+          <div class="cards-grid">
+
+            <div class="menu-card card-featured">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Salada%20Cambucu.png" alt="Salada com Cambucu">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.salada_cambucu.tag">Salada</span>
+                <div class="card-name" data-i18n="cardapio.salada_cambucu.name">Salada com Cambucu</div>
+                <div class="card-desc" data-i18n="cardapio.salada_cambucu.desc">Cambucu defumado, mix de folhas, tomate, cebola roxa, molho de melaço e mostarda, lâminas de amêndoa.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;89</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Salada.png" alt="Salada Sevá">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.salada_seva.tag">Salada</span>
+                <div class="card-name" data-i18n="cardapio.salada_seva.name">Salada Sevá</div>
+                <div class="card-desc" data-i18n="cardapio.salada_seva.desc">Mix de folhas frescas, tomate, cebola roxa, molho de melaço e mostarda, amêndoas.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;39</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PRATOS DA CASA  z:12 ── -->
+      <section id="pratos" class="cardapio-section" style="z-index:12; background:#EAE4D8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.pratos.script">Alma de restaurante</span><h2 class="cat-title" data-i18n="cardapio.pratos.title">Pratos da Casa</h2></div>
+            <span class="cat-count">07</span>
+          </div>
+          <div class="cards-grid">
+
+            <div class="menu-card card-featured">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Peuxa%20a%20deusa%20do%20forno.png" alt="Peixa, a Deusa do Forno">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.peixa_deusa.tag">Prato da Casa</span>
+                <div class="card-name" data-i18n="cardapio.peixa_deusa.name">Peixa, a Deusa do Forno</div>
+                <div class="card-desc" data-i18n="cardapio.peixa_deusa.desc">Iscas de pescada cambucu empanada e assada, servidas com patacones e molho tártaro.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;139</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Mignon%20Seva.png" alt="Mignon Sevá">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.mignon_seva.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.mignon_seva.name">Mignon Sevá</div>
+                <div class="card-desc" data-i18n="cardapio.mignon_seva.desc">Filet mignon grelhado, purê de mandioquinha da casa e farofa crocante de limão.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;98</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Peixa%20Roxa.png" alt="Peixa Roxa">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.peixa_roxa.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.peixa_roxa.name">Peixa Roxa</div>
+                <div class="card-desc" data-i18n="cardapio.peixa_roxa.desc">Cambucu grelhado na manteiga de ervas, purê de batata-roxa rústico e farofa crocante de limão.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;98</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Prato%20do%20Chef.png" alt="Prato do Chef">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.prato_chef.tag">Prato da Casa</span>
+                <div class="card-name" data-i18n="cardapio.prato_chef.name">Prato do Chef</div>
+                <div class="card-desc" data-i18n="cardapio.prato_chef.desc">Pescada cambucu empanada e assada, com pasta de grão-de-bico, páprica defumada e gergelim. Acompanha salada de tomate e manjericão.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;98</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Ceviche%20Praiano.png" alt="Ceviche Praiano">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.ceviche_praiano.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.ceviche_praiano.name">Ceviche Praiano</div>
+                <div class="card-desc" data-i18n="cardapio.ceviche_praiano.desc">Cambucu marinado em leite de coco, cebola roxa, alho-poró tostado, milho e patacones dourados.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;84</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Bowl%20de%20cama%C3%A3o.png" alt="Bowl Camarão Rosa">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.bowl_camarao.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.bowl_camarao.name">Bowl Camarão Rosa</div>
+                <div class="card-desc" data-i18n="cardapio.bowl_camarao.desc">Camarão rosa, cogumelos e legumes salteados no óleo de gergelim, molho tarê, gergelim, tomate cereja e cebola roxa.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;98</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/Bowl%20rustico.png" alt="Bowl Rústico">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.bowl_rustico.tag">Prato da Casa</span>
+                <div class="card-name" data-i18n="cardapio.bowl_rustico.name">Bowl Rústico</div>
+                <div class="card-desc" data-i18n="cardapio.bowl_rustico.desc">Cogumelos, brócolis, abobrinha e batata-doce salteados no óleo de gergelim, molho tarê, gergelim, tomate cereja e cebola roxa.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;59</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── LANCHES  z:13 ── -->
+      <section id="lanches" class="cardapio-section" style="z-index:13; background:#F5F0E8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.lanches.script">Pão feito na casa</span><h2 class="cat-title" data-i18n="cardapio.lanches.title">Lanches</h2></div>
+            <span class="cat-count">03</span>
+          </div>
+          <div class="cards-grid">
+
+            <div class="menu-card card-featured">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/mignon_pao.png" alt="Mignon no Pão">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.mignon_pao.tag">Lanche</span>
+                <div class="card-name" data-i18n="cardapio.mignon_pao.name">Mignon no Pão</div>
+                <div class="card-desc" data-i18n="cardapio.mignon_pao.desc">Baguete artesanal com tiras de filet mignon, queijo prato, rúcula, tomate e cream cheese.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;75</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/lanche_costela.png" alt="De Costela">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.de_costela.tag">Lanche</span>
+                <div class="card-name" data-i18n="cardapio.de_costela.name">De Costela</div>
+                <div class="card-desc" data-i18n="cardapio.de_costela.desc">Baguete artesanal com costela de porco desfiada, queijo, tomate e cebola roxa.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;69</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img">
+                <img src="images/Pratos/card%C3%A1pio/sanduiche_jamon.png" alt="Sanduíche de Jamón">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-star">★</span>
+                <span class="card-tag" data-i18n="cardapio.sanduiche_jamon.tag">Destaque</span>
+                <div class="card-name" data-i18n="cardapio.sanduiche_jamon.name">Sanduíche de Jamón</div>
+                <div class="card-desc" data-i18n="cardapio.sanduiche_jamon.desc">Presunto de pernil espanhol, queijo prato, cream cheese, tomate e rúcula.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;69</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CUMBUCAS  z:14 ── -->
+      <section id="cumbucas" class="cardapio-section" style="z-index:14; background:#EAE4D8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div>
+              <span class="cat-script" data-i18n="cardapio.cumbucas.script">Para compartilhar</span>
+              <h2 class="cat-title" data-i18n="cardapio.cumbucas.title">Cumbucas</h2>
+              <p class="cat-note" data-i18n="cardapio.cumbucas.note">Acompanha pão artesanal tostado.</p>
+            </div>
+            <span class="cat-count">03</span>
+          </div>
+          <div class="cards-grid">
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.relish_pepino.tag">Cumbuca</span><div class="card-name" data-i18n="cardapio.relish_pepino.name">Relish de Pepino</div><div class="card-desc" data-i18n="cardapio.relish_pepino.desc">Conserva agridoce de origem indiana com pepinos picadinhos.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;49</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.costela_desfiada.tag">Cumbuca</span><div class="card-name" data-i18n="cardapio.costela_desfiada.name">Costela Desfiada</div><div class="card-desc" data-i18n="cardapio.costela_desfiada.desc">Costela suína cozida lentamente, desfiada, com molho encorpado.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;55</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.pate_cambucu.tag">Cumbuca</span><div class="card-name" data-i18n="cardapio.pate_cambucu.name">Patê Cambucu Defumado</div><div class="card-desc" data-i18n="cardapio.pate_cambucu.desc">Patê artesanal de cambucu defumado com cream cheese, limão e ervas frescas.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;49</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── KIDS  z:15 ── -->
+      <section id="kids" class="cardapio-section" style="z-index:15; background:#F5F0E8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.kids.script">Para os pequenos</span><h2 class="cat-title" data-i18n="cardapio.kids.title">Kids</h2></div>
+            <span class="cat-count">01</span>
+          </div>
+          <div class="cards-grid" style="max-width:420px;">
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.mini_mignon.tag">Kids</span><div class="card-name" data-i18n="cardapio.mini_mignon.name">Mini Mignon com Purê</div><div class="card-desc" data-i18n="cardapio.mini_mignon.desc">Filet mignon grelhado, arroz e purê de mandioquinha da casa.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;59</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DRINKS  z:16 ── -->
+      <section id="drinks" class="cardapio-section" style="z-index:16; background:#EAE4D8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.drinks.script">Artesanais e autorais</span><h2 class="cat-title" data-i18n="cardapio.drinks.title">Drinks da Casa</h2></div>
+            <span class="cat-count">10</span>
+          </div>
+          <div class="cards-grid">
+
+            <!-- com foto -->
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.jpeg" alt="Caipirinha de Manjericão">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.caipirinha_manjericao.tag">Drink</span>
+                <div class="card-name" data-i18n="cardapio.caipirinha_manjericao.name">Caipirinha de Manjericão</div>
+                <div class="card-desc" data-i18n="cardapio.caipirinha_manjericao.desc">Cachaça ou vodka, limão e manjericão fresco.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;48</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/Drinks/caipirinha_maracuja.jpeg" alt="Caipirinha Tropical">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.caipirinha_tropical.tag">Drink</span>
+                <div class="card-name" data-i18n="cardapio.caipirinha_tropical.name">Caipirinha Tropical</div>
+                <div class="card-desc" data-i18n="cardapio.caipirinha_tropical.desc">Cachaça ou vodka, maracujá e limão.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;48</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/Drinks/drink_negroni.jpeg" alt="Negroni">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.negroni.tag">Drink</span>
+                <div class="card-name" data-i18n="cardapio.negroni.name">Negroni</div>
+                <div class="card-desc" data-i18n="cardapio.negroni.desc">Gin, vermute rosso e Campari.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;48</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/Drinks/drink_caipirinha_2_limoes.jpeg" alt="Caipirinha 2 Limões">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.caipirinha_2limons.tag">Drink</span>
+                <div class="card-name" data-i18n="cardapio.caipirinha_2limons.name">Caipirinha 2 Limões</div>
+                <div class="card-desc" data-i18n="cardapio.caipirinha_2limons.desc">Cachaça ou vodka, limão tahiti e siciliano.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;48</div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/Drinks/drinl_aperol_spritz.jpeg" alt="Aperol Spritz">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.aperol_spritz.tag">Drink</span>
+                <div class="card-name" data-i18n="cardapio.aperol_spritz.name">Aperol Spritz</div>
+                <div class="card-desc" data-i18n="cardapio.aperol_spritz.desc">Aperol, espumante e laranja bahia.</div>
+                <div class="card-sep"></div>
+                <div class="card-price">R$&nbsp;48</div>
+              </div>
+            </div>
+
+            <!-- sem foto -->
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.sour_gin.tag">Drink</span><div class="card-name" data-i18n="cardapio.sour_gin.name">Sour Gin</div><div class="card-desc" data-i18n="cardapio.sour_gin.desc">Gin, Sour da Sevá, limão e gelo.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;48</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.gin_tonica.tag">Drink</span><div class="card-name" data-i18n="cardapio.gin_tonica.name">Gin Tônica Clássico</div><div class="card-desc" data-i18n="cardapio.gin_tonica.desc">Gin, tônica e gelo.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;48</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.campari_tonic.tag">Drink</span><div class="card-name" data-i18n="cardapio.campari_tonic.name">Campari Tonic</div><div class="card-desc" data-i18n="cardapio.campari_tonic.desc">Campari, tônica e gelo.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;48</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.caipirinha_rucula.tag">Drink</span><div class="card-name" data-i18n="cardapio.caipirinha_rucula.name">Caipirinha Rúcula</div><div class="card-desc" data-i18n="cardapio.caipirinha_rucula.desc">Cachaça ou vodka, rúcula, gengibre e limão.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;48</div></div></div>
+            <div class="menu-card card-noimg"><div class="menu-card-body"><span class="card-tag" data-i18n="cardapio.caipirinha_coentro.tag">Drink</span><div class="card-name" data-i18n="cardapio.caipirinha_coentro.name">Caipirinha de Coentro</div><div class="card-desc" data-i18n="cardapio.caipirinha_coentro.desc">Cachaça ou vodka, coentro e limão.</div><div class="card-sep"></div><div class="card-price">R$&nbsp;48</div></div></div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CHOPINHO  z:17 ── -->
+      <section id="chopinho" class="cardapio-section" style="z-index:17; background:#F5F0E8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.chopinho.script">Cervejas Artesanais Autorais</span><h2 class="cat-title" data-i18n="cardapio.chopinho.title">Chopinho</h2></div>
+            <span class="cat-count">06</span>
+          </div>
+
+          <!-- cards de cerveja -->
+          <div class="cards-grid">
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/basilon_pilsen.jpeg" alt="Pilsen">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.pilsen.tag">Pilsen</span>
+                <div class="card-name" data-i18n="cardapio.pilsen.name">Pilsen</div>
+                <div class="card-desc" data-i18n="cardapio.pilsen.desc">Leve, refrescante, levemente maltada. A escolha certa para o dia de praia.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;18</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;26</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/gaviao_neipinha_session_neipa.jpg" alt="Session IPA">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.session_ipa.tag">Session IPA</span>
+                <div class="card-name" data-i18n="cardapio.session_ipa.name">Session IPA</div>
+                <div class="card-desc" data-i18n="cardapio.session_ipa.desc">Aroma tropical, amargor suave. Muito refrescante.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;22</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;28</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/benedito_sour.jpeg" alt="Sour Frutas">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.sour_frutas.tag">Sour</span>
+                <div class="card-name" data-i18n="cardapio.sour_frutas.name">Sour Frutas</div>
+                <div class="card-desc" data-i18n="cardapio.sour_frutas.desc">Acidez suave com frutas tropicais. Leveza e sabor únicos.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;28</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;36</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/pardal_australian_ipa.jpg" alt="IPA">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.ipa.tag">IPA</span>
+                <div class="card-name" data-i18n="cardapio.ipa.name">IPA</div>
+                <div class="card-desc" data-i18n="cardapio.ipa.desc">Lúpulos australianos, notas de maracujá e pêssego.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;28</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;36</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/coro_coro_double_ipa.jpeg" alt="Double IPA">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.double_ipa.tag">Double IPA</span>
+                <div class="card-name" data-i18n="cardapio.double_ipa.name">Double IPA</div>
+                <div class="card-desc" data-i18n="cardapio.double_ipa.desc">Intensa, aromática, encorpada. Para os apreciadores de lúpulo.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;32</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;42</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/baixa_temporada_imperial_stout.jpeg" alt="Imperial Stout">
+              </div>
+              <div class="menu-card-body">
+                <span class="card-tag" data-i18n="cardapio.imperial_stout.tag">Imperial Stout</span>
+                <div class="card-name" data-i18n="cardapio.imperial_stout.name">Imperial Stout</div>
+                <div class="card-desc" data-i18n="cardapio.imperial_stout.desc">Café, chocolate amargo, corpo robusto. A mais escura da Sevá.</div>
+                <div class="card-sep"></div>
+                <div class="card-price-row">
+                  <div class="card-price-unit"><span class="card-price-label">350 ml</span><span class="card-price-val">R$&nbsp;32</span></div>
+                  <div class="card-price-div"></div>
+                  <div class="card-price-unit"><span class="card-price-label">500 ml</span><span class="card-price-val">R$&nbsp;42</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- régua de degustação -->
+          <div class="regua-card">
+            <div>
+              <h3 data-i18n="cardapio.chopinho.regua.title">Régua de Degustação</h3>
+              <p data-i18n="cardapio.chopinho.regua.desc">4 estilos à escolha — 4 copos de 250 ml cada</p>
+            </div>
+            <div class="regua-price">R$&nbsp;80</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── VINHOS  z:18 ── -->
+      <section id="vinhos" class="cardapio-section" style="z-index:18; background:#EAE4D8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.vinhos.script">Rótulos selecionados</span><h2 class="cat-title" data-i18n="cardapio.vinhos.title">Vinhos</h2></div>
+            <span class="cat-count">05</span>
+          </div>
+          <div class="wine-list">
+            <div class="wine-entry"><span class="wine-name">El Viajero Tinto</span><span class="wine-dot"></span><span class="wine-price">R$&nbsp;159</span></div>
+            <div class="wine-entry"><span class="wine-name">El Viajero Branco</span><span class="wine-dot"></span><span class="wine-price">R$&nbsp;159</span></div>
+            <div class="wine-entry"><span class="wine-name">Começo Alentejano Branco</span><span class="wine-dot"></span><span class="wine-price">R$&nbsp;210</span></div>
+            <div class="wine-entry"><span class="wine-name">Paxis Arinto Branco</span><span class="wine-dot"></span><span class="wine-price">R$&nbsp;260</span></div>
+            <div class="wine-entry"><span class="wine-name">Toca Irreverente Verde</span><span class="wine-dot"></span><span class="wine-price">R$&nbsp;189</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── NÃO ALCOÓLICOS  z:19 ── -->
+      <section id="naolc" class="cardapio-section" style="z-index:19; background:#F5F0E8;">
+        <div class="section-inner">
+          <div class="cat-header">
+            <div><span class="cat-script" data-i18n="cardapio.naolc.script">Para todos</span><h2 class="cat-title" data-i18n="cardapio.naolc.title">Não Alcoólicos</h2></div>
+            <span class="cat-count">03</span>
+          </div>
+          <div class="simple-list">
+            <div class="simple-entry"><span class="simple-name" data-i18n="cardapio.agua.name">Água natural ou com gás</span><span class="simple-dot"></span><span class="simple-price">R$&nbsp;10</span></div>
+            <div class="simple-entry"><span class="simple-name" data-i18n="cardapio.cha_gelado.name">Chá gelado da casa</span><span class="simple-dot"></span><span class="simple-price">R$&nbsp;15</span></div>
+            <div class="simple-entry"><span class="simple-name" data-i18n="cardapio.refrigerante.name">Refrigerante</span><span class="simple-dot"></span><span class="simple-price">R$&nbsp;15</span></div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /sections-stack -->
+  </div><!-- /cardapio-page -->
+
+  <!-- ── FOOTER ── -->
+  <footer id="footer" style="position:relative; z-index:20;">
+    <div class="footer-top-bar"></div>
+    <div class="footer-main">
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo"><img src="images/logo_seva.png" alt="Sevá"></div>
+        <p class="footer-tagline">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-eyebrow">Nos Encontre</span>
+        <ul class="footer-contact-list">
+          <li><span class="icon"><i class="fa fa-map-marker-alt"></i></span><span>Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span></li>
+          <li><span class="icon"><i class="fa fa-clock"></i></span><span>Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span></li>
+          <li><span class="icon"><i class="fa-brands fa-whatsapp"></i></span><a href="https://wa.me/5511953505016">(11) 95350-5016</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-eyebrow">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cervejaria.html">Cervejaria</a></li>
+          <li><a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="historia.html">História</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
+      <span class="footer-dev">Desenvolvido por <a href="https://instagram.com/cria.dev" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* ── Parallax sticky: seção pausa quando TODO conteúdo foi visto ──────────
+       Para cada seção, calculamos top = min(navH, viewH - sectionH).
+       Seções maiores que a tela recebem top NEGATIVO: só travam quando o fundo
+       da seção chega na borda inferior da janela (usuário viu tudo).
+       Seções menores que a tela recebem top = navH: aparecem completas.
+    ──────────────────────────────────────────────────────────────────────── */
+    (function () {
+      const sections = document.querySelectorAll('.cardapio-section');
+
+      function getNavH() {
+        const nav = document.querySelector('.cardapio-nav-wrap');
+        return nav ? nav.getBoundingClientRect().bottom : 132;
+      }
+
+      function setStickyTops() {
+        const vh  = window.innerHeight;
+        const navH = getNavH();
+        sections.forEach(s => {
+          // Para seções altas: top negativo → seção trava só quando bottom = viewport bottom
+          // Para seções curtas: top = navH  → seção fica visível por inteiro
+          const stickyTop = Math.min(navH, vh - s.offsetHeight);
+          s.style.top = stickyTop + 'px';
+        });
+      }
+
+      // Executa no load e no resize
+      setStickyTops();
+      window.addEventListener('resize', setStickyTops);
+
+      // Re-calcula após imagens carregarem (podem mudar a altura das seções)
+      window.addEventListener('load', () => { setStickyTops(); });
+    })();
+
+    /* ── Active nav via IntersectionObserver ── */
+    (function () {
+      const navLinks = document.querySelectorAll('.cardapio-nav a');
+      const sections = document.querySelectorAll('.cardapio-section');
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(a => a.classList.remove('active'));
+            const a = document.querySelector(`.cardapio-nav a[href="#${e.target.id}"]`);
+            if (a) {
+              a.classList.add('active');
+              a.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+            }
+          }
+        });
+      }, { rootMargin: '-132px 0px -45% 0px', threshold: 0 });
+
+      sections.forEach(s => io.observe(s));
+
+      /* smooth scroll com offset header+nav — usa offsetTop para posição natural */
+      const cardapioPage = document.querySelector('.cardapio-page');
+      navLinks.forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const t = document.querySelector(a.getAttribute('href'));
+          if (!t) return;
+          // offsetTop da seção relativo à página (não depende de sticky atual)
+          const pageTop = cardapioPage ? cardapioPage.offsetTop : 0;
+          const navH = document.querySelector('.cardapio-nav-wrap')?.offsetHeight || 52;
+          const headerH = document.querySelector('#header')?.offsetHeight || 80;
+          window.scrollTo({
+            top: pageTop + t.offsetTop - (headerH + navH),
+            behavior: 'smooth'
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

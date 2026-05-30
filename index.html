@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.home">Sevá Cervejaria e Restaurante — Praia de Camburi</title>
+  <meta name="description" data-i18n="meta.desc.home" content="Cervejaria artesanal e restaurante na Praia de Camburi, São Sebastião. Cervejas autorais, pratos autorais e vista para o mar.">
+  <link rel="icon" href="images/logo_seva.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <img src="images/logo_seva.png" alt="Sevá">
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/logo_seva.png" alt="Sevá Cervejaria e Restaurante">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="active" data-i18n="nav.home">Início</a>
+        <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+        <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+        <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+        <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+        <a href="historia.html" data-i18n="nav.story">História</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav.home">Início</a>
+    <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+    <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+    <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+    <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+    <a href="historia.html" data-i18n="nav.story">História</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+
+    <!-- Imagem de fundo única -->
+    <div class="hero-slides-wrapper">
+      <div class="hero-slide is-active">
+        <div class="hero-slide-img" style="background-image:url('images/Pratos/Banner%20Pratos.png');"></div>
+      </div>
+    </div>
+
+    <!-- Overlay gradiente -->
+    <div class="hero-overlay"></div>
+
+    <!-- Conteúdo centralizado -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Camburi · São Sebastião · SP</span>
+        <span class="eyebrow-line"></span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-line-clip"><span class="hero-line-inner" data-i18n="home.hero.line1">Não tem como vir</span></span>
+        <span class="hero-line-clip"><span class="hero-line-inner" data-i18n="home.hero.line2">para Camburi</span></span>
+        <span class="hero-line-clip"><span class="hero-line-inner" data-i18n="home.hero.line3">e não conhecer a Sevá</span></span>
+      </h1>
+      <p class="hero-sub" data-i18n="home.hero.sub">Cervejaria artesanal &amp; Restaurante</p>
+      <div class="hero-cta">
+        <a href="cardapio.html" class="btn btn-verde btn-rounded" data-i18n="home.hero.cta1">Ver Cardápio</a>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div class="hero-scroll" id="heroScroll">
+      <div class="hero-scroll-track"><div class="hero-scroll-thumb"></div></div>
+      <span class="hero-scroll-label">Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- A CERVEJARIA — segunda seção, logo após o hero -->
+  <section id="cervejaria">
+
+    <!-- Bloco 1: título + cards em leque -->
+    <div class="brew-intro">
+      <div class="brew-title-wrap">
+        <h2 class="brew-headline" data-i18n="home.brewery.headline">A Cervejaria</h2>
+      </div>
+      <p class="brew-tap-note" data-i18n="home.brewery.taps">Sempre temos 8 taps disponíveis — cada chope com história própria.</p>
+
+      <div class="brew-cards">
+
+        <article class="brew-card">
+          <div class="brew-card-img">
+            <img src="images/cervejas/lata_doubleneipa.png" alt="Encontro Amarelo Double NEIPA">
+          </div>
+        </article>
+
+        <article class="brew-card">
+          <div class="brew-card-img">
+            <img src="images/cervejas/lata_hzyipa.png" alt="Coqueiro Hazy IPA">
+          </div>
+        </article>
+
+        <article class="brew-card">
+          <div class="brew-card-img">
+            <img src="images/cervejas/lata_imperialstout.png" alt="Baixa Temporada Imperial Stout">
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Bloco 2: vídeo de fundo — texto + parágrafos -->
+    <div class="brew-video-section">
+      <video class="brew-bg-video" autoplay muted loop playsinline>
+        <source src="images/cervejas/banner_onda.mp4" type="video/mp4">
+      </video>
+      <div class="brew-video-overlay"></div>
+      <div class="brew-video-content">
+        <div class="brew-big-claim-wrap">
+          <span class="brew-big-claim-inner" data-i18n="home.brewery.caps">Cinco anos brassando</span>
+        </div>
+        <div class="brew-video-text">
+          <p data-i18n="home.brewery.p1">Cada rótulo da Sevá leva o nome de uma ave e nasce com tempo contado.</p>
+          <p data-i18n="home.brewery.p2">Já foram mais de 40 chopes lançados, todos diferentes entre si. Nenhuma receita se repete. Cada criação é única, feita para aquele momento.</p>
+          <p data-i18n="home.brewery.p3">A base está sempre presente, com IPAs, Sours, Pilsen, Lagers e Stouts, mas nunca da mesma forma.</p>
+          <p data-i18n="home.brewery.p4">A cervejaria é onde tudo começou. E continua sendo o centro da Sevá.</p>
+        </div>
+        <a href="cervejaria.html" class="btn btn-verde btn-rounded" data-i18n="home.brewery.cta">Ver nossas cervejas</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- O RESTAURANTE — seção logo após a cervejaria -->
+  <section id="restaurante">
+
+    <!-- Bloco 1: título full-screen com fotos deslizando ao fundo -->
+    <div class="rest-hero">
+      <div class="rest-photo-belt">
+        <div class="rest-photo-track">
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Tapa%20Mediterraneo.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Ceviche%20Praiano.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Mignon%20Seva.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Peixa%20Roxa.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Salada%20Cambucu.png')"></div>
+          <!-- duplicados para loop contínuo -->
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Tapa%20Mediterraneo.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Ceviche%20Praiano.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Mignon%20Seva.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Peixa%20Roxa.png')"></div>
+          <div class="rest-photo-item" style="background-image:url('images/Pratos/cardápio/Salada%20Cambucu.png')"></div>
+        </div>
+      </div>
+      <div class="rest-hero-overlay"></div>
+      <div class="rest-hero-content">
+        <div class="rest-title-wrap">
+          <h2 class="rest-headline" data-i18n="home.restaurant.headline">O Restaurante</h2>
+        </div>
+        <span class="rest-autoral" data-i18n="home.restaurant.autoral">Culinária Autoral</span>
+      </div>
+    </div>
+
+    <!-- Bloco 2: parágrafo + cards grandes + CTA -->
+    <div class="rest-body">
+      <div class="rest-body-inner">
+        <p class="rest-intro-para reveal" data-i18n="home.restaurant.intro">Na Sevá, cozinha é ato de criação. Raízes brasileiras que encontram o mediterrâneo e ganham cor tropical — cada prato é uma descoberta pensada do início ao fim, sem pressa e sem receitas prontas.</p>
+        <div class="rest-cat-cards">
+
+          <a href="cardapio.html" class="rest-cat-card">
+            <div class="rest-cat-card-bg" style="background-image:url('images/entrada.jpg')"></div>
+            <div class="rest-cat-card-overlay"></div>
+            <div class="rest-cat-card-content">
+              <div class="rest-cat-name-wrap">
+                <span class="rest-cat-name" data-i18n="home.restaurant.card.entradas">Entradas</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="cardapio.html" class="rest-cat-card">
+            <div class="rest-cat-card-bg" style="background-image:url('images/lanche.jpg')"></div>
+            <div class="rest-cat-card-overlay"></div>
+            <div class="rest-cat-card-content">
+              <div class="rest-cat-name-wrap">
+                <span class="rest-cat-name" data-i18n="home.restaurant.card.lanche">Lanches</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="cardapio.html" class="rest-cat-card">
+            <div class="rest-cat-card-bg" style="background-image:url('images/executivo.jpg')"></div>
+            <div class="rest-cat-card-overlay"></div>
+            <div class="rest-cat-card-content">
+              <div class="rest-cat-name-wrap">
+                <span class="rest-cat-name" data-i18n="home.restaurant.card.executivos">Executivos</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="cardapio.html" class="rest-cat-card">
+            <div class="rest-cat-card-bg" style="background-image:url('images/pratos.jpg')"></div>
+            <div class="rest-cat-card-overlay"></div>
+            <div class="rest-cat-card-content">
+              <div class="rest-cat-name-wrap">
+                <span class="rest-cat-name" data-i18n="home.restaurant.card.pratos">Pratos</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="cardapio.html" class="rest-cat-card">
+            <div class="rest-cat-card-bg" style="background-image:url('images/salada.jpg')"></div>
+            <div class="rest-cat-card-overlay"></div>
+            <div class="rest-cat-card-content">
+              <div class="rest-cat-name-wrap">
+                <span class="rest-cat-name" data-i18n="home.restaurant.card.saladas">Saladas</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+        <div class="rest-body-cta reveal">
+          <a href="cardapio.html" class="btn btn-verde btn-rounded" data-i18n="home.restaurant.cta">Ver Cardápio</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- NOSSA ESSÊNCIA — Cinematic scroll reveal -->
+  <section id="essencia">
+    <div class="essencia-sticky">
+
+      <!-- Imagem: entra de baixo, para centralizada -->
+      <div class="essencia-img-card">
+        <div class="essencia-img-inner">
+          <img src="images/artistico_loja_2.jpg" alt="A Sevá em Camburi">
+        </div>
+        <div class="essencia-img-overlay"></div>
+      </div>
+
+      <!-- Texto: sobe sobre a imagem com o scroll -->
+      <div class="essencia-text">
+        <div class="essencia-text-inner">
+          <p class="essencia-p" data-i18n="home.story.p1">A Sevá nasceu de uma paixão que começou lá em 2020 e encontrou seu lugar em Camburi. O que era cerveja feita em casa virou, ao longo de cinco anos, um restaurante com identidade própria.</p>
+          <p class="essencia-p" data-i18n="home.story.p2">Foi um caminho construído aos poucos, entre testes, erros, acertos e descobertas. De rótulo em rótulo, de prato em prato.</p>
+          <p class="essencia-p" data-i18n="home.story.p3">Hoje, a Sevá é um restaurante guiado por uma ideia simples: fazer bem aquilo que a gente acredita. Te convidamos a conhecer nossa casa aqui em Camburi!</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HORÁRIOS -->
+  <section id="hours">
+
+    <!-- Título gigante clip-reveal -->
+    <div class="hours-header">
+      <div class="hours-title-wrap">
+        <div class="hours-line-clip"><span class="hours-line-inner" data-i18n="home.hours.line1">Horários de</span></div>
+        <div class="hours-line-clip"><span class="hours-line-inner" data-i18n="home.hours.line2">Funcionamento</span></div>
+      </div>
+      <p class="hours-tagline" data-i18n="home.hours.tagline">Venha nos visitar, estamos abertos todos os dias</p>
+    </div>
+
+    <!-- Cards com vídeo parallax -->
+    <div class="hours-cards">
+
+      <!-- Card 1 -->
+      <div class="hours-card">
+        <div class="hours-card-video-wrap">
+          <video class="hours-card-video" muted loop playsinline preload="none"
+                 data-src="images/video%201.mp4">
+          </video>
+        </div>
+        <div class="hours-card-overlay"></div>
+        <div class="hours-card-content">
+          <span class="hours-card-days" data-i18n="home.hours.days1">Domingo a Quinta</span>
+          <div class="hours-card-time-block">
+            <span class="hours-card-time">12:00</span>
+            <span class="hours-card-sep">—</span>
+            <span class="hours-card-time">23:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="hours-card">
+        <div class="hours-card-video-wrap">
+          <video class="hours-card-video" muted loop playsinline preload="none"
+                 data-src="images/video%202.mp4">
+          </video>
+        </div>
+        <div class="hours-card-overlay"></div>
+        <div class="hours-card-content">
+          <span class="hours-card-days" data-i18n="home.hours.days2">Sex, Sáb e Feriados</span>
+          <div class="hours-card-time-block">
+            <span class="hours-card-time">12:00</span>
+            <span class="hours-card-sep">—</span>
+            <span class="hours-card-time">00:00</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- COMO CHEGAR -->
+  <section id="como-chegar" class="jagged-top-dark jagged-bottom-dark">
+
+    <!-- Fundo parallax verde-escuro -->
+    <div class="chegar-bg-parallax"></div>
+
+    <div class="chegar-inner">
+
+      <!-- ── Coluna Esquerda: título + info ── -->
+      <div class="chegar-left">
+
+        <!-- Eyebrow -->
+        <div class="chegar-eyebrow">
+          <span class="chegar-eyebrow-line"></span>
+          <span class="chegar-eyebrow-text">Camburi · São Sebastião · SP</span>
+        </div>
+
+        <!-- Título clip-reveal -->
+        <div class="chegar-title-wrap">
+          <div class="chegar-line-clip"><span class="chegar-line-inner">Como</span></div>
+          <div class="chegar-line-clip"><span class="chegar-line-inner chegar-line-italic">Chegar</span></div>
+        </div>
+
+        <!-- Ornamento -->
+        <div class="chegar-ornament"></div>
+
+        <!-- Cards de informação -->
+        <div class="chegar-info-cards">
+
+          <div class="chegar-info-card" data-chegar-card>
+            <div class="chegar-info-icon">
+              <i class="fa fa-map-marker-alt"></i>
+            </div>
+            <div class="chegar-info-body">
+              <span class="chegar-info-label">Endereço</span>
+              <span class="chegar-info-value">Shopping Dois Amores<br>Al. Antônio José Marques, 330<br>Praia de Camburi · São Sebastião – SP</span>
+            </div>
+          </div>
+
+          <div class="chegar-info-card" data-chegar-card>
+            <div class="chegar-info-icon">
+              <i class="fa fa-clock"></i>
+            </div>
+            <div class="chegar-info-body">
+              <span class="chegar-info-label">Horários</span>
+              <span class="chegar-info-value">Dom – Qui: 12h às 23h<br>Sex · Sáb · Feriados: 12h às 00h</span>
+            </div>
+          </div>
+
+          <div class="chegar-info-card" data-chegar-card>
+            <div class="chegar-info-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div class="chegar-info-body">
+              <span class="chegar-info-label">Reservas</span>
+              <a href="https://wa.me/5511953505016" target="_blank" class="chegar-info-value chegar-info-link">(11) 95350-5016</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA Direções -->
+        <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu"
+           target="_blank"
+           class="chegar-cta btn btn-verde btn-rounded"
+           data-chegar-cta>
+          <i class="fa fa-location-arrow"></i>
+          Traçar Rota
+        </a>
+
+      </div>
+
+      <!-- ── Coluna Direita: mapa ── -->
+      <div class="chegar-right" data-chegar-map>
+
+        <!-- Frame decorativo do mapa -->
+        <div class="chegar-map-frame">
+          <div class="chegar-map-corner chegar-map-corner--tl"></div>
+          <div class="chegar-map-corner chegar-map-corner--tr"></div>
+          <div class="chegar-map-corner chegar-map-corner--bl"></div>
+          <div class="chegar-map-corner chegar-map-corner--br"></div>
+
+          <!-- Mapa Google Maps estilizado (clicável) -->
+          <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu"
+             target="_blank"
+             class="chegar-map-link"
+             aria-label="Abrir localização no Google Maps">
+            <iframe
+              class="chegar-map-iframe"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.02!2d-45.6531707!3d-23.7756489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d27f86075a59e9%3A0x2659a86bf6c9eec1!2sSev%C3%A1%20-%20Restaurante%20e%20Cervejaria%20-%20Camburi!5e0!3m2!1spt-BR!2sbr!4v1748000000000!5m2!1spt-BR!2sbr">
+            </iframe>
+            <!-- Overlay de hover sobre o mapa -->
+            <div class="chegar-map-overlay">
+              <span class="chegar-map-overlay-text">
+                <i class="fa fa-map-marked-alt"></i>
+                Ver no Google Maps
+              </span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS — 300vh scroll container, sticky inner -->
+  <section id="testimonials">
+
+    <!-- Container sticky 100vh — fica fixo enquanto o scroll percorre 300vh -->
+    <div class="testi-sticky" id="testiSticky">
+
+      <div class="testi-bg-layer"></div>
+
+      <!-- Lata: canvas com sequência de frames WebP, controlada pelo scroll -->
+      <div class="testi-video-wrap">
+        <canvas id="testiCanvas" class="testi-canvas"></canvas>
+      </div>
+
+      <!-- Cabeçalho -->
+      <div class="testi-header">
+        <div class="testi-title-wrap">
+          <div class="testi-line-clip"><span class="testi-line-inner">Nossas</span></div>
+          <div class="testi-line-clip"><span class="testi-line-inner">Avaliações</span></div>
+        </div>
+      </div>
+
+      <!-- Faixa de cards -->
+      <div class="testi-track-outer">
+        <div class="testi-track-parallax" id="testiParallax">
+          <div class="testi-track" id="testiTrack">
+
+            <!-- Set 1 -->
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp"  alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="Avaliação Sevá" loading="lazy"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="Avaliação Sevá" loading="lazy"></div></div>
+
+            <!-- Set 2 — duplicado para loop contínuo -->
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp"  alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="" loading="lazy"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="" loading="lazy"></div></div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /testi-sticky -->
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+
+    <!-- Topo decorativo: linha verde -->
+    <div class="footer-top-bar"></div>
+
+    <div class="footer-main">
+
+      <!-- Col 1: Logo + tagline + social -->
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo">
+          <img src="images/logo_seva.png" alt="Sevá">
+        </div>
+        <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Divisor vertical -->
+      <div class="footer-divider"></div>
+
+      <!-- Col 2: Nos encontre -->
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-eyebrow">Nos Encontre</span>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+            <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa fa-clock"></i></span>
+            <span data-i18n="footer.hours">Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <a href="https://wa.me/5511953505016">(11) 95350-5016</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Navegação rápida -->
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-eyebrow">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="cardapio.html" data-i18n="nav.menu">Cardápio</a></li>
+          <li><a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a></li>
+          <li><a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a></li>
+
+          <li><a href="galeria.html" data-i18n="nav.gallery">Galeria</a></li>
+          <li><a href="historia.html" data-i18n="nav.story">História</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
+      <span class="footer-dev">Desenvolvido por <a href="https://instagram.com/cria.dev" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+    </div>
+
+  </footer>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

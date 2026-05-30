@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title.gallery">Galeria — Sevá Cervejaria e Restaurante</title>
+  <meta name="description" data-i18n="meta.desc.gallery" content="Galeria de fotos da Sevá: cervejas artesanais, pratos, ambiente e a Praia de Camburi.">
+  <link rel="icon" href="images/logo_seva.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================================================
+       GALERIA — Hero Full Screen
+       ================================================ */
+    #galeria-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 100px;
+    }
+
+    /* Slides container */
+    .gal-hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .gal-hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .gal-hero-slide.is-active { opacity: 1; }
+    .gal-hero-slide-img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    /* Overlay */
+    .gal-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.18) 0%,
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.78) 100%
+      );
+    }
+
+    /* Content */
+    .gal-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+      max-width: 1000px;
+    }
+
+    .gal-hero-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .gal-hero-eyebrow-line {
+      width: 50px;
+      height: 1px;
+      background: var(--verde-light);
+      opacity: 0.7;
+    }
+    .gal-hero-eyebrow-text {
+      font-family: var(--caps);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--verde-pale);
+      opacity: 0.85;
+    }
+
+    .gal-hero-title {
+      font-family: var(--caps);
+      font-weight: 900;
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--verde-dark);
+      letter-spacing: -0.02em;
+      color: var(--verde-light);
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Clip-reveal animation */
+    .gal-line-clip {
+      overflow: hidden;
+      display: block;
+    }
+    .gal-line-inner {
+      display: block;
+      transform: translateY(110%);
+    }
+
+    .gal-hero-sub {
+      font-family: var(--caps);
+      font-style: normal;
+      font-weight: 700;
+      font-size: clamp(1.1rem, 2.2vw, 2rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    /* Slide dots */
+    .gal-hero-dots {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+    .gal-hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: background 0.4s, transform 0.4s;
+      cursor: pointer;
+    }
+    .gal-hero-dot.is-active {
+      background: var(--verde-light);
+      transform: scale(1.4);
+    }
+
+    /* Scroll hint */
+    .gal-hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      right: 48px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .gal-hero-scroll-track {
+      width: 1px;
+      height: 50px;
+      background: rgba(255,255,255,0.25);
+      overflow: hidden;
+    }
+    .gal-hero-scroll-thumb {
+      width: 100%;
+      height: 50%;
+      background: var(--verde-light);
+      animation: scrollThumb 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollThumb {
+      0%   { transform: translateY(-100%); }
+      100% { transform: translateY(200%); }
+    }
+    .gal-hero-scroll-label {
+      font-family: var(--caps);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      writing-mode: vertical-rl;
+    }
+
+    /* ================================================
+       GALLERY SECTION
+       ================================================ */
+    #galeria-grid {
+      background: var(--sand);
+      padding: 80px 40px 120px;
+    }
+
+    .galeria-section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .galeria-section-eyebrow {
+      font-family: var(--caps);
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--verde-mid);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .galeria-section-title {
+      font-family: var(--caps);
+      font-weight: 900;
+      font-size: clamp(2.4rem, 4.5vw, 5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--verde-dark);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .galeria-section-ornament {
+      width: 60px;
+      height: 2px;
+      background: var(--verde);
+      margin: 0 auto;
+    }
+
+    /* Masonry grid via CSS columns */
+    .galeria-masonry {
+      columns: 3;
+      column-gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .galeria-card {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .galeria-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-radius: 14px;
+    }
+    .galeria-card:hover img {
+      transform: scale(1.06);
+    }
+    .galeria-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(27, 67, 50, 0.72) 0%,
+        rgba(27, 67, 50, 0) 50%
+      );
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      border-radius: 14px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 24px;
+    }
+    .galeria-card:hover .galeria-card-overlay {
+      opacity: 1;
+    }
+    .galeria-card-icon {
+      color: #fff;
+      font-size: 1.4rem;
+      transform: scale(0.7);
+      transition: transform 0.4s ease;
+    }
+    .galeria-card:hover .galeria-card-icon {
+      transform: scale(1);
+    }
+
+    /* ================================================
+       LIGHTBOX
+       ================================================ */
+    #gal-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.96);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+    }
+    #gal-lightbox.is-open {
+      display: flex;
+    }
+    .gal-lb-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    #gal-lb-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .gal-lb-btn {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 1.6rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .gal-lb-btn:hover { background: var(--verde); }
+    .gal-lb-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      font-size: 1.6rem;
+      width: 46px;
+      height: 46px;
+    }
+    .gal-lb-prev {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .gal-lb-next {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .gal-lb-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--caps);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ================================================
+       RESPONSIVE
+       ================================================ */
+    @media (max-width: 1024px) {
+      .galeria-masonry { columns: 2; }
+    }
+    @media (max-width: 640px) {
+      .galeria-masonry { columns: 1; }
+      #galeria-grid { padding: 60px 20px 80px; }
+      .gal-hero-scroll { display: none; }
+      .gal-hero-dots { bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá Cervejaria e Restaurante"></a>
+      <nav class="nav-links">
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+        <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+        <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+        <a href="galeria.html" class="active" data-i18n="nav.gallery">Galeria</a>
+        <a href="historia.html" data-i18n="nav.story">História</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" data-i18n="nav.home">Início</a>
+    <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
+    <a href="cardapio.html" data-i18n="nav.menu">Cardápio</a>
+    <a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a>
+    <a href="galeria.html" data-i18n="nav.gallery">Galeria</a>
+    <a href="historia.html" data-i18n="nav.story">História</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </nav>
+
+  <!-- ===================================================
+       HERO — 100vh com 5 fotos Ken Burns + clip-reveal
+       =================================================== -->
+  <section id="galeria-hero">
+
+    <div class="gal-hero-slides">
+      <div class="gal-hero-slide is-active">
+        <div class="gal-hero-slide-img" style="background-image: url('images/galeria/artistico_loja.webp');"></div>
+      </div>
+      <div class="gal-hero-slide">
+        <div class="gal-hero-slide-img" style="background-image: url('images/galeria/artistico_prato.webp');"></div>
+      </div>
+      <div class="gal-hero-slide">
+        <div class="gal-hero-slide-img" style="background-image: url('images/galeria/DSC09462.webp');"></div>
+      </div>
+      <div class="gal-hero-slide">
+        <div class="gal-hero-slide-img" style="background-image: url('images/galeria/IMG_0820.webp');"></div>
+      </div>
+      <div class="gal-hero-slide">
+        <div class="gal-hero-slide-img" style="background-image: url('images/galeria/DSC09767.webp');"></div>
+      </div>
+    </div>
+
+    <div class="gal-hero-overlay"></div>
+
+    <div class="gal-hero-content">
+      <div class="gal-hero-eyebrow">
+        <span class="gal-hero-eyebrow-line"></span>
+        <span class="gal-hero-eyebrow-text">Camburi · São Sebastião · SP</span>
+        <span class="gal-hero-eyebrow-line"></span>
+      </div>
+
+      <h1 class="gal-hero-title">
+        <span class="gal-line-clip"><span class="gal-line-inner" id="gHeroL1">Nossa</span></span>
+        <span class="gal-line-clip"><span class="gal-line-inner" id="gHeroL2">Galeria</span></span>
+      </h1>
+
+      <p class="gal-hero-sub" id="gHeroSub" data-i18n="gallery.hero.sub">Cervejas, pratos e o espírito de Camburi</p>
+    </div>
+
+    <!-- Dots indicadores -->
+    <div class="gal-hero-dots" id="gHeroDots">
+      <div class="gal-hero-dot is-active"></div>
+      <div class="gal-hero-dot"></div>
+      <div class="gal-hero-dot"></div>
+      <div class="gal-hero-dot"></div>
+      <div class="gal-hero-dot"></div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="gal-hero-scroll">
+      <div class="gal-hero-scroll-track"><div class="gal-hero-scroll-thumb"></div></div>
+      <span class="gal-hero-scroll-label">Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ===================================================
+       GALERIA GRID — Masonry com todas as fotos
+       =================================================== -->
+  <section id="galeria-grid">
+
+    <div class="galeria-section-header">
+      <span class="galeria-section-eyebrow">Registros da Sevá</span>
+      <h2 class="galeria-section-title">Momentos</h2>
+      <div class="galeria-section-ornament"></div>
+    </div>
+
+    <div class="galeria-masonry" id="galeriaMasonry">
+
+      <!-- Linha 1 -->
+      <div class="galeria-card" data-src="images/galeria/artistico_loja.webp">
+        <img src="images/galeria/artistico_loja.webp" alt="Ambiente Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/artistico_prato.webp">
+        <img src="images/galeria/artistico_prato.webp" alt="Prato Artístico" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09437.webp">
+        <img src="images/galeria/DSC09437.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/artistico_loja_2.webp">
+        <img src="images/galeria/artistico_loja_2.webp" alt="Loja Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/artistico_prato (2).webp">
+        <img src="images/galeria/artistico_prato (2).webp" alt="Prato" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09446.webp">
+        <img src="images/galeria/DSC09446.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/artistico_contra.webp">
+        <img src="images/galeria/artistico_contra.webp" alt="Prato Contraluz" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/artistico_prato_3.webp">
+        <img src="images/galeria/artistico_prato_3.webp" alt="Prato Artístico 3" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09452.webp">
+        <img src="images/galeria/DSC09452.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/artistico_prato_4.webp">
+        <img src="images/galeria/artistico_prato_4.webp" alt="Prato Artístico 4" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09456.webp">
+        <img src="images/galeria/DSC09456.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09462.webp">
+        <img src="images/galeria/DSC09462.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/salada.webp">
+        <img src="images/galeria/salada.webp" alt="Salada Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09470.webp">
+        <img src="images/galeria/DSC09470.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09477.webp">
+        <img src="images/galeria/DSC09477.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/entrada.webp">
+        <img src="images/galeria/entrada.webp" alt="Entrada Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09485.webp">
+        <img src="images/galeria/DSC09485.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09489.webp">
+        <img src="images/galeria/DSC09489.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/executivo.webp">
+        <img src="images/galeria/executivo.webp" alt="Prato Executivo" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09492.webp">
+        <img src="images/galeria/DSC09492.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09495.webp">
+        <img src="images/galeria/DSC09495.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/lanche.webp">
+        <img src="images/galeria/lanche.webp" alt="Lanche Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09498.webp">
+        <img src="images/galeria/DSC09498.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09532.webp">
+        <img src="images/galeria/DSC09532.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/peixa_deusa.webp">
+        <img src="images/galeria/peixa_deusa.webp" alt="Peixe Deusa" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09560.webp">
+        <img src="images/galeria/DSC09560.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09561.webp">
+        <img src="images/galeria/DSC09561.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/pratos.webp">
+        <img src="images/galeria/pratos.webp" alt="Pratos Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09591.webp">
+        <img src="images/galeria/DSC09591.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09596.webp">
+        <img src="images/galeria/DSC09596.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/drinl_aperol_spritz.webp">
+        <img src="images/galeria/drinl_aperol_spritz.webp" alt="Aperol Spritz" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09617.webp">
+        <img src="images/galeria/DSC09617.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09643.webp">
+        <img src="images/galeria/DSC09643.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/caipirinha_manjericão.webp">
+        <img src="images/galeria/caipirinha_manjericão.webp" alt="Caipirinha Manjericão" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09680.webp">
+        <img src="images/galeria/DSC09680.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09691.webp">
+        <img src="images/galeria/DSC09691.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/caipirinha_maracuja.webp">
+        <img src="images/galeria/caipirinha_maracuja.webp" alt="Caipirinha Maracujá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09767.webp">
+        <img src="images/galeria/DSC09767.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09768.webp">
+        <img src="images/galeria/DSC09768.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/drink_caipirinha_2_limoes.webp">
+        <img src="images/galeria/drink_caipirinha_2_limoes.webp" alt="Caipirinha 2 Limões" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09787.webp">
+        <img src="images/galeria/DSC09787.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC09794.webp">
+        <img src="images/galeria/DSC09794.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/drink_negroni.webp">
+        <img src="images/galeria/drink_negroni.webp" alt="Negroni" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC00124.webp">
+        <img src="images/galeria/DSC00124.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC00252.webp">
+        <img src="images/galeria/DSC00252.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0047.webp">
+        <img src="images/galeria/IMG_0047.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC00441.webp">
+        <img src="images/galeria/DSC00441.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC01172.webp">
+        <img src="images/galeria/DSC01172.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0192.webp">
+        <img src="images/galeria/IMG_0192.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC01370.webp">
+        <img src="images/galeria/DSC01370.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC01376.webp">
+        <img src="images/galeria/DSC01376.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0386.webp">
+        <img src="images/galeria/IMG_0386.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC01381.webp">
+        <img src="images/galeria/DSC01381.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/DSC01399.webp">
+        <img src="images/galeria/DSC01399.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0414.webp">
+        <img src="images/galeria/IMG_0414.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_0472.webp">
+        <img src="images/galeria/IMG_0472.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_0671.webp">
+        <img src="images/galeria/IMG_0671.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0690.webp">
+        <img src="images/galeria/IMG_0690.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_0820.webp">
+        <img src="images/galeria/IMG_0820.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_0847.webp">
+        <img src="images/galeria/IMG_0847.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_0866.webp">
+        <img src="images/galeria/IMG_0866.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_1568.webp">
+        <img src="images/galeria/IMG_1568.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_1569.webp">
+        <img src="images/galeria/IMG_1569.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_1594.webp">
+        <img src="images/galeria/IMG_1594.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_1844.webp">
+        <img src="images/galeria/IMG_1844.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_1860.webp">
+        <img src="images/galeria/IMG_1860.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+      <div class="galeria-card" data-src="images/galeria/IMG_1891.webp">
+        <img src="images/galeria/IMG_1891.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+      <div class="galeria-card" data-src="images/galeria/IMG_2258.webp">
+        <img src="images/galeria/IMG_2258.webp" alt="Sevá" loading="lazy">
+        <div class="galeria-card-overlay"><i class="fa fa-expand galeria-card-icon"></i></div>
+      </div>
+
+    </div><!-- /galeria-masonry -->
+  </section>
+
+  <!-- INSTA BAND -->
+  <div class="insta-band">
+    <a href="https://instagram.com/sevacerveja" target="_blank" data-i18n="home.insta">
+      ✦ &nbsp; Siga-nos no Instagram @sevacerveja &nbsp; ✦
+    </a>
+  </div>
+
+  <!-- ===================================================
+       FOOTER — igual ao index.html
+       =================================================== -->
+  <footer id="footer">
+
+    <div class="footer-top-bar"></div>
+
+    <div class="footer-main">
+
+      <div class="footer-col footer-col--brand">
+        <div class="footer-logo">
+          <img src="images/logo_seva.png" alt="Sevá">
+        </div>
+        <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-eyebrow">Nos Encontre</span>
+        <ul class="footer-contact-list">
+          <li>
+            <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+            <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa fa-clock"></i></span>
+            <span data-i18n="footer.hours">Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span>
+          </li>
+          <li>
+            <span class="icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <a href="https://wa.me/5511953505016">(11) 95350-5016</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-eyebrow">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="cardapio.html" data-i18n="nav.menu">Cardápio</a></li>
+          <li><a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a></li>
+          <li><a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a></li>
+
+          <li><a href="galeria.html" data-i18n="nav.gallery">Galeria</a></li>
+          <li><a href="historia.html" data-i18n="nav.story">História</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
+      <span class="footer-dev">Desenvolvido por <a href="https://instagram.com/cria.dev" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+    </div>
+
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="gal-lightbox">
+    <button class="gal-lb-btn gal-lb-close" id="galLbClose"><i class="fa fa-times"></i></button>
+    <button class="gal-lb-btn gal-lb-prev" id="galLbPrev"><i class="fa fa-chevron-left"></i></button>
+    <div class="gal-lb-img-wrap">
+      <img id="gal-lb-img" src="" alt="">
+    </div>
+    <button class="gal-lb-btn gal-lb-next" id="galLbNext"><i class="fa fa-chevron-right"></i></button>
+    <div class="gal-lb-counter" id="galLbCounter"></div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  (function () {
+    /* ---- Hero Slideshow ---- */
+    const slides  = document.querySelectorAll('.gal-hero-slide');
+    const dots    = document.querySelectorAll('.gal-hero-dot');
+    let current   = 0;
+    let heroTimer = null;
+
+    function gotoSlide(idx) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+    }
+
+    function startHeroTimer() {
+      heroTimer = setInterval(() => gotoSlide(current + 1), 5000);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { clearInterval(heroTimer); gotoSlide(i); startHeroTimer(); });
+    });
+
+    startHeroTimer();
+
+    /* Ken Burns on each slide image */
+    slides.forEach(slide => {
+      const img = slide.querySelector('.gal-hero-slide-img');
+      gsap.fromTo(img,
+        { scale: 1.08 },
+        { scale: 1, duration: 7, ease: 'none', repeat: -1, yoyo: true }
+      );
+    });
+
+    /* ---- Hero Clip-Reveal (on load) ---- */
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({ delay: 0.3 });
+    tl.to('#gHeroL1', { y: '0%', duration: 1, ease: 'power3.out' })
+      .to('#gHeroL2', { y: '0%', duration: 1, ease: 'power3.out' }, '-=0.75')
+      .to('#gHeroSub', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, '-=0.5');
+
+    /* ---- Gallery Cards ScrollTrigger ---- */
+    const cards = document.querySelectorAll('.galeria-card');
+
+    cards.forEach((card, i) => {
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 90%',
+          toggleActions: 'play none none none'
+        },
+        delay: (i % 3) * 0.08
+      });
+    });
+
+    /* ---- Lightbox ---- */
+    const lb        = document.getElementById('gal-lightbox');
+    const lbImg     = document.getElementById('gal-lb-img');
+    const lbCounter = document.getElementById('galLbCounter');
+    const allCards  = Array.from(cards);
+    let lbIdx       = 0;
+
+    function openLb(idx) {
+      lbIdx = idx;
+      const src = allCards[lbIdx].dataset.src;
+      lbImg.src = src;
+      lbCounter.textContent = (lbIdx + 1) + ' / ' + allCards.length;
+      lb.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() {
+      lb.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    function nextLb() { openLb((lbIdx + 1) % allCards.length); }
+    function prevLb() { openLb((lbIdx - 1 + allCards.length) % allCards.length); }
+
+    allCards.forEach((card, i) => card.addEventListener('click', () => openLb(i)));
+    document.getElementById('galLbClose').addEventListener('click', closeLb);
+    document.getElementById('galLbNext').addEventListener('click', nextLb);
+    document.getElementById('galLbPrev').addEventListener('click', prevLb);
+
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape')      closeLb();
+      if (e.key === 'ArrowRight')  nextLb();
+      if (e.key === 'ArrowLeft')   prevLb();
+    });
+
+  })();
+  </script>
+
+</body>
+</html>
