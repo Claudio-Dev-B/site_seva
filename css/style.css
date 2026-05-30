@@ -1830,7 +1830,7 @@ button { border: none; cursor: pointer; background: none; }
 }
 .chegar-line-italic {
   font-style: italic;
-  color: var(--verde-light);
+  color: var(--white);
 }
 
 .chegar-ornament {
@@ -2051,7 +2051,26 @@ button { border: none; cursor: pointer; background: none; }
   .chegar-map-iframe { height: 300px; }
 }
 
-/* .insta-band removida */
+/* ================================================
+   INSTA BAND — global
+   ================================================ */
+.insta-band {
+  background: var(--verde-dark);
+  padding: 18px 0;
+  text-align: center;
+  overflow: hidden;
+}
+.insta-band a {
+  font-family: var(--caps);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--verde-pale);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.insta-band a:hover { color: var(--verde-light); }
 
 /* ================================================
    FOOTER

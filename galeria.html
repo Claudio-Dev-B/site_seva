@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -114,9 +114,8 @@
       font-size: clamp(3.5rem, 9vw, 9rem);
       line-height: 0.95;
       text-transform: uppercase;
-      color: var(--verde-dark);
       letter-spacing: -0.02em;
-      color: var(--verde-light);
+      color: var(--white);
       margin-bottom: 28px;
       display: flex;
       flex-direction: column;
@@ -258,7 +257,11 @@
       position: relative;
       cursor: pointer;
       opacity: 0;
-      transform: translateY(50px);
+      animation: cardReveal 0.6s ease forwards;
+    }
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .galeria-card img {
       width: 100%;
@@ -820,7 +823,7 @@
         <div class="footer-logo">
           <img src="images/logo_seva.png" alt="Sevá">
         </div>
-        <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+        <p class="footer-tagline" data-i18n="footer.about">Cervejaria e Restaurante na Praia de Camburi. Cinco anos de história, mais de 40 cervejas autorais e uma cozinha que faz o verão durar mais e ser mais gostoso.</p>
         <div class="footer-social">
           <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -834,7 +837,7 @@
         <ul class="footer-contact-list">
           <li>
             <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
-            <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+            <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a>
           </li>
           <li>
             <span class="icon"><i class="fa fa-clock"></i></span>
@@ -886,6 +889,7 @@
   <script src="js/main.js" defer></script>
 
   <script>
+  window.addEventListener('load', function () {
   (function () {
     /* ---- Hero Slideshow ---- */
     const slides  = document.querySelectorAll('.gal-hero-slide');
@@ -928,22 +932,10 @@
       .to('#gHeroL2', { y: '0%', duration: 1, ease: 'power3.out' }, '-=0.75')
       .to('#gHeroSub', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, '-=0.5');
 
-    /* ---- Gallery Cards ScrollTrigger ---- */
+    /* ---- Gallery Cards — CSS animation com delay escalonado ---- */
     const cards = document.querySelectorAll('.galeria-card');
-
     cards.forEach((card, i) => {
-      gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        duration: 0.75,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 90%',
-          toggleActions: 'play none none none'
-        },
-        delay: (i % 3) * 0.08
-      });
+      card.style.animationDelay = (i * 0.04) + 's';
     });
 
     /* ---- Lightbox ---- */
@@ -985,6 +977,7 @@
     });
 
   })();
+  });
   </script>
 
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -454,6 +454,53 @@
     .tl-item.tl-left-item  > .tl-side.tl-right { visibility: hidden; pointer-events: none; }
     .tl-item.tl-right-item > .tl-side.tl-left  { visibility: hidden; pointer-events: none; }
 
+    /* ── Timeline Mobile ── */
+    @media (max-width: 700px) {
+      .tl-track::before { left: 20px; transform: none; }
+
+      .tl-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 48px;
+      }
+
+      .tl-center {
+        order: 0;
+        flex-shrink: 0;
+        width: 40px;
+        align-items: center;
+      }
+
+      /* Esconder lado vazio, mostrar lado com conteúdo */
+      .tl-item.tl-left-item  > .tl-side.tl-right { display: none; }
+      .tl-item.tl-right-item > .tl-side.tl-left  { display: none; }
+
+      .tl-item.tl-left-item  > .tl-side.tl-left,
+      .tl-item.tl-right-item > .tl-side.tl-right {
+        order: 1;
+        flex: 1;
+        visibility: visible !important;
+        text-align: left !important;
+        padding: 0;
+      }
+
+      .tl-side.tl-left .tl-img-wrap,
+      .tl-side.tl-right .tl-img-wrap {
+        justify-content: flex-start !important;
+      }
+
+      .tl-card {
+        width: 72px; height: 72px;
+        transform: scale(0.85);
+      }
+      .tl-item.is-active .tl-card { transform: scale(1); }
+
+      .tl-text h3 { font-size: 1rem; }
+      .tl-text p  { font-size: 0.82rem; }
+    }
+
     /* ── Card 3D do Fundador ── */
     .fundador-img-outer {
       display: flex;
@@ -506,22 +553,20 @@
       .fundador-card-3d img { width: calc(100% + 36px); height: calc(100% + 28px); }
     }
 
-    /* ── Insta Band ── */
-    .insta-band {
-      background: var(--verde-dark);
-      padding: 20px 40px;
-      text-align: center;
+
+    /* ── SEVÁ ↔ AVES letter-swap animation ── */
+    .seva-aves-flip {
+      display: block;
+      margin: 0 auto;
+      position: relative;
     }
-    .insta-band a {
-      font-family: var(--caps);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      transition: color 0.3s;
+    .flip-l {
+      display: inline-block;
     }
-    .insta-band a:hover { color: var(--verde-light); }
+    .flip-l.is-abs {
+      position: absolute;
+      top: 0;
+    }
 
     /* ── Títulos: Barlow Condensed 900 (igual brew-headline) ── */
     /* Hero title — já está correto, reforça */
@@ -687,8 +732,9 @@
       <span class="script" data-i18n="story.intro.script">Nossa História</span>
       <span class="caps-label" data-i18n="story.intro.caps">Do quintal ao restaurante</span>
       <div class="ornament"><span class="ornament-icon"></span></div>
-      <p data-i18n="story.intro.p1">A Sevá é uma história de amor pela fermentação, pela praia e pela liberdade de criar. Tudo começou em novembro de 2020, durante a pandemia, quando o fundador João decidiu que o confinamento seria uma oportunidade — e começou a brassar cerveja em casa.</p>
-      <p data-i18n="story.intro.p2">Do que nasceu como hobby virou obsessão, depois propósito, depois negócio. A cada rótulo criado, uma ave ganhava nome e personalidade. A cada evento nas praias de Camburi, mais pessoas descobriam a Sevá.</p>
+      <p data-i18n="story.intro.p1">A Sevá nasceu da paixão pela fermentação, pela natureza e pela liberdade de criar. O que começou em 2020, em meio a um período de transformação e incertezas, rapidamente se tornou algo maior do que uma simples produção caseira de cerveja.</p>
+      <p data-i18n="story.intro.p2">Entre receitas, experimentações e descobertas, surgiu uma identidade própria. Cada cerveja ganhou personalidade, cada rótulo recebeu o nome de uma ave da Mata Atlântica e cada novo encontro com o público reforçou a mesma ideia: oferecer experiências autênticas para quem busca algo além do óbvio.</p>
+      <p data-i18n="story.intro.p3">Hoje, a Sevá é cervejaria, restaurante e ponto de encontro em Camburi. Um lugar onde gastronomia autoral, cervejas artesanais e o estilo de vida do litoral se encontram para criar momentos que só poderiam existir aqui.</p>
     </div>
   </div>
 
@@ -718,9 +764,11 @@
 
     <!-- conteúdo centralizado -->
     <div class="nome-content">
-      <span class="script" data-i18n="story.name.script">Sevá</span>
-      <span class="caps-label" data-i18n="story.name.caps">Aves ao contrário</span>
-      <p data-i18n="story.name.p1">O nome <em>Sevá</em> é "aves" ao contrário — uma homenagem direta aos rótulos que carregam nomes de pássaros brasileiros. Mas vai além: em sânscrito, <em>sevā</em> significa "serviço com devoção".</p>
+      <span class="script seva-aves-flip" id="sevaAvesTitle" aria-label="Sevá">
+        <span class="flip-l" data-from="S" data-to="A">S</span><span class="flip-l" data-from="E" data-to="V">E</span><span class="flip-l" data-from="V" data-to="E">V</span><span class="flip-l" data-from="Á" data-to="S">Á</span>
+      </span>
+      <span class="caps-label" data-i18n="story.name.caps">Sevá Aves ao contrário</span>
+      <p data-i18n="story.name.p1">O nome <em>Sevá</em> é "aves" ao contrário, uma homenagem direta aos rótulos que carregam nomes de pássaros brasileiros. Mas vai além: em sânscrito, <em>sevā</em> significa "serviço com devoção".</p>
       <p data-i18n="story.name.p2">É exatamente isso que tentamos fazer em cada chope, em cada prato, em cada experiência que proporcionamos em Camburi. Serviço com presença, com cuidado, com alegria.</p>
     </div>
 
@@ -747,7 +795,7 @@
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t1.title">O Começo</h3>
-              <p data-i18n="story.t1.text">Em plena pandemia, João começa a brassar cerveja artesanal em casa. O primeiro rótulo — a Basilon Pilsen — é servido para amigos e vizinhos.</p>
+              <p data-i18n="story.t1.text">Em plena pandemia, João começa a brassar cerveja artesanal em casa. O primeiro rótulo, a Basilon Pilsen, é servido para amigos e vizinhos.</p>
             </div>
           </div>
           <div class="tl-center">
@@ -770,7 +818,7 @@
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t2.title">A Praia como Palco</h3>
-              <p data-i18n="story.t2.text">Com um carrinho e geleiras, a Sevá começa a aparecer nas praias e eventos de Camburi. O boca a boca cresce e os rótulos se multiplicam.</p>
+              <p data-i18n="story.t2.text">Com um carrinho e uma chopeira, a Sevá chegou à praia de Camburi. Primeira cervejaria artesanal a ganhar as areias.</p>
             </div>
           </div>
         </div>
@@ -779,11 +827,11 @@
         <div class="tl-item tl-left-item" data-tl>
           <div class="tl-side tl-left">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/3.webp" alt="A Van — 2022"></div>
+              <div class="tl-card"><img src="images/Historia/3.webp" alt="A Kombinha — 2022"></div>
             </div>
             <div class="tl-text">
-              <h3 data-i18n="story.t3.title">A Van dos Quatro Torneiras</h3>
-              <p data-i18n="story.t3.text">Uma van adaptada com quatro torneiras de chope passa a percorrer festas, feiras e eventos no litoral norte. A cervejaria itinerante ganha identidade visual e reconhecimento.</p>
+              <h3 data-i18n="story.t3.title">Uma kombi, 4 torneiras e um sonho</h3>
+              <p data-i18n="story.t3.text">Uma kombinha adaptada com quatro torneiras de chope passa a fazer festas, eventos e as tradicionais sextas no Pomona. A cervejaria itinerante ganha o litoral norte.</p>
             </div>
           </div>
           <div class="tl-center">
@@ -802,11 +850,11 @@
           </div>
           <div class="tl-side tl-right">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/4.webp" alt="Hub Cultural — 2023"></div>
+              <div class="tl-card"><img src="images/Historia/4.webp" alt="O ano das festas — 2023"></div>
             </div>
             <div class="tl-text">
-              <h3 data-i18n="story.t4.title">Hub Cultural</h3>
-              <p data-i18n="story.t4.text">A Sevá passa a co-organizar eventos culturais em Camburi — shows, saraus, feiras de artesanato. A cerveja vira pretexto para reunir comunidade.</p>
+              <h3 data-i18n="story.t4.title">Um show a parte</h3>
+              <p data-i18n="story.t4.text">A Sevá passa a co-organizar eventos em Camburi e região, muitos shows e histórias para a memória. A cerveja vira pretexto para reunir comunidade.</p>
             </div>
           </div>
         </div>
@@ -818,8 +866,8 @@
               <div class="tl-card"><img src="images/Historia/5.webp" alt="Endereço Fixo — 2024"></div>
             </div>
             <div class="tl-text">
-              <h3 data-i18n="story.t5.title">Endereço Fixo</h3>
-              <p data-i18n="story.t5.text">Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja — tudo num só lugar. A itinerância virou permanência.</p>
+              <h3 data-i18n="story.t5.title">Construímos nossa casa</h3>
+              <p data-i18n="story.t5.text">Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja, tudo num só lugar.</p>
             </div>
           </div>
           <div class="tl-center">
@@ -868,7 +916,7 @@
           <div class="footer-logo">
             <img src="images/logo_seva.png" alt="Sevá">
           </div>
-          <p class="footer-tagline" data-i18n="footer.about">Cervejaria artesanal e restaurante na Praia de Camburi. Cinco anos de história, cervejas autorais e uma cozinha que faz o verão durar mais.</p>
+          <p class="footer-tagline" data-i18n="footer.about">Cervejaria e Restaurante na Praia de Camburi. Cinco anos de história, mais de 40 cervejas autorais e uma cozinha que faz o verão durar mais e ser mais gostoso.</p>
           <div class="footer-social">
             <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://wa.me/5511953505016" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -882,7 +930,7 @@
           <ul class="footer-contact-list">
             <li>
               <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
-              <span data-i18n="footer.address">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</span>
+              <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a>
             </li>
             <li>
               <span class="icon"><i class="fa fa-clock"></i></span>
@@ -1052,6 +1100,77 @@
       onScroll();
 
     })();
+
+    /* ── SEVÁ ↔ AVES letter-movement loop ── */
+    (function () {
+      const container = document.getElementById('sevaAvesTitle');
+      if (!container) return;
+      const els = Array.from(container.querySelectorAll('.flip-l'));
+      // els = [S(0), E(1), V(2), Á(3)]
+      // AVES order: Á→A(3), V(2), E(1), S(0)
+      // So: S→slot3, E→slot2, V→slot1, Á→A→slot0
+
+      let isAves = false;
+      let sevaPos = [], avesPos = [];
+      let ready = false;
+
+      function init() {
+        const rects = els.map(e => e.getBoundingClientRect());
+        const ws    = rects.map(r => r.width);
+        const totalW = ws[0] + ws[1] + ws[2] + ws[3];
+        const h      = Math.max(...rects.map(r => r.height));
+
+        // Container bloco centralizado com largura fixa
+        container.style.width  = totalW + 'px';
+        container.style.height = h + 'px';
+
+        // Posições SEVÁ: S(0) E(1) V(2) Á(3)
+        sevaPos = [0, ws[0], ws[0]+ws[1], ws[0]+ws[1]+ws[2]];
+
+        // Posições AVES: A=Á(3) V(2) E(1) S(0)
+        avesPos = [
+          ws[3]+ws[2]+ws[1], // S  → 4ª
+          ws[3]+ws[2],        // E  → 3ª
+          ws[3],              // V  → 2ª
+          0                   // A  → 1ª
+        ];
+
+        // Converte letras para absolute com posições iniciais SEVÁ
+        els.forEach((el, i) => {
+          el.classList.add('is-abs');
+          el.style.transition = 'none';
+          el.style.left = sevaPos[i] + 'px';
+          el.style.top  = '0';
+        });
+
+        ready = true;
+      }
+
+      function swap() {
+        if (!ready) init();
+
+        const goingToAves = !isAves;
+        const targets = goingToAves ? avesPos : sevaPos;
+
+        els.forEach((el, i) => {
+          el.style.transition = 'left 1.1s cubic-bezier(0.4, 0, 0.2, 1)';
+          el.style.left = targets[i] + 'px';
+        });
+
+        // Troca Á↔A a meio do movimento
+        setTimeout(() => {
+          els[3].textContent = goingToAves ? 'A' : 'Á';
+        }, 550);
+
+        isAves = goingToAves;
+      }
+
+      setTimeout(function loop() {
+        swap();
+        setTimeout(loop, 3800);
+      }, 2200);
+    })();
+
   </script>
 </body>
 </html>
