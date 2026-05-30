@@ -174,7 +174,7 @@
       position: relative;
       border-radius: 24px;
       overflow: hidden;
-      height: clamp(500px, 82vh, 900px);
+      height: clamp(680px, 90vh, 1100px);
       box-shadow: 0 40px 100px rgba(0,0,0,0.28), 0 8px 28px rgba(0,0,0,0.14);
     }
 
@@ -479,16 +479,45 @@
       .bsc--wide { grid-column: span 2; }
     }
     @media (max-width: 768px) {
+      /* lúpulo mais visível: menor + mais pra lateral direita */
+      #lup1 {
+        width: 120px !important;
+        height: 120px !important;
+        left: auto !important;
+        right: 4vw !important;
+        top: 8vh !important;
+        opacity: 0.35 !important;
+      }
       .brewery-banner-section { padding: 0 16px 80px; }
-      .brewery-banner-wrap { border-radius: 16px; height: clamp(340px, 60vh, 560px); }
+      /* Banner mais alto no mobile para o texto não vazar no topo */
+      .brewery-banner-wrap {
+        border-radius: 16px;
+        height: clamp(640px, 92vh, 860px);
+      }
+      /* Texto menor para caber na imagem sem cortar */
+      .brewery-intro-text p {
+        font-size: clamp(1rem, 3.6vw, 1.3rem);
+        line-height: 1.25;
+        margin-bottom: 20px;
+      }
+      /* Padding do bloco de texto reduzido para ganhar espaço vertical */
+      .brewery-banner-text-over {
+        padding: clamp(16px,3vw,32px) clamp(20px,5vw,40px) clamp(24px,4vw,40px);
+      }
+      .brewery-banner-caps {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        margin-bottom: 16px;
+      }
       .beer-styles-section { padding: 0 16px 80px; }
       .beer-styles-grid { grid-template-columns: 1fr; gap: 14px; }
       .bsc--wide { grid-column: span 1; }
       .brewery-intro-block { padding: 60px 24px 60px; }
     }
     @media (max-width: 480px) {
-      .brewery-banner-wrap { border-radius: 12px; }
+      /* Ainda mais alto em telas muito pequenas */
+      .brewery-banner-wrap { border-radius: 12px; height: clamp(700px, 95vh, 900px); }
       .bsc-inner { padding: 28px 24px 26px; }
+      .brewery-intro-text p { font-size: 0.95rem; margin-bottom: 14px; }
     }
   </style>
 </head>

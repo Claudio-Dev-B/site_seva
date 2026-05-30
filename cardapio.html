@@ -451,21 +451,57 @@
       .menu-card.card-featured .menu-card-body { border-radius: 0 0 20px 20px; }
     }
     @media (max-width: 768px) {
+      /* hero */
       .menu-hero-content h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+
+      /* sticky nav mobile */
+      .cardapio-nav-wrap { top: 60px; }
       .cardapio-nav { padding: 0 16px; }
-      /* Desativa sticky em mobile: top negativo em seções altas causa bug visual */
+      .cardapio-nav a { padding: 14px 14px; font-size: 10px; }
+
+      /* sticky parallax MANTIDO em mobile — JS calcula top correto */
       .cardapio-section {
-        position: relative !important;
-        top: auto !important;
-        padding: 56px 0 64px;
+        padding: 48px 0 56px;
+        /* border-radius menor no mobile para economizar espaço visual */
+        border-radius: 20px 20px 0 0;
+        /* GPU hint: evita repaint durante scroll */
+        will-change: transform;
+        /* scroll-snap suave para navegação por anchor */
+        scroll-margin-top: 108px;
       }
-      .section-inner { padding: 0 20px; }
-      .cards-grid { grid-template-columns: 1fr; gap: 20px; }
-      /* Sem hover em touch: remove overflow visible para evitar glitch de clip-path */
-      .menu-card { overflow: hidden; }
-      .menu-card-img { clip-path: none !important; }
+
+      .section-inner { padding: 0 16px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Remove hover/clip-path em touch para evitar glitch */
+      .menu-card { overflow: hidden; transition: none; }
+      .menu-card-img { clip-path: none !important; transition: none; }
+      .menu-card-img img { transition: none; }
+
+      /* header do card mais compacto */
+      .cat-header { margin-bottom: 32px; padding-bottom: 16px; }
+      .cat-title { font-size: clamp(2rem, 8vw, 2.6rem); }
       .cat-count { display: none; }
-      .regua-card { flex-direction: column; text-align: center; }
+
+      /* régua e tabela */
+      .regua-card { flex-direction: column; text-align: center; padding: 24px 20px; }
+      .regua-price { font-size: 2rem; }
+      .chop-table thead th,
+      .chop-table tbody td { padding: 12px 14px; }
+
+      /* wine/simple list full width */
+      .wine-list,
+      .simple-list { max-width: 100%; }
+
+      /* box-shadow mais leve — reduz overdraw em mobile */
+      .cardapio-section {
+        box-shadow: 0 -12px 32px rgba(0,0,0,.14), 0 -2px 8px rgba(0,0,0,.08);
+      }
+    }
+
+    /* Touch: alvo mínimo 44px para links da nav */
+    @media (hover: none) {
+      .cardapio-nav a { min-height: 44px; display: flex; align-items: center; }
     }
   </style>
 </head>
@@ -1141,12 +1177,20 @@
         });
       }
 
-      // Executa no load e no resize
+      // Executa no load, resize e mudança de orientação (mobile)
       setStickyTops();
       window.addEventListener('resize', setStickyTops);
+      window.addEventListener('orientationchange', () => {
+        // Aguarda o browser finalizar o reflow após rotação
+        setTimeout(setStickyTops, 200);
+      });
 
-      // Re-calcula após imagens carregarem (podem mudar a altura das seções)
-      window.addEventListener('load', () => { setStickyTops(); });
+      // Re-calcula após imagens e fontes carregarem (podem mudar a altura das seções)
+      window.addEventListener('load', () => {
+        setStickyTops();
+        // Segunda passada após 300ms para imagens lazy e fontes web
+        setTimeout(setStickyTops, 300);
+      });
     })();
 
     /* ── Active nav via IntersectionObserver ── */

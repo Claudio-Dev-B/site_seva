@@ -387,7 +387,7 @@ button { border: none; cursor: pointer; background: none; }
   position: absolute;
   inset: -15% 0;
   background-size: cover;
-  background-position: center;
+  background-position: 62% center;
   will-change: transform;
 }
 
@@ -996,7 +996,12 @@ button { border: none; cursor: pointer; background: none; }
 
 @keyframes restSlide {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-500vw); }
+  100% { transform: translateX(-250vw); }
+}
+
+@keyframes restSlideMobile {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-425vw); }
 }
 
 .rest-hero-overlay {
@@ -2858,9 +2863,14 @@ button { border: none; cursor: pointer; background: none; }
   .rest-cat-name { font-size: clamp(2.4rem, 7vw, 5rem); }
   /* 5º card ocupa largura total em mobile */
   .rest-cat-card:last-child { grid-column: 1 / -1; }
-  /* Mobile: hero mais baixo + contain para ver o prato inteiro sem corte */
-  .rest-hero { height: 65vh; min-height: 380px; }
-  .rest-photo-item { background-size: contain; }
+  /* Mobile: hero + itens de prato maiores e loop calibrado */
+  .rest-hero { height: 72vh; min-height: 420px; }
+  .rest-photo-item {
+    width: 85vw;
+    background-size: contain;
+    background-position: center 60%;
+  }
+  .rest-photo-track { animation-name: restSlideMobile; animation-duration: 28s; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .header-inner { padding: 0 20px; }
