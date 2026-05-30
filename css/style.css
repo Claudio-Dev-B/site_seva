@@ -387,7 +387,7 @@ button { border: none; cursor: pointer; background: none; }
   position: absolute;
   inset: -15% 0;
   background-size: cover;
-  background-position: 62% center;
+  background-position: center;
   will-change: transform;
 }
 
