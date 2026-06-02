@@ -440,8 +440,8 @@
       'story.t5.text':  'Em 2024, a Sevá encontra seu lar definitivo no Shopping Dois Amores, na Praia de Camburi. Cervejaria, restaurante e loja, tudo num só lugar.',
       'story.founder.script': 'Quem faz a Sevá',
       'story.founder.caps':   'O Fundador',
-      'story.founder.p1':     'João é cervejeiro, cozinheiro e sonhador. Formado em gastronomia e autodidata em fermentação, passou anos experimentando antes de transformar a Sevá em realidade.',
-      'story.founder.p2':     'Cada cerveja da Sevá é um pedaço da sua visão: ingredientes locais, técnica apurada, e aquele algo a mais que só vem de quem faz com amor.',
+      'story.founder.p1':     'João é o mestre cervejeiro, o criador e sonhador da Sevá. Tudo começou na sua casa, desde a observação dos pássaros que visitavam seu quintal em Camburi até as primeiras brasagens de cerveja.',
+      'story.founder.p2':     'Foi assim que criou cada rótulo, chamando artistas locais para desenvolverem as artes, buscando combinações de lúpulos e sabores para suas cervejas, empurrando o carrinho de praia na areia até construir nosso primeiro restaurante, que hoje serve orgulhosamente os turistas que visitam nosso paraíso.',
       'story.founder.cta':    'Venha nos conhecer',
 
       /* Contato page */
@@ -946,8 +946,8 @@
       'story.t5.text':  'In 2024, Sevá finds its permanent home at Shopping Dois Amores, on Camburi Beach. Brewery, restaurant and shop — all in one place.',
       'story.founder.script': 'The People Behind Sevá',
       'story.founder.caps':   'The Founder',
-      'story.founder.p1':     'João is a brewer, cook and dreamer. Trained in gastronomy and self-taught in fermentation, he spent years experimenting before turning Sevá into reality.',
-      'story.founder.p2':     'Every Sevá beer is a piece of his vision: local ingredients, refined technique, and that extra something that only comes from doing it with love.',
+      'story.founder.p1':     'João is the master brewer, creator and dreamer behind Sevá. It all began at his home, from watching the birds that visited his backyard in Camburi to the first batches of homebrewed beer.',
+      'story.founder.p2':     'That\'s how he created each label — bringing in local artists to develop the artwork, searching for hop combinations and flavours for his beers, pushing the beach cart through the sand until he built our first restaurant, which today proudly serves the visitors who come to our paradise.',
       'story.founder.cta':    'Come meet us',
 
       'contact.hero.title': 'Come visit us',
@@ -1375,8 +1375,8 @@
       'story.t5.text':  'En 2024, Sevá encuentra su hogar definitivo en Shopping Dois Amores, en la Playa de Camburi. Cervecería, restaurante y tienda — todo en un solo lugar.',
       'story.founder.script': 'Las personas detrás de Sevá',
       'story.founder.caps':   'El Fundador',
-      'story.founder.p1':     'João es cervecero, cocinero y soñador. Formado en gastronomía y autodidacta en fermentación, pasó años experimentando antes de convertir Sevá en realidad.',
-      'story.founder.p2':     'Cada cerveza de Sevá es un trozo de su visión: ingredientes locales, técnica refinada, y ese algo extra que solo viene de quien lo hace con amor.',
+      'story.founder.p1':     'João es el maestro cervecero, creador y soñador de Sevá. Todo comenzó en su casa, desde la observación de los pájaros que visitaban su jardín en Camburi hasta las primeras elaboraciones de cerveza.',
+      'story.founder.p2':     'Así fue como creó cada etiqueta, convocando a artistas locales para desarrollar los diseños, buscando combinaciones de lúpulos y sabores para sus cervezas, empujando el carrito de playa por la arena hasta construir nuestro primer restaurante, que hoy atiende con orgullo a los turistas que visitan nuestro paraíso.',
       'story.founder.cta':    'Ven a conocernos',
 
       'contact.hero.title': 'Ven a visitarnos',
