@@ -2882,6 +2882,7 @@ button { border: none; cursor: pointer; background: none; }
   .footer-main { grid-template-columns: 1fr; gap: 36px; padding: 60px 24px 40px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; padding: 20px 24px; }
   .hero-dots { display: none; }
+  .hero-slide-img { background-image: url('../images/Pratos/banner_hero.webp') !important; }
   .timeline::before { left: 18px; }
   .timeline-item { grid-template-columns: 36px 1fr; }
   .timeline-content-left { display: none; }
