@@ -6,17 +6,21 @@
   <title data-i18n="meta.title.menu">Cardápio — Sevá Cervejaria e Restaurante</title>
   <meta name="description" content="Cardápio da Sevá: cervejas artesanais, entradas, saladas, pratos, lanches, cumbucas, drinks e vinhos. Praia de Camburi, São Sebastião.">
   <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="canonical" href="https://sevacervejaria.com.br/cardapio.html">
+  <link rel="canonical" href="https://sevacamburi.com.br/cardapio.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://sevacamburi.com.br/cardapio.html">
+  <link rel="alternate" hreflang="en" href="https://sevacamburi.com.br/cardapio.html?lang=en">
+  <link rel="alternate" hreflang="es" href="https://sevacamburi.com.br/cardapio.html?lang=es">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sevá Cervejaria e Restaurante">
   <meta property="og:title" content="Cardápio — Sevá Cervejaria e Restaurante">
   <meta property="og:description" content="Cardápio da Sevá: cervejas artesanais, entradas, saladas, pratos, lanches, cumbucas, drinks e vinhos. Praia de Camburi, São Sebastião.">
-  <meta property="og:url" content="https://sevacervejaria.com.br/cardapio.html">
-  <meta property="og:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+  <meta property="og:url" content="https://sevacamburi.com.br/cardapio.html">
+  <meta property="og:image" content="https://sevacamburi.com.br/images/og_home.jpg">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Cardápio da Sevá: cervejas artesanais, entradas, saladas, pratos, lanches, cumbucas, drinks e vinhos. Praia de Camburi, São Sebastião.">
   <meta name="twitter:title" content="Cardápio — Sevá Cervejaria e Restaurante">
-  <meta name="twitter:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+  <meta name="twitter:image" content="https://sevacamburi.com.br/images/og_home.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -504,16 +508,17 @@
       .cardapio-nav a { min-height: 44px; display: flex; align-items: center; }
     }
   </style>
+  <meta name="theme-color" content="#2D6A4F">
 </head>
 <body>
 
   <a class="skip-link" href="#cardapio-hero">Ir para o conteúdo principal</a>
 
-  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+  <div id="loader"><img src="images/logo_seva.webp" alt="Sevá" width="120" height="60"></div>
 
   <header id="header">
     <div class="header-inner">
-      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá"></a>
+      <a href="index.html" class="logo"><img src="images/logo_seva.webp" alt="Sevá" width="120" height="60"></a>
       <nav class="nav-links">
         <a href="index.html" data-i18n="nav.home">Início</a>
         <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
@@ -529,7 +534,7 @@
           <button class="lang-btn" data-lang="es">ES</button>
         </div>
       </nav>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -548,7 +553,7 @@
   </nav>
 
   <!-- ══ HERO — vídeo sticky ══════════════════════════════ -->
-  <section class="menu-hero">
+  <section class="menu-hero" id="cardapio-hero">
     <video autoplay muted loop playsinline>
       <source src="images/banner_cardapio.mp4" type="video/mp4">
     </video>
@@ -598,7 +603,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Tapa%20Mediterraneo.png" alt="Tapa Mediterrâneo">
+                <img src="images/Pratos/card%C3%A1pio/Tapa%20Mediterraneo.webp" alt="Tapa Mediterrâneo" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.tapa_med.tag">Entrada</span>
@@ -611,7 +616,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Cenoura%20Cenoura%20Grega.png" alt="Cenoura Grega">
+                <img src="images/Pratos/card%C3%A1pio/Cenoura%20Cenoura%20Grega.webp" alt="Cenoura Grega" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -667,7 +672,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Peuxa%20a%20deusa%20do%20forno.png" alt="Peixa, a Deusa do Forno">
+                <img src="images/Pratos/card%C3%A1pio/Peuxa%20a%20deusa%20do%20forno.webp" alt="Peixa, a Deusa do Forno" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.peixa_deusa.tag">Prato da Casa</span>
@@ -680,7 +685,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Mignon%20Seva.png" alt="Mignon Sevá">
+                <img src="images/Pratos/card%C3%A1pio/Mignon%20Seva.webp" alt="Mignon Sevá" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -694,7 +699,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Peixa%20Roxa.png" alt="Peixa Roxa">
+                <img src="images/Pratos/card%C3%A1pio/Peixa%20Roxa.webp" alt="Peixa Roxa" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -708,7 +713,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Prato%20do%20Chef.png" alt="Prato do Chef">
+                <img src="images/Pratos/card%C3%A1pio/Prato%20do%20Chef.webp" alt="Prato do Chef" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.prato_chef.tag">Prato da Casa</span>
@@ -721,7 +726,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Ceviche%20Praiano.png" alt="Ceviche Praiano">
+                <img src="images/Pratos/card%C3%A1pio/Ceviche%20Praiano.webp" alt="Ceviche Praiano" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -735,7 +740,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/bowl%20camarao.png" alt="Bowl Camarão Rosa">
+                <img src="images/Pratos/card%C3%A1pio/bowl%20camarao.webp" alt="Bowl Camarão Rosa" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -749,7 +754,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Bowl%20rustico.png" alt="Bowl Rústico">
+                <img src="images/Pratos/card%C3%A1pio/Bowl%20rustico.webp" alt="Bowl Rústico" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.bowl_rustico.tag">Prato da Casa</span>
@@ -775,7 +780,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/mignon_pao.png" alt="Mignon no Pão">
+                <img src="images/Pratos/card%C3%A1pio/mignon_pao.webp" alt="Mignon no Pão" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.mignon_pao.tag">Lanche</span>
@@ -788,7 +793,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/lanche_costela.png" alt="De Costela">
+                <img src="images/Pratos/card%C3%A1pio/lanche_costela.webp" alt="De Costela" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.de_costela.tag">Lanche</span>
@@ -801,7 +806,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/sanduiche_jamon.png" alt="Sanduíche de Jamón">
+                <img src="images/Pratos/card%C3%A1pio/sanduiche_jamon.webp" alt="Sanduíche de Jamón" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -828,7 +833,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Salada%20Cambucu.png" alt="Salada com Cambucu">
+                <img src="images/Pratos/card%C3%A1pio/Salada%20Cambucu.webp" alt="Salada com Cambucu" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.salada_cambucu.tag">Salada</span>
@@ -841,7 +846,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Salada.png" alt="Salada Sevá">
+                <img src="images/Pratos/card%C3%A1pio/Salada.webp" alt="Salada Sevá" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.salada_seva.tag">Salada</span>
@@ -882,7 +887,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/basilon_pilsen.jpeg" alt="Pilsen">
+                <img src="images/cervejas/basilon_pilsen.jpeg" alt="Pilsen" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.pilsen.name">Pilsen</div>
@@ -898,7 +903,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/gaviao_neipinha_session_neipa.jpg" alt="Session IPA">
+                <img src="images/cervejas/gaviao_neipinha_session_neipa.jpg" alt="Session IPA" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.session_ipa.name">Session IPA</div>
@@ -914,7 +919,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/benedito_sour.jpeg" alt="Sour Frutas">
+                <img src="images/cervejas/benedito_sour.jpeg" alt="Sour Frutas" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.sour_frutas.name">Sour Frutas</div>
@@ -930,7 +935,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/pardal_australian_ipa.jpg" alt="IPA">
+                <img src="images/cervejas/pardal_australian_ipa.jpg" alt="IPA" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.ipa.name">IPA</div>
@@ -946,7 +951,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/coro_coro_double_ipa.jpeg" alt="Double IPA">
+                <img src="images/cervejas/coro_coro_double_ipa.jpeg" alt="Double IPA" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.double_ipa.name">Double IPA</div>
@@ -962,7 +967,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/baixa_temporada_imperial_stout.jpeg" alt="Imperial Stout">
+                <img src="images/cervejas/baixa_temporada_imperial_stout.jpeg" alt="Imperial Stout" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.imperial_stout.name">Imperial Stout</div>
@@ -1002,7 +1007,7 @@
             <!-- com foto -->
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.jpeg" alt="Caipirinha de Manjericão">
+                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.jpeg" alt="Caipirinha de Manjericão" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_manjericao.tag">Drink</span>
@@ -1015,7 +1020,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_maracuja.jpeg" alt="Caipirinha Tropical">
+                <img src="images/Drinks/caipirinha_maracuja.jpeg" alt="Caipirinha Tropical" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_tropical.tag">Drink</span>
@@ -1028,7 +1033,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_negroni.jpeg" alt="Negroni">
+                <img src="images/Drinks/drink_negroni.jpeg" alt="Negroni" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.negroni.tag">Drink</span>
@@ -1041,7 +1046,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_caipirinha_2_limoes.jpeg" alt="Caipirinha 2 Limões">
+                <img src="images/Drinks/drink_caipirinha_2_limoes.jpeg" alt="Caipirinha 2 Limões" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_2limons.tag">Drink</span>
@@ -1054,7 +1059,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drinl_aperol_spritz.jpeg" alt="Aperol Spritz">
+                <img src="images/Drinks/drinl_aperol_spritz.jpeg" alt="Aperol Spritz" loading="lazy" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.aperol_spritz.tag">Drink</span>
@@ -1116,7 +1121,7 @@
     <div class="footer-top-bar"></div>
     <div class="footer-main">
       <div class="footer-col footer-col--brand">
-        <div class="footer-logo"><img src="images/logo_seva.png" alt="Sevá"></div>
+        <div class="footer-logo"><img src="images/logo_seva.webp" alt="Sevá" loading="lazy" width="120" height="60"></div>
         <p class="footer-tagline" data-i18n="footer.about">Cervejaria e Restaurante na Praia de Camburi. Cinco anos de história, mais de 150 cervejas autorais e uma cozinha que faz o verão durar mais e ser mais gostoso.</p>
         <div class="footer-social">
           <a href="https://instagram.com/sevacerveja" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1127,7 +1132,7 @@
       <div class="footer-col footer-col--contact">
         <span class="footer-col-eyebrow" data-i18n="footer.findus">Nos Encontre</span>
         <ul class="footer-contact-list">
-          <li><span class="icon"><i class="fa fa-map-marker-alt"></i></span><a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a></li>
+          <li><span class="icon"><i class="fa fa-map-marker-alt"></i></span><a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener noreferrer" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a></li>
           <li><span class="icon"><i class="fa fa-clock"></i></span><span data-i18n="footer.hours">Dom–Qui: 12h–23h &nbsp;|&nbsp; Sex–Sáb–Fer: 12h–00h</span></li>
           <li><span class="icon"><i class="fa-brands fa-whatsapp"></i></span><a href="https://wa.me/5511953505016">(11) 95350-5016</a></li>
         </ul>
@@ -1145,7 +1150,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
-      <span class="footer-dev">Desenvolvido por <a href="https://wa.me/5511965970387?text=Oi%2C+vi+o+site+da+Sev%C3%A1+que+voc%C3%AA+desenvolveu!" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+      <span class="footer-dev">Desenvolvido por <a href="https://wa.me/5511965970387?text=Oi%2C+vi+o+site+da+Sev%C3%A1+que+voc%C3%AA+desenvolveu!" target="_blank" rel="noopener noreferrer">Claudio_ou_Cria</a></span>
     </div>
   </footer>
 

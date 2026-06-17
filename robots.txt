@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sevacervejaria.com.br/sitemap.xml
+Sitemap: https://sevacamburi.com.br/sitemap.xml

@@ -6,17 +6,21 @@
   <title data-i18n="meta.title.story">Nossa História — Sevá Cervejaria e Restaurante</title>
   <meta name="description" data-i18n="meta.desc.story" content="A história da Sevá: de cerveja artesanal caseira em 2020 a cervejaria e restaurante na Praia de Camburi.">
   <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="canonical" href="https://sevacervejaria.com.br/historia.html">
+  <link rel="canonical" href="https://sevacamburi.com.br/historia.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://sevacamburi.com.br/historia.html">
+  <link rel="alternate" hreflang="en" href="https://sevacamburi.com.br/historia.html?lang=en">
+  <link rel="alternate" hreflang="es" href="https://sevacamburi.com.br/historia.html?lang=es">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sevá Cervejaria e Restaurante">
   <meta property="og:title" content="Nossa História — Sevá Cervejaria e Restaurante">
   <meta property="og:description" content="A história da Sevá: de cerveja artesanal caseira em 2020 a cervejaria e restaurante na Praia de Camburi.">
-  <meta property="og:url" content="https://sevacervejaria.com.br/historia.html">
-  <meta property="og:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+  <meta property="og:url" content="https://sevacamburi.com.br/historia.html">
+  <meta property="og:image" content="https://sevacamburi.com.br/images/og_home.jpg">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="A história da Sevá: de cerveja artesanal caseira em 2020 a cervejaria e restaurante na Praia de Camburi.">
   <meta name="twitter:title" content="Nossa História — Sevá Cervejaria e Restaurante">
-  <meta name="twitter:image" content="https://sevacervejaria.com.br/images/og_home.jpg">
+  <meta name="twitter:image" content="https://sevacamburi.com.br/images/og_home.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -671,16 +675,17 @@
       .fundador-image-wrap { min-height: 320px; }
     }
   </style>
+  <meta name="theme-color" content="#2D6A4F">
 </head>
 <body>
 
   <a class="skip-link" href="#hs-hero">Ir para o conteúdo principal</a>
 
-  <div id="loader"><img src="images/logo_seva.png" alt="Sevá"></div>
+  <div id="loader"><img src="images/logo_seva.webp" alt="Sevá" width="120" height="60"></div>
 
   <header id="header">
     <div class="header-inner">
-      <a href="index.html" class="logo"><img src="images/logo_seva.png" alt="Sevá"></a>
+      <a href="index.html" class="logo"><img src="images/logo_seva.webp" alt="Sevá" width="120" height="60"></a>
       <nav class="nav-links">
         <a href="index.html" data-i18n="nav.home">Início</a>
         <a href="restaurante.html" data-i18n="nav.restaurant">Restaurante</a>
@@ -696,7 +701,7 @@
           <button class="lang-btn" data-lang="es">ES</button>
         </div>
       </nav>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -756,21 +761,21 @@
     <!-- belt infinito de latas no fundo — sem máscara -->
     <div class="nome-belt-wrap" id="nomeBelt">
       <div class="nome-belt-track">
-        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)" loading="lazy" decoding="async"></div>
         <!-- clone para loop seamless -->
-        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)"></div>
-        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_hzyipa.webp"       alt="" style="transform:rotate(-9deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_doubleneipa.webp"  alt="" style="transform:rotate(13deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/lata_imperialstout.webp"alt="" style="transform:rotate(-6deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/session_ipa.webp"       alt="" style="transform:rotate(16deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/pilsen.webp"            alt="" style="transform:rotate(-11deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour.webp"              alt="" style="transform:rotate(8deg)" loading="lazy" decoding="async"></div>
+        <div class="nome-belt-item"><img src="images/cervejas/sour%202.webp"          alt="" style="transform:rotate(-14deg)" loading="lazy" decoding="async"></div>
       </div>
     </div>
 
@@ -802,7 +807,7 @@
         <div class="tl-item tl-left-item" data-tl>
           <div class="tl-side tl-left">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/1.webp" alt="O Começo — 2020"></div>
+              <div class="tl-card"><img src="images/Historia/1.webp" alt="O Começo — 2020" loading="lazy" decoding="async"></div>
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t1.title">O Começo</h3>
@@ -825,7 +830,7 @@
           </div>
           <div class="tl-side tl-right">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/2.webp" alt="A Praia como Palco — 2021"></div>
+              <div class="tl-card"><img src="images/Historia/2.webp" alt="A Praia como Palco — 2021" loading="lazy" decoding="async"></div>
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t2.title">A Praia como Palco</h3>
@@ -838,7 +843,7 @@
         <div class="tl-item tl-left-item" data-tl>
           <div class="tl-side tl-left">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/3.webp" alt="A Kombinha — 2022"></div>
+              <div class="tl-card"><img src="images/Historia/3.webp" alt="A Kombinha — 2022" loading="lazy" decoding="async"></div>
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t3.title">Uma kombi, 4 torneiras e um sonho</h3>
@@ -861,7 +866,7 @@
           </div>
           <div class="tl-side tl-right">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/4.webp" alt="O ano das festas — 2023"></div>
+              <div class="tl-card"><img src="images/Historia/4.webp" alt="O ano das festas — 2023" loading="lazy" decoding="async"></div>
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t4.title">Um show a parte</h3>
@@ -874,7 +879,7 @@
         <div class="tl-item tl-left-item" data-tl>
           <div class="tl-side tl-left">
             <div class="tl-img-wrap">
-              <div class="tl-card"><img src="images/Historia/5.webp" alt="Endereço Fixo — 2024"></div>
+              <div class="tl-card"><img src="images/Historia/5.webp" alt="Endereço Fixo — 2024" loading="lazy" decoding="async"></div>
             </div>
             <div class="tl-text">
               <h3 data-i18n="story.t5.title">Construímos nossa casa</h3>
@@ -896,7 +901,7 @@
   <section class="split-section fundador-section hs-layer hs-layer-5" style="background: var(--light); overflow: visible;">
     <div class="fundador-img-outer reveal-l">
       <div class="fundador-card-3d">
-        <img src="images/joao.webp" alt="João — Fundador da Sevá">
+        <img src="images/joao.webp" alt="João — Fundador da Sevá" loading="lazy" decoding="async">
       </div>
     </div>
     <div class="split-text fundador-text reveal-r">
@@ -925,7 +930,7 @@
 
         <div class="footer-col footer-col--brand">
           <div class="footer-logo">
-            <img src="images/logo_seva.png" alt="Sevá">
+            <img src="images/logo_seva.webp" alt="Sevá" width="120" height="60" loading="lazy" decoding="async">
           </div>
           <p class="footer-tagline" data-i18n="footer.about">Cervejaria e Restaurante na Praia de Camburi. Cinco anos de história, mais de 150 cervejas autorais e uma cozinha que faz o verão durar mais e ser mais gostoso.</p>
           <div class="footer-social">
@@ -937,11 +942,11 @@
         <div class="footer-divider"></div>
 
         <div class="footer-col footer-col--contact">
-          <span class="footer-col-eyebrow">Nos Encontre</span>
+          <span class="footer-col-eyebrow" data-i18n="footer.findus">Nos Encontre</span>
           <ul class="footer-contact-list">
             <li>
               <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
-              <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a>
+              <a href="https://www.google.com/maps/dir//Sev%C3%A1+-+Restaurante+e+Cervejaria+-+Camburi,+Shopping+Dois+Amores+-+Al+Antonio+Jos%C3%A9+Marques,+330+-+Loja+da+Sev%C3%A1+-+Praia+de+Cambur%C3%AD,+S%C3%A3o+Sebasti%C3%A3o+-+SP,+11619-392/@-23.4812624,-46.8516864,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94d27f86075a59e9:0x2659a86bf6c9eec1!2m2!1d-45.6505958!2d-23.7756489?entry=ttu" target="_blank" rel="noopener noreferrer" data-i18n="footer.address" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">Shopping Dois Amores, Praia de Camburi<br>São Sebastião – SP</a>
             </li>
             <li>
               <span class="icon"><i class="fa fa-clock"></i></span>
@@ -955,7 +960,7 @@
         </div>
 
         <div class="footer-col footer-col--nav">
-          <span class="footer-col-eyebrow">Explore</span>
+          <span class="footer-col-eyebrow" data-i18n="footer.explore">Explore</span>
           <ul class="footer-nav-list">
             <li><a href="cardapio.html" data-i18n="nav.menu">Cardápio</a></li>
             <li><a href="cervejaria.html" data-i18n="nav.brewery">Cervejaria</a></li>
@@ -970,7 +975,7 @@
 
       <div class="footer-bottom">
         <span class="footer-copy" data-i18n="footer.copy">© Sevá Cervejaria e Restaurante 2025. Todos os direitos reservados.</span>
-        <span class="footer-dev">Desenvolvido por <a href="https://wa.me/5511965970387?text=Oi%2C+vi+o+site+da+Sev%C3%A1+que+voc%C3%AA+desenvolveu!" target="_blank" rel="noopener">Claudio_ou_Cria</a></span>
+        <span class="footer-dev">Desenvolvido por <a href="https://wa.me/5511965970387?text=Oi%2C+vi+o+site+da+Sev%C3%A1+que+voc%C3%AA+desenvolveu!" target="_blank" rel="noopener noreferrer">Claudio_ou_Cria</a></span>
       </div>
 
     </footer>
