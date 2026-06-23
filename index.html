@@ -65,13 +65,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <!-- Pré-carrega a imagem crítica do hero (LCP) -->
-  <link rel="preload" as="image" href="images/Pratos/Banner%20Pratos.webp" fetchpriority="high">
+  <!-- Pré-carrega a imagem crítica do hero (LCP) — mobile e desktop carregam imagens diferentes -->
+  <link rel="preload" as="image" href="images/Pratos/banner_hero.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/Pratos/Banner%20Pratos.webp" media="(min-width: 768px)" fetchpriority="high">
   <!-- Fontes: carregadas como <link> (evita bloqueio do @import em CSS) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap"></noscript>
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS crítico inline: loader + header + hero — elimina bloqueio de renderização -->
+  <style>
+    :root{--verde:#2D6A4F;--verde-dark:#1B4332;--verde-mid:#40916C;--verde-light:#74C69D;--verde-pale:#D8F3DC;--sand:#F5F0E8;--sand-dark:#EAE4D8;--sand-mid:#D5CDBC;--gold:#C4963A;--gold-light:#E8D49A;--black:#0f0f0f;--dark:#1a1a1a;--dark2:#232323;--gray:#6a6a6a;--gray-bg:#f0ece6;--light:#f7f4ef;--white:#ffffff;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',sans-serif;--caps:'Barlow Condensed',sans-serif;--nav-h:80px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Barlow',sans-serif;font-size:15px;line-height:1.7;color:#2a2a2a;background:var(--sand);overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}button{border:none;cursor:pointer;background:none}
+    #loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease}
+    #loader.hidden{opacity:0;pointer-events:none}
+    #loader img{width:80px;animation:pulse 1s ease-in-out infinite alternate}
+    @keyframes pulse{from{opacity:.4}to{opacity:1}}
+    #header{position:fixed;top:0;left:0;width:100%;z-index:100;background:transparent;transition:background .4s ease,box-shadow .4s ease}
+    #header.scrolled{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.1)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:1300px;margin:0 auto;padding:0 40px}
+    .logo img{height:52px;transition:filter .3s}
+    #header:not(.scrolled) .logo img{filter:brightness(0) invert(1)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:26px;height:2px;background:var(--white);transition:all .3s}
+    #hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-slides-wrapper{position:absolute;inset:0;z-index:0}
+    .hero-slide{position:absolute;inset:0;opacity:0}
+    .hero-slide.is-active{opacity:1}
+    .hero-slide-img{position:absolute;inset:-15% 0;background-size:cover;background-position:center;will-change:transform}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(5,18,10,.94) 0%,rgba(5,18,10,.52) 38%,rgba(5,18,10,.12) 68%,rgba(5,18,10,.28) 100%),linear-gradient(to right,rgba(5,18,10,.42) 0%,transparent 62%)}
+    .hero-content{position:relative;z-index:2;width:100%;max-width:1000px;margin:0 auto;padding:0 clamp(24px,5vw,64px);text-align:center}
+    .hero-line-clip{display:block;overflow:hidden;line-height:1;padding-bottom:6px}
+    .hero-line-inner{display:block;font-family:var(--caps);font-size:clamp(3rem,6vw,7.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--white);line-height:1;will-change:transform}
+    @media(max-width:767px){.hero-slide-img{background-image:url('../images/Pratos/banner_hero.webp')!important}.hamburger{display:flex}.nav-links{display:none}}
+  </style>
+  <!-- style.css carregado de forma não-bloqueante -->
+  <link rel="preload" as="style" href="css/style.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   <meta name="theme-color" content="#2D6A4F">
@@ -181,19 +213,19 @@
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_doubleneipa.webp" alt="Encontro Amarelo Double NEIPA" loading="lazy" decoding="async">
+            <img src="images/cervejas/lata_doubleneipa_sm.webp" alt="Encontro Amarelo Double NEIPA" loading="lazy" decoding="async" width="400" height="711">
           </div>
         </article>
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_hzyipa.webp" alt="Coqueiro Hazy IPA" loading="lazy" decoding="async">
+            <img src="images/cervejas/lata_hzyipa_sm.webp" alt="Coqueiro Hazy IPA" loading="lazy" decoding="async" width="400" height="711">
           </div>
         </article>
 
         <article class="brew-card">
           <div class="brew-card-img">
-            <img src="images/cervejas/lata_imperialstout.webp" alt="Baixa Temporada Imperial Stout" loading="lazy" decoding="async">
+            <img src="images/cervejas/lata_imperialstout_sm.webp" alt="Baixa Temporada Imperial Stout" loading="lazy" decoding="async" width="400" height="711">
           </div>
         </article>
 
@@ -202,8 +234,8 @@
 
     <!-- Bloco 2: vídeo de fundo — texto + parágrafos -->
     <div class="brew-video-section">
-      <video class="brew-bg-video" autoplay muted loop playsinline>
-        <source src="images/cervejas/banner_onda.webm" type="video/webm">
+      <video class="brew-bg-video" autoplay muted loop playsinline preload="none">
+        <source data-src="images/cervejas/banner_onda.webm" type="video/webm">
       </video>
       <div class="brew-video-overlay"></div>
       <div class="brew-video-content">

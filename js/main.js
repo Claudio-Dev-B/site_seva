@@ -386,6 +386,25 @@
   }
   initEssenciaGsap();
 
+  /* === CERVEJARIA — Lazy-load do vídeo de fundo (2 MB+, abaixo da dobra) === */
+  function initBrewVideo() {
+    var video = document.querySelector('.brew-bg-video');
+    if (!video) return;
+    var source = video.querySelector('source[data-src]');
+    if (!source) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      source.setAttribute('src', source.getAttribute('data-src'));
+      video.load();
+      video.play().catch(function () {});
+      observer.disconnect();
+    }, { rootMargin: '300px', threshold: 0 });
+
+    observer.observe(video);
+  }
+  initBrewVideo();
+
   /* === HORÁRIOS — Lazy-load de vídeos (performance) ===
      IntersectionObserver: só carrega/toca quando o card entra na viewport
   */
