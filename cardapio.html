@@ -26,7 +26,29 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&display=swap"></noscript>
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS crítico inline: variáveis + reset + loader + header -->
+  <style>
+    :root{--verde:#2D6A4F;--verde-dark:#1B4332;--verde-mid:#40916C;--verde-light:#74C69D;--verde-pale:#D8F3DC;--sand:#F5F0E8;--sand-dark:#EAE4D8;--sand-mid:#D5CDBC;--gold:#C4963A;--gold-light:#E8D49A;--black:#0f0f0f;--dark:#1a1a1a;--dark2:#232323;--gray:#6a6a6a;--gray-bg:#f0ece6;--light:#f7f4ef;--white:#ffffff;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',sans-serif;--caps:'Barlow Condensed',sans-serif;--nav-h:80px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Barlow',sans-serif;font-size:15px;line-height:1.7;color:#2a2a2a;background:var(--sand);overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}button{border:none;cursor:pointer;background:none}
+    #loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease}
+    #loader.hidden{opacity:0;pointer-events:none}
+    #loader img{width:80px;animation:pulse 1s ease-in-out infinite alternate}
+    @keyframes pulse{from{opacity:.4}to{opacity:1}}
+    #header{position:fixed;top:0;left:0;width:100%;z-index:100;background:transparent;transition:background .4s ease,box-shadow .4s ease}
+    #header.scrolled{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.1)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:1300px;margin:0 auto;padding:0 40px}
+    .logo img{height:52px;transition:filter .3s}
+    #header:not(.scrolled) .logo img{filter:brightness(0) invert(1)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:26px;height:2px;background:var(--white);transition:all .3s}
+    @media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}}
+  </style>
+  <!-- style.css carregado de forma não-bloqueante -->
+  <link rel="preload" as="style" href="css/style.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
@@ -551,9 +573,9 @@
 
   <!-- ══ HERO — vídeo sticky ══════════════════════════════ -->
   <section class="menu-hero" id="cardapio-hero">
-    <video autoplay muted loop playsinline>
-      <source src="images/banner_cardapio.webm" type="video/webm">
-      <source src="images/banner_cardapio.mp4" type="video/mp4">
+    <video class="menu-hero-video" autoplay muted loop playsinline preload="none">
+      <source data-src="images/banner_cardapio.webm" type="video/webm">
+      <source data-src="images/banner_cardapio.mp4" type="video/mp4">
     </video>
     <div class="menu-hero-overlay"></div>
     <div class="menu-hero-content">
@@ -885,7 +907,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/basilon_pilsen.jpeg" alt="Pilsen" loading="eager" decoding="async">
+                <img src="images/cervejas/basilon_pilsen.webp" alt="Pilsen" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.pilsen.name">Pilsen</div>
@@ -917,7 +939,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/benedito_sour.jpeg" alt="Sour Frutas" loading="eager" decoding="async">
+                <img src="images/cervejas/benedito_sour.webp" alt="Sour Frutas" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.sour_frutas.name">Sour Frutas</div>
@@ -949,7 +971,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/coro_coro_double_ipa.jpeg" alt="Double IPA" loading="eager" decoding="async">
+                <img src="images/cervejas/coro_coro_double_ipa.webp" alt="Double IPA" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.double_ipa.name">Double IPA</div>
@@ -965,7 +987,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/baixa_temporada_imperial_stout.jpeg" alt="Imperial Stout" loading="eager" decoding="async">
+                <img src="images/cervejas/baixa_temporada_imperial_stout.webp" alt="Imperial Stout" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.imperial_stout.name">Imperial Stout</div>
@@ -1005,7 +1027,7 @@
             <!-- com foto -->
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.jpeg" alt="Caipirinha de Manjericão" loading="eager" decoding="async">
+                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.webp" alt="Caipirinha de Manjericão" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_manjericao.tag">Drink</span>
@@ -1018,7 +1040,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_maracuja.jpeg" alt="Caipirinha Tropical" loading="eager" decoding="async">
+                <img src="images/Drinks/caipirinha_maracuja.webp" alt="Caipirinha Tropical" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_tropical.tag">Drink</span>
@@ -1031,7 +1053,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_negroni.jpeg" alt="Negroni" loading="eager" decoding="async">
+                <img src="images/Drinks/drink_negroni.webp" alt="Negroni" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.negroni.tag">Drink</span>
@@ -1044,7 +1066,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_caipirinha_2_limoes.jpeg" alt="Caipirinha 2 Limões" loading="eager" decoding="async">
+                <img src="images/Drinks/drink_caipirinha_2_limoes.webp" alt="Caipirinha 2 Limões" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_2limons.tag">Drink</span>
@@ -1057,7 +1079,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drinl_aperol_spritz.jpeg" alt="Aperol Spritz" loading="eager" decoding="async">
+                <img src="images/Drinks/drinl_aperol_spritz.webp" alt="Aperol Spritz" loading="eager" decoding="async">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.aperol_spritz.tag">Drink</span>
@@ -1155,6 +1177,27 @@
   <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
+    /* ── Lazy-load do vídeo hero (12 MB+ — não carregar antes da viewport) ── */
+    (function () {
+      var video = document.querySelector('.menu-hero-video');
+      if (!video) return;
+      var sources = video.querySelectorAll('source[data-src]');
+      if (!sources.length) return;
+      var loaded = false;
+      function loadVideo() {
+        if (loaded) return;
+        loaded = true;
+        sources.forEach(function(s) { s.setAttribute('src', s.getAttribute('data-src')); });
+        video.load();
+        video.play().catch(function () {});
+      }
+      // Carrega imediatamente se a seção já estiver visível (hero é o topo da página)
+      var io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { loadVideo(); io.disconnect(); }
+      }, { rootMargin: '200px' });
+      io.observe(video);
+    })();
+
     /* ── Parallax sticky: seção pausa quando TODO conteúdo foi visto ──────────
        Para cada seção, calculamos top = min(navH, viewH - sectionH).
        Seções maiores que a tela recebem top NEGATIVO: só travam quando o fundo
@@ -1175,13 +1218,12 @@
           sections.forEach(s => s.style.top = '');
           return;
         }
-        const vh  = window.innerHeight;
+        const vh   = window.innerHeight;
         const navH = getNavH();
-        sections.forEach(s => {
-          // Para seções altas: top negativo → seção trava só quando bottom = viewport bottom
-          // Para seções curtas: top = navH  → seção fica visível por inteiro
-          const stickyTop = Math.min(navH, vh - s.offsetHeight);
-          s.style.top = stickyTop + 'px';
+        // Lê todas as alturas primeiro (evita reflow forçado por intercalar leitura/escrita)
+        const heights = Array.from(sections).map(s => s.offsetHeight);
+        sections.forEach((s, i) => {
+          s.style.top = Math.min(navH, vh - heights[i]) + 'px';
         });
       }
 
