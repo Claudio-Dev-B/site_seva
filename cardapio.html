@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PL6VQNLBBJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PL6VQNLBBJ');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="meta.title.menu">Cardápio — Sevá Cervejaria e Restaurante</title>
@@ -47,8 +56,8 @@
     @media(max-width:767px){.hamburger{display:flex}.nav-links{display:none}}
   </style>
   <!-- style.css carregado de forma não-bloqueante -->
-  <link rel="preload" as="style" href="css/style.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+  <link rel="preload" as="style" href="css/style.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
@@ -623,7 +632,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Tapa%20Mediterraneo.webp" alt="Tapa Mediterrâneo" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Tapa%20Mediterraneo.webp" alt="Tapa Mediterrâneo" loading="eager" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.tapa_med.tag">Entrada</span>
@@ -636,7 +645,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Cenoura%20Cenoura%20Grega.webp" alt="Cenoura Grega" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Cenoura%20Cenoura%20Grega.webp" alt="Cenoura Grega" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -692,7 +701,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Peuxa%20a%20deusa%20do%20forno.webp" alt="Peixa, a Deusa do Forno" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Peuxa%20a%20deusa%20do%20forno.webp" alt="Peixa, a Deusa do Forno" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.peixa_deusa.tag">Prato da Casa</span>
@@ -705,7 +714,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Mignon%20Seva.webp" alt="Mignon Sevá" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Mignon%20Seva.webp" alt="Mignon Sevá" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -719,7 +728,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Peixa%20Roxa.webp" alt="Peixa Roxa" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Peixa%20Roxa.webp" alt="Peixa Roxa" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -733,7 +742,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Prato%20do%20Chef.webp" alt="Prato do Chef" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Prato%20do%20Chef.webp" alt="Prato do Chef" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.prato_chef.tag">Prato da Casa</span>
@@ -746,7 +755,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Ceviche%20Praiano.webp" alt="Ceviche Praiano" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Ceviche%20Praiano.webp" alt="Ceviche Praiano" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -760,7 +769,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/bowl%20camarao.webp" alt="Bowl Camarão Rosa" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/bowl%20camarao.webp" alt="Bowl Camarão Rosa" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -774,7 +783,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Bowl%20rustico.webp" alt="Bowl Rústico" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Bowl%20rustico.webp" alt="Bowl Rústico" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.bowl_rustico.tag">Prato da Casa</span>
@@ -800,7 +809,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/mignon_pao.webp" alt="Mignon no Pão" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/mignon_pao.webp" alt="Mignon no Pão" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.mignon_pao.tag">Lanche</span>
@@ -813,7 +822,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/lanche_costela.webp" alt="De Costela" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/lanche_costela.webp" alt="De Costela" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.de_costela.tag">Lanche</span>
@@ -826,7 +835,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/sanduiche_jamon.webp" alt="Sanduíche de Jamón" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/sanduiche_jamon.webp" alt="Sanduíche de Jamón" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-star">★</span>
@@ -853,7 +862,7 @@
 
             <div class="menu-card card-featured">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Salada%20Cambucu.webp" alt="Salada com Cambucu" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Salada%20Cambucu.webp" alt="Salada com Cambucu" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.salada_cambucu.tag">Salada</span>
@@ -866,7 +875,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img">
-                <img src="images/Pratos/card%C3%A1pio/Salada.webp" alt="Salada Sevá" loading="eager" decoding="async">
+                <img src="images/Pratos/card%C3%A1pio/Salada.webp" alt="Salada Sevá" loading="lazy" decoding="async" width="500" height="500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.salada_seva.tag">Salada</span>
@@ -907,7 +916,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/basilon_pilsen.webp" alt="Pilsen" loading="eager" decoding="async">
+                <img src="images/cervejas/basilon_pilsen.webp" alt="Pilsen" loading="lazy" decoding="async" width="1600" height="1503">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.pilsen.name">Pilsen</div>
@@ -923,7 +932,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/gaviao_neipinha_session_neipa.webp" alt="Session IPA" loading="eager" decoding="async">
+                <img src="images/cervejas/gaviao_neipinha_session_neipa.webp" alt="Session IPA" loading="lazy" decoding="async" width="1920" height="2880">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.session_ipa.name">Session IPA</div>
@@ -939,7 +948,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/benedito_sour.webp" alt="Sour Frutas" loading="eager" decoding="async">
+                <img src="images/cervejas/benedito_sour.webp" alt="Sour Frutas" loading="lazy" decoding="async" width="1600" height="1575">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.sour_frutas.name">Sour Frutas</div>
@@ -955,7 +964,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/pardal_australian_ipa.webp" alt="IPA" loading="eager" decoding="async">
+                <img src="images/cervejas/pardal_australian_ipa.webp" alt="IPA" loading="lazy" decoding="async" width="1920" height="2880">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.ipa.name">IPA</div>
@@ -971,7 +980,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/coro_coro_double_ipa.webp" alt="Double IPA" loading="eager" decoding="async">
+                <img src="images/cervejas/coro_coro_double_ipa.webp" alt="Double IPA" loading="lazy" decoding="async" width="858" height="1600">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.double_ipa.name">Double IPA</div>
@@ -987,7 +996,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/cervejas/baixa_temporada_imperial_stout.webp" alt="Imperial Stout" loading="eager" decoding="async">
+                <img src="images/cervejas/baixa_temporada_imperial_stout.webp" alt="Imperial Stout" loading="lazy" decoding="async" width="1354" height="1331">
               </div>
               <div class="menu-card-body">
                 <div class="card-name" data-i18n="cardapio.imperial_stout.name">Imperial Stout</div>
@@ -1027,7 +1036,7 @@
             <!-- com foto -->
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.webp" alt="Caipirinha de Manjericão" loading="eager" decoding="async">
+                <img src="images/Drinks/caipirinha_manjeric%C3%A3o.webp" alt="Caipirinha de Manjericão" loading="lazy" decoding="async" width="846" height="1600">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_manjericao.tag">Drink</span>
@@ -1040,7 +1049,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/caipirinha_maracuja.webp" alt="Caipirinha Tropical" loading="eager" decoding="async">
+                <img src="images/Drinks/caipirinha_maracuja.webp" alt="Caipirinha Tropical" loading="lazy" decoding="async" width="1600" height="1600">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_tropical.tag">Drink</span>
@@ -1053,7 +1062,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_negroni.webp" alt="Negroni" loading="eager" decoding="async">
+                <img src="images/Drinks/drink_negroni.webp" alt="Negroni" loading="lazy" decoding="async" width="767" height="1415">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.negroni.tag">Drink</span>
@@ -1066,7 +1075,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drink_caipirinha_2_limoes.webp" alt="Caipirinha 2 Limões" loading="eager" decoding="async">
+                <img src="images/Drinks/drink_caipirinha_2_limoes.webp" alt="Caipirinha 2 Limões" loading="lazy" decoding="async" width="844" height="1500">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.caipirinha_2limons.tag">Drink</span>
@@ -1079,7 +1088,7 @@
 
             <div class="menu-card">
               <div class="menu-card-img img-cover">
-                <img src="images/Drinks/drinl_aperol_spritz.webp" alt="Aperol Spritz" loading="eager" decoding="async">
+                <img src="images/Drinks/drinl_aperol_spritz.webp" alt="Aperol Spritz" loading="lazy" decoding="async" width="847" height="1599">
               </div>
               <div class="menu-card-body">
                 <span class="card-tag" data-i18n="cardapio.aperol_spritz.tag">Drink</span>
@@ -1174,8 +1183,8 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/i18n.min.js" defer></script>
+  <script src="js/main.min.js" defer></script>
   <script>
     /* ── Lazy-load do vídeo hero (12 MB+ — não carregar antes da viewport) ── */
     (function () {

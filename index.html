@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PL6VQNLBBJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PL6VQNLBBJ');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="meta.title.home">Sevá Cervejaria e Restaurante — Praia de Camburi</title>
@@ -102,8 +111,8 @@
     @media(max-width:767px){.hero-slide-img{background-image:url('../images/Pratos/banner_hero.webp')!important}.hamburger{display:flex}.nav-links{display:none}}
   </style>
   <!-- style.css carregado de forma não-bloqueante -->
-  <link rel="preload" as="style" href="css/style.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+  <link rel="preload" as="style" href="css/style.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.min.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   <meta name="theme-color" content="#2D6A4F">
@@ -355,7 +364,7 @@
       <!-- Imagem: entra de baixo, para centralizada -->
       <div class="essencia-img-card">
         <div class="essencia-img-inner">
-          <img src="images/artistico_loja_2.webp" alt="A Sevá em Camburi" loading="lazy" decoding="async">
+          <img src="images/artistico_loja_2.webp" alt="A Sevá em Camburi" loading="lazy" decoding="async" width="1080" height="810">
         </div>
         <div class="essencia-img-overlay"></div>
       </div>
@@ -518,6 +527,7 @@
              aria-label="Abrir localização no Google Maps">
             <iframe
               class="chegar-map-iframe"
+              title="Localização da Sevá no Google Maps"
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"
@@ -561,32 +571,32 @@
           <div class="testi-track" id="testiTrack">
 
             <!-- Set 1 -->
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp"  alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="Avaliação Sevá" loading="lazy" decoding="async"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="Avaliação Sevá" loading="lazy" decoding="async" width="1080" height="900"></div></div>
 
             <!-- Set 2 — duplicado para loop contínuo -->
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp"  alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="" loading="lazy" decoding="async"></div></div>
-            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="" loading="lazy" decoding="async"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_1.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_2.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_3.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_4.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_5.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_6.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_7.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_8.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_9.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_10.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_11.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
+            <div class="testi-card" aria-hidden="true"><div class="testi-card-img"><img src="images/avaliacoes/avalia%C3%A7%C3%A3o_12.webp" alt="" loading="lazy" decoding="async" width="1080" height="900"></div></div>
 
           </div>
         </div>
@@ -661,7 +671,7 @@
 
   <script src="js/vendor/gsap.min.js" defer></script>
   <script src="js/vendor/ScrollTrigger.min.js" defer></script>
-  <script src="js/i18n.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/i18n.min.js" defer></script>
+  <script src="js/main.min.js" defer></script>
 </body>
 </html>
