@@ -599,6 +599,23 @@
       .fundador-card-3d img { width: calc(100% + 36px); height: calc(100% + 28px); }
     }
 
+    /* ── Seção O Nome (belt de latas + SEVÁ/AVES) em mobile ──────────────
+       Em telas pequenas o pin sticky é desativado: o transform de parallax
+       aplicado via JS a cada .hs-layer brigava com o position:sticky deste
+       elemento, travando/trepidando a seção inteira ao rolar. Sem o pin,
+       a seção flui normalmente — mesma estratégia já usada no cardápio. */
+    @media (max-width: 768px) {
+      .nome-section {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        min-height: 100svh;
+        padding: 72px 0;
+      }
+      /* imagens do belt mais leves — menos custo de composição em GPUs mobile */
+      .nome-belt-item { width: 170px; padding-bottom: 48px; }
+      .nome-belt-item img { width: 148px; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35)); }
+    }
 
     /* ── SEVÁ ↔ AVES letter-swap animation ── */
     .seva-aves-flip {
@@ -1077,6 +1094,18 @@
         nomeBeltWrap.style.scale = '1.15';
       }
 
+      /* pausa a animação infinita do belt quando fora da viewport — evita
+         custo contínuo de composição (drop-shadow em 14 imagens) no mobile */
+      const nomeBeltTrack = nomeSection ? nomeSection.querySelector('.nome-belt-track') : null;
+      if (nomeBeltTrack && nomeSection && 'IntersectionObserver' in window) {
+        const beltObs = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            nomeBeltTrack.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+          });
+        }, { threshold: 0.05 });
+        beltObs.observe(nomeSection);
+      }
+
       /* ── Parallax scroll: seções sobem umas sobre as outras ── */
       const layers = document.querySelectorAll('.hs-layer');
 
@@ -1144,6 +1173,7 @@
         /* cada camada desloca levemente no eixo Y criando profundidade */
         layers.forEach((layer, i) => {
           if (i === 0) return; /* hero não mexe */
+          if (layer.classList.contains('nome-section')) return; /* sticky — não recebe transform próprio, senão briga com o pin e trava no mobile */
           const rect = layer.getBoundingClientRect();
           const vh = window.innerHeight;
           if (rect.bottom < 0 || rect.top > vh * 1.5) return;
@@ -1159,10 +1189,16 @@
 
     })();
 
-    /* ── SEVÁ ↔ AVES letter-movement loop ── */
+    /* ── SEVÁ ↔ AVES letter-movement loop ──────────────────────────────────
+       Anima via transform: translateX() (GPU/compositor), nunca via `left`
+       (que força reflow de layout a cada frame — era a causa da travada no
+       mobile). Também pausa quando a seção sai da viewport e recalcula as
+       posições em resize/orientationchange, para não ficar com medidas
+       obsoletas após rotação de tela ou troca de fonte. ── */
     (function () {
       const container = document.getElementById('sevaAvesTitle');
       if (!container) return;
+      const nomeSection = container.closest('.nome-section');
       const els = Array.from(container.querySelectorAll('.flip-l'));
       // els = [S(0), E(1), V(2), Á(3)]
       // AVES order: Á→A(3), V(2), E(1), S(0)
@@ -1171,8 +1207,11 @@
       let isAves = false;
       let sevaPos = [], avesPos = [];
       let ready = false;
+      let visible = false;
+      let loopTimer = null;
 
-      function init() {
+      function measure() {
+        els.forEach(el => { el.style.transition = 'none'; el.style.transform = 'translateX(0)'; });
         const rects = els.map(e => e.getBoundingClientRect());
         const ws    = rects.map(r => r.width);
         const totalW = ws[0] + ws[1] + ws[2] + ws[3];
@@ -1194,25 +1233,27 @@
         ];
 
         // Converte letras para absolute com posições iniciais SEVÁ
+        const base = isAves ? avesPos : sevaPos;
         els.forEach((el, i) => {
           el.classList.add('is-abs');
-          el.style.transition = 'none';
-          el.style.left = sevaPos[i] + 'px';
+          el.style.left = '0';
           el.style.top  = '0';
+          el.style.transition = 'none';
+          el.style.transform = `translateX(${base[i]}px)`;
         });
 
         ready = true;
       }
 
       function swap() {
-        if (!ready) init();
+        if (!ready) measure();
 
         const goingToAves = !isAves;
         const targets = goingToAves ? avesPos : sevaPos;
 
         els.forEach((el, i) => {
-          el.style.transition = 'left 1.1s cubic-bezier(0.4, 0, 0.2, 1)';
-          el.style.left = targets[i] + 'px';
+          el.style.transition = 'transform 1.1s cubic-bezier(0.4, 0, 0.2, 1)';
+          el.style.transform = `translateX(${targets[i]}px)`;
         });
 
         // Troca Á↔A a meio do movimento
@@ -1223,10 +1264,37 @@
         isAves = goingToAves;
       }
 
-      setTimeout(function loop() {
-        swap();
-        setTimeout(loop, 3800);
-      }, 2200);
+      function scheduleLoop() {
+        clearTimeout(loopTimer);
+        loopTimer = setTimeout(function loop() {
+          if (visible) swap();
+          loopTimer = setTimeout(loop, 3800);
+        }, 2200);
+      }
+
+      /* pausa a animação enquanto a seção não está na viewport — evita
+         custo de layout/composição contínuo em segundo plano no mobile */
+      if (nomeSection && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => { visible = e.isIntersecting; });
+        }, { threshold: 0.05 });
+        io.observe(nomeSection);
+      } else {
+        visible = true; /* fallback sem observer */
+      }
+
+      scheduleLoop();
+
+      /* recalcula posições em resize/orientationchange (fonte, layout ou
+         rotação de tela podem mudar as larguras das letras) */
+      let resizeTimer = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(measure, 200);
+      });
+      window.addEventListener('orientationchange', () => {
+        setTimeout(measure, 300);
+      });
     })();
 
   </script>
