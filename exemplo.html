@@ -101,10 +101,10 @@
     width:100%;
     transition: transform 1.15s cubic-bezier(.65,0,.35,1), margin 1.15s cubic-bezier(.65,0,.35,1), min-height 1.15s cubic-bezier(.65,0,.35,1);
   }
-  /* texto encolhe e vira um cabeçalho no topo, empurrando o form pra baixo no fluxo normal */
+  /* texto desliza suavemente para cima enquanto encolhe, virando um cabeçalho no topo */
   #reveal.collapsed{
     min-height:0;
-    transform:scale(.6);
+    transform:translateY(-38px) scale(.6);
     margin-bottom:-1.6rem;
   }
   .reveal-line{
@@ -386,7 +386,7 @@
 
       <div class="consent">
         <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">Aceito receber um convite por WhatsApp.</label>
+        <label for="consent">Aceito receber um convite por WhatsApp. Não enviaremos spam!</label>
       </div>
 
       <button type="submit" class="submit-btn" id="submitBtn" disabled>Enviar meu palpite</button>
