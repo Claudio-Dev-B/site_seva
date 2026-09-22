@@ -89,27 +89,25 @@
   }
 
   /* ===== Reveal animation ===== */
-  /* overlay fixo, sempre no mesmo tamanho de fonte — o único efeito é
-     deslizar de centralizado na tela até o topo, sem encolher */
+  /* fica em fluxo normal (não fixed) — o texto nunca muda de tamanho.
+     Ele começa centralizado numa caixa alta (min-height grande) e, ao
+     "colapsar", a caixa encolhe até caber exatamente no texto; como o
+     texto fica centralizado dentro da caixa (justify-content:center),
+     encolher a caixa É o que faz o texto deslizar suavemente para cima —
+     sem escala, sem fade, sem posicionamento fixo. */
   #reveal{
-    position:fixed;
-    top:50%;
-    left:50%;
-    width:100%;
-    max-width:460px;
-    padding:0 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    transform:translate(-50%, -50%);
-    transition: top 1.15s cubic-bezier(.65,0,.35,1), transform 1.15s cubic-bezier(.65,0,.35,1);
-    z-index:5;
-    pointer-events:none;
+    justify-content:center;
+    min-height:min(60vh, 380px);
+    width:100%;
+    padding-top:max(28px, env(safe-area-inset-top));
+    transition: min-height 1.15s cubic-bezier(.65,0,.35,1), padding-top 1.15s cubic-bezier(.65,0,.35,1);
   }
-  /* desliza para o topo, mantendo o mesmo tamanho — nenhum outro efeito */
   #reveal.collapsed{
-    top:max(28px, calc(env(safe-area-inset-top) + 16px));
-    transform:translate(-50%, 0);
+    min-height:0;
+    padding-top:max(28px, env(safe-area-inset-top));
   }
   .reveal-line{
     font-family:var(--caps);
@@ -148,6 +146,7 @@
     opacity:1;
     transform:translateY(0);
     pointer-events:auto;
+    margin-top:.75rem;
   }
 
   .cta-title{
@@ -453,20 +452,11 @@
     timers = [];
   }
 
-  // reserva, no formulário, exatamente a altura do cabeçalho (texto no
-  // tamanho normal, sem encolher) + a folga do topo, pra nada sobrepor
-  function reserveHeaderSpace(){
-    var topOffset = 28;
-    var gap = 24;
-    formArea.style.marginTop = (topOffset + revealEl.offsetHeight + gap) + "px";
-  }
-
   function showFormNow(){
     if(animationDone) return;
     animationDone = true;
     clearTimers();
     lines.forEach(function(l){ l.classList.add("visible"); });
-    reserveHeaderSpace();
     revealEl.classList.add("collapsed");
     formArea.classList.add("visible");
     skipBtn.classList.add("hidden");
@@ -486,17 +476,12 @@
 
     // após última linha: pausa 1.2s, depois desliza para o topo e mostra o form
     timers.push(setTimeout(function(){
-      reserveHeaderSpace();
       revealEl.classList.add("collapsed");
       formArea.classList.add("visible");
       skipBtn.classList.add("hidden");
       animationDone = true;
     }, delay - pauseBetween + 1200));
   }
-
-  window.addEventListener("resize", function(){
-    if(animationDone) reserveHeaderSpace();
-  });
 
   if(reduceMotion){
     showFormNow();
