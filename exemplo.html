@@ -89,30 +89,24 @@
   }
 
   /* ===== Reveal animation ===== */
-  /* fixed overlay so the text is always centered on the true viewport,
-     independent of the form/footer height below it */
+  /* fica em fluxo normal (não fixed), centralizado verticalmente pelo próprio
+     flex do body — como o form-area fica fora do fluxo (abaixo) enquanto
+     invisível, o texto ocupa e centraliza na tela inteira sem cortar no topo */
   #reveal{
-    position:fixed;
-    top:50%;
-    left:50%;
-    width:100%;
-    max-width:460px;
-    padding:0 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    transform:translate(-50%, -50%);
-    transition: top .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
-    z-index:5;
-    pointer-events:none;
+    justify-content:center;
+    min-height:min(60vh, 380px);
+    width:100%;
+    transition: transform .8s cubic-bezier(.22,1,.36,1), margin .8s cubic-bezier(.22,1,.36,1), min-height .8s cubic-bezier(.22,1,.36,1);
   }
-  /* texto encolhe e sobe para o topo, ficando como um pequeno cabeçalho fixo */
+  /* texto encolhe e vira um cabeçalho no topo, empurrando o form pra baixo no fluxo normal */
   #reveal.collapsed{
-    top:max(22px, env(safe-area-inset-top));
-    transform:translate(-50%, 0) scale(.6);
+    min-height:0;
+    transform:scale(.6);
+    margin-bottom:-1.6rem;
   }
-  /* reserva espaço para o form não colar no cabeçalho encolhido */
-  #form-area{ margin-top:76px; }
   .reveal-line{
     font-family:var(--caps);
     font-weight:700;
@@ -133,14 +127,24 @@
   }
 
   /* ===== Form area ===== */
+  /* fora do fluxo enquanto invisível, para não reservar espaço e não
+     empurrar o #reveal para fora do centro da tela durante a intro */
   #form-area{
+    position:absolute;
+    visibility:hidden;
     width:100%;
     opacity:0;
     transform:translateY(14px);
     transition:opacity .7s ease, transform .7s ease;
     pointer-events:none;
   }
-  #form-area.visible{opacity:1; transform:translateY(0); pointer-events:auto;}
+  #form-area.visible{
+    position:static;
+    visibility:visible;
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
 
   .cta-title{
     font-family:var(--caps);
@@ -396,8 +400,6 @@
   </div>
 
   <footer>
-    <span>SEVÁ · Litoral Norte</span>
-    <span>·</span>
     <button type="button" id="privacyBtn">Privacidade</button>
   </footer>
 </main>
@@ -453,11 +455,8 @@
     clearTimers();
     lines.forEach(function(l){ l.classList.add("visible"); });
     revealEl.classList.add("collapsed");
+    formArea.classList.add("visible");
     skipBtn.classList.add("hidden");
-    // espera o texto terminar de subir para o topo antes de trazer o formulário, evitando sobreposição
-    timers.push(setTimeout(function(){
-      formArea.classList.add("visible");
-    }, reduceMotion ? 0 : 550));
   }
 
   function runAnimation(){
@@ -472,17 +471,13 @@
       delay += lineDuration + pauseBetween;
     });
 
-    // após última linha: pausa 1.2s, depois encolhe/sobe para o topo, e só então mostra o form
-    var collapseAt = delay - pauseBetween + 1200;
+    // após última linha: pausa 1.2s, depois recolhe (encolhe pro topo) e mostra o form
     timers.push(setTimeout(function(){
       revealEl.classList.add("collapsed");
+      formArea.classList.add("visible");
       skipBtn.classList.add("hidden");
       animationDone = true;
-    }, collapseAt));
-
-    timers.push(setTimeout(function(){
-      formArea.classList.add("visible");
-    }, collapseAt + 550));
+    }, delay - pauseBetween + 1200));
   }
 
   if(reduceMotion){
