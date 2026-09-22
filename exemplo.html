@@ -35,6 +35,7 @@
       linear-gradient(160deg, var(--verde-dark) 0%, var(--verde) 55%, var(--verde-mid) 100%);
     color:var(--sand);
     min-height:100vh;
+    min-height:100svh;
     min-height:100dvh;
     display:flex;
     flex-direction:column;
@@ -42,7 +43,7 @@
     justify-content:center;
     overflow:hidden;
     position:relative;
-    padding:24px 20px;
+    padding:max(28px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
   }
   /* textura sutil */
   body::before{
@@ -93,7 +94,7 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    min-height:60vh;
+    min-height:min(55vh, 340px);
     width:100%;
     transition: transform .8s cubic-bezier(.22,1,.36,1), margin .8s cubic-bezier(.22,1,.36,1);
   }
@@ -107,7 +108,7 @@
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:.01em;
-    font-size:clamp(2.2rem, 11vw, 3.4rem);
+    font-size:clamp(1.9rem, 9.5vw, 3.1rem);
     line-height:1.05;
     opacity:0;
     transform:translateY(20px);
