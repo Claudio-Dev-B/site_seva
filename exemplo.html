@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>VEM AÍ!?</title>
+<meta property="og:title" content="VEM AÍ!?">
+<meta property="og:description" content="Tem alguma coisa chegando em Juquehy.">
+<meta property="og:type" content="website">
+<meta name="description" content="Tem alguma coisa chegando em Juquehy.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#2D6A4F;
+    --verde-dark:#1B4332;
+    --verde-mid:#40916C;
+    --verde-light:#74C69D;
+    --verde-pale:#D8F3DC;
+    --sand:#F5F0E8;
+    --gold:#C4963A;
+    --caps:'Barlow Condensed', sans-serif;
+    --sans:'Barlow', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:var(--sans);
+    background:
+      radial-gradient(1200px 800px at 20% -10%, rgba(116,198,157,.18), transparent 60%),
+      radial-gradient(1000px 700px at 100% 110%, rgba(196,150,58,.12), transparent 55%),
+      linear-gradient(160deg, var(--verde-dark) 0%, var(--verde) 55%, var(--verde-mid) 100%);
+    color:var(--sand);
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+    padding:24px 20px;
+  }
+  /* textura sutil */
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events:none;
+    opacity:.5;
+  }
+
+  .skip-btn{
+    position:fixed;
+    top:16px; right:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.25);
+    color:var(--verde-pale);
+    font-family:var(--caps);
+    font-size:13px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    z-index:50;
+    opacity:0;
+    animation:fadeIn .5s ease 1.2s forwards;
+    transition:background .2s;
+  }
+  .skip-btn:hover{background:rgba(255,255,255,.16);}
+  .skip-btn.hidden{display:none;}
+  @keyframes fadeIn{to{opacity:1;}}
+
+  main{
+    width:100%;
+    max-width:460px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ===== Reveal animation ===== */
+  #reveal{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:60vh;
+    width:100%;
+    transition: transform .8s cubic-bezier(.22,1,.36,1), margin .8s cubic-bezier(.22,1,.36,1);
+  }
+  #reveal.collapsed{
+    min-height:0;
+    transform:scale(.62);
+    margin-bottom:-2.2rem;
+  }
+  .reveal-line{
+    font-family:var(--caps);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    font-size:clamp(2.2rem, 11vw, 3.4rem);
+    line-height:1.05;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .6s ease, transform .6s ease;
+    color:var(--sand);
+  }
+  .reveal-line.visible{opacity:1; transform:translateY(0);}
+  .reveal-line.accent{
+    color:var(--verde-light);
+    font-weight:800;
+    margin-top:.15em;
+  }
+
+  /* ===== Form area ===== */
+  #form-area{
+    width:100%;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .7s ease, transform .7s ease;
+    pointer-events:none;
+  }
+  #form-area.visible{opacity:1; transform:translateY(0); pointer-events:auto;}
+
+  .cta-title{
+    font-family:var(--caps);
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:clamp(1.5rem, 6vw, 1.9rem);
+    color:var(--sand);
+    letter-spacing:.02em;
+  }
+  .cta-sub{
+    font-size:.95rem;
+    color:var(--verde-pale);
+    margin-top:.5rem;
+    line-height:1.4;
+    padding:0 6px;
+  }
+  .cta-fine{
+    font-size:.72rem;
+    color:rgba(216,243,220,.65);
+    margin-top:.6rem;
+    line-height:1.4;
+  }
+  .cta-fine .prize-text, .cta-fine .prize-rule{ }
+
+  form{
+    width:100%;
+    margin-top:1.4rem;
+    display:flex;
+    flex-direction:column;
+    gap:.85rem;
+    text-align:left;
+  }
+  .field{ display:flex; flex-direction:column; gap:.3rem; }
+  .field label{
+    font-family:var(--caps);
+    font-size:.78rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--verde-pale);
+  }
+  .field input, .field textarea{
+    width:100%;
+    background:rgba(255,255,255,.08);
+    border:1.5px solid rgba(255,255,255,.22);
+    border-radius:10px;
+    padding:.8rem .9rem;
+    color:var(--sand);
+    font-family:var(--sans);
+    font-size:1rem;
+    outline:none;
+    transition:border-color .2s, background .2s;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:rgba(245,240,232,.45); }
+  .field input:focus, .field textarea:focus{
+    border-color:var(--verde-light);
+    background:rgba(255,255,255,.12);
+  }
+  .field.error input, .field.error textarea{ border-color:#e08a6a; }
+  .field-error{
+    font-size:.75rem;
+    color:#ffb199;
+    min-height:1em;
+  }
+
+  .consent{
+    display:flex;
+    align-items:flex-start;
+    gap:.6rem;
+    font-size:.82rem;
+    color:var(--verde-pale);
+    line-height:1.4;
+  }
+  .consent input[type="checkbox"]{
+    width:19px; height:19px;
+    flex:0 0 19px;
+    margin-top:2px;
+    accent-color:var(--verde-light);
+    cursor:pointer;
+  }
+  .consent label{ cursor:pointer; }
+
+  .submit-btn{
+    margin-top:.3rem;
+    width:100%;
+    background:var(--gold);
+    color:var(--verde-dark);
+    border:none;
+    border-radius:999px;
+    padding:.95rem 1rem;
+    font-family:var(--caps);
+    font-weight:700;
+    font-size:1.05rem;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    cursor:pointer;
+    transition:background .2s, transform .1s, opacity .2s;
+  }
+  .submit-btn:not(:disabled):hover{ background:#d6a64a; }
+  .submit-btn:active:not(:disabled){ transform:scale(.98); }
+  .submit-btn:disabled{ opacity:.4; cursor:not-allowed; }
+  .submit-btn.loading{ opacity:.75; cursor:wait; }
+
+  .form-msg{
+    text-align:center;
+    font-size:.85rem;
+    margin-top:.7rem;
+    min-height:1.2em;
+    color:#ffb199;
+  }
+
+  /* success state */
+  #success{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    gap:.9rem;
+    text-align:center;
+  }
+  #success.visible{ display:flex; }
+  #success p{
+    font-family:var(--caps);
+    font-size:1.4rem;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .ig-btn{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--verde-dark);
+    text-decoration:none;
+    padding:.8rem 1.6rem;
+    border-radius:999px;
+    font-family:var(--caps);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+
+  footer{
+    margin-top:2rem;
+    font-size:.72rem;
+    color:rgba(216,243,220,.55);
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    z-index:1;
+  }
+  footer button{
+    background:none;
+    border:none;
+    color:rgba(216,243,220,.75);
+    text-decoration:underline;
+    font-size:.72rem;
+    cursor:pointer;
+    font-family:var(--sans);
+    padding:0;
+  }
+
+  /* modal privacidade */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+  }
+  .modal-overlay.visible{ display:flex; }
+  .modal-box{
+    background:var(--sand);
+    color:var(--verde-dark);
+    border-radius:14px;
+    padding:1.6rem;
+    max-width:420px;
+    width:100%;
+    max-height:80vh;
+    overflow-y:auto;
+  }
+  .modal-box h3{ font-family:var(--caps); text-transform:uppercase; margin-bottom:.7rem; }
+  .modal-box p{ font-size:.9rem; line-height:1.5; margin-bottom:.7rem; }
+  .modal-close{
+    margin-top:.5rem;
+    background:var(--verde);
+    color:var(--sand);
+    border:none;
+    padding:.6rem 1.2rem;
+    border-radius:999px;
+    font-family:var(--caps);
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal-line{ transition:none; }
+    #form-area{ transition:none; }
+    #reveal{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="skip-btn" id="skipBtn" type="button">pular</button>
+
+<main>
+  <div id="reveal" aria-live="polite">
+    <div class="reveal-line" data-text="Tem...">Tem...</div>
+    <div class="reveal-line" data-text="alguma coisa...">alguma coisa...</div>
+    <div class="reveal-line" data-text="chegando...">chegando...</div>
+    <div class="reveal-line accent" data-text="em Juquehy.">em Juquehy.</div>
+  </div>
+
+  <div id="form-area">
+    <p class="cta-title">Arrisca um palpite?</p>
+    <p class="cta-sub">Quem acertar o que vem aí ganha um convite para o soft opening.</p>
+    <p class="cta-fine">
+      <span class="prize-text">Convites limitados.</span>
+      <span class="prize-rule">Sorteio entre os acertos.</span>
+    </p>
+
+    <form id="palpiteForm" novalidate>
+      <div class="field" id="field-nome">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+        <span class="field-error" id="err-nome"></span>
+      </div>
+
+      <div class="field" id="field-whats">
+        <label for="whats">WhatsApp</label>
+        <input type="tel" id="whats" name="whats" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="15" required>
+        <span class="field-error" id="err-whats"></span>
+      </div>
+
+      <div class="field" id="field-palpite">
+        <label for="palpite">Seu palpite</label>
+        <textarea id="palpite" name="palpite" rows="2" placeholder="Eu acho que vem aí..." required></textarea>
+        <span class="field-error" id="err-palpite"></span>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">Aceito receber novidades da SEVÁ por WhatsApp.</label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn" disabled>Enviar meu palpite</button>
+      <p class="form-msg" id="formMsg"></p>
+    </form>
+
+    <div id="success">
+      <p>Palpite recebido! 🍺</p>
+      <a href="#" class="ig-btn" id="igFallbackBtn">Ir para o Instagram</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>SEVÁ · Litoral Norte</span>
+    <span>·</span>
+    <button type="button" id="privacyBtn">Privacidade</button>
+  </footer>
+</main>
+
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal-box">
+    <h3>Privacidade</h3>
+    <p>Os dados enviados neste formulário (nome, WhatsApp e palpite) são usados exclusivamente para comunicação da SEVÁ sobre a abertura da nova unidade e novidades da marca.</p>
+    <p>Não compartilhamos suas informações com terceiros. Você pode solicitar a remoção dos seus dados a qualquer momento entrando em contato pelo Instagram da SEVÁ.</p>
+    <button class="modal-close" id="closePrivacy">Fechar</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ===================================================================
+  // CONFIGURAÇÃO — editar aqui
+  // ===================================================================
+  var GOOGLE_SCRIPT_URL = "MOCK"; // Web App URL do Google Apps Script — "MOCK" simula envio sem backend real
+  var INSTAGRAM_USER = "sevacerveja"; // @ do Instagram da SEVÁ (sem @)
+  var INSTAGRAM_WEB_URL = "https://instagram.com/" + INSTAGRAM_USER;
+  var INSTAGRAM_APP_URL = "instagram://user?username=" + INSTAGRAM_USER;
+
+  // ===================================================================
+  // Captura origem da URL
+  // ===================================================================
+  function getOrigem(){
+    var params = new URLSearchParams(window.location.search);
+    return params.get("origem") || "direto";
+  }
+
+  // ===================================================================
+  // Animação de revelação
+  // ===================================================================
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealEl = document.getElementById("reveal");
+  var lines = Array.prototype.slice.call(document.querySelectorAll(".reveal-line"));
+  var formArea = document.getElementById("form-area");
+  var skipBtn = document.getElementById("skipBtn");
+  var animationDone = false;
+  var timers = [];
+
+  function clearTimers(){
+    timers.forEach(function(t){ clearTimeout(t); });
+    timers = [];
+  }
+
+  function showFormNow(){
+    if(animationDone) return;
+    animationDone = true;
+    clearTimers();
+    lines.forEach(function(l){ l.classList.add("visible"); });
+    revealEl.classList.add("collapsed");
+    formArea.classList.add("visible");
+    skipBtn.classList.add("hidden");
+  }
+
+  function runAnimation(){
+    var delay = 0;
+    var lineDuration = 600;
+    var pauseBetween = 900;
+
+    lines.forEach(function(line, i){
+      timers.push(setTimeout(function(){
+        line.classList.add("visible");
+      }, delay));
+      delay += lineDuration + pauseBetween;
+    });
+
+    // após última linha: pausa 1.2s, depois recolhe e mostra form
+    timers.push(setTimeout(function(){
+      revealEl.classList.add("collapsed");
+      formArea.classList.add("visible");
+      skipBtn.classList.add("hidden");
+      animationDone = true;
+    }, delay - pauseBetween + 1200));
+  }
+
+  if(reduceMotion){
+    showFormNow();
+  } else {
+    runAnimation();
+  }
+
+  skipBtn.addEventListener("click", showFormNow);
+
+  // ===================================================================
+  // Máscara de telefone
+  // ===================================================================
+  var whatsInput = document.getElementById("whats");
+  whatsInput.addEventListener("input", function(){
+    var v = whatsInput.value.replace(/\D/g, "").slice(0, 11);
+    if(v.length > 10){
+      v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    } else if(v.length > 6){
+      v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else if(v.length > 2){
+      v = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+    } else if(v.length > 0){
+      v = v.replace(/(\d{0,2})/, "($1");
+    }
+    whatsInput.value = v.trim();
+    validateForm();
+  });
+
+  // ===================================================================
+  // Validação
+  // ===================================================================
+  var form = document.getElementById("palpiteForm");
+  var nomeInput = document.getElementById("nome");
+  var palpiteInput = document.getElementById("palpite");
+  var consentInput = document.getElementById("consent");
+  var submitBtn = document.getElementById("submitBtn");
+  var formMsg = document.getElementById("formMsg");
+
+  function setError(fieldId, errId, message){
+    document.getElementById(fieldId).classList.toggle("error", !!message);
+    document.getElementById(errId).textContent = message || "";
+  }
+
+  function isValidWhats(v){
+    return v.replace(/\D/g, "").length === 11;
+  }
+
+  function validateForm(){
+    var nomeOk = nomeInput.value.trim().length >= 2;
+    var whatsOk = isValidWhats(whatsInput.value);
+    var palpiteOk = palpiteInput.value.trim().length >= 2;
+    var consentOk = consentInput.checked;
+
+    submitBtn.disabled = !(nomeOk && whatsOk && palpiteOk && consentOk);
+    return nomeOk && whatsOk && palpiteOk && consentOk;
+  }
+
+  [nomeInput, palpiteInput, consentInput].forEach(function(el){
+    el.addEventListener("input", validateForm);
+    el.addEventListener("change", validateForm);
+  });
+
+  nomeInput.addEventListener("blur", function(){
+    setError("field-nome", "err-nome", nomeInput.value.trim().length >= 2 ? "" : "Digite seu nome.");
+  });
+  whatsInput.addEventListener("blur", function(){
+    setError("field-whats", "err-whats", isValidWhats(whatsInput.value) ? "" : "Número inválido.");
+  });
+  palpiteInput.addEventListener("blur", function(){
+    setError("field-palpite", "err-palpite", palpiteInput.value.trim().length >= 2 ? "" : "Conta seu palpite.");
+  });
+
+  // ===================================================================
+  // Redirecionamento pro Instagram (tenta app, cai pro web)
+  // ===================================================================
+  function goToInstagram(){
+    var fellBack = false;
+    var timer = setTimeout(function(){
+      if(!fellBack){
+        fellBack = true;
+        window.location.href = INSTAGRAM_WEB_URL;
+      }
+    }, 1000);
+
+    window.addEventListener("blur", function onBlur(){
+      fellBack = true;
+      clearTimeout(timer);
+      window.removeEventListener("blur", onBlur);
+    });
+
+    window.location.href = INSTAGRAM_APP_URL;
+  }
+
+  document.getElementById("igFallbackBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    goToInstagram();
+  });
+
+  // ===================================================================
+  // Envio
+  // ===================================================================
+  var isSubmitting = false;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(isSubmitting) return;
+    if(!validateForm()){
+      formMsg.textContent = "Confira os campos destacados.";
+      return;
+    }
+
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.classList.add("loading");
+    submitBtn.textContent = "Enviando...";
+    formMsg.textContent = "";
+
+    var payload = {
+      dataHora: new Date().toISOString(),
+      nome: nomeInput.value.trim(),
+      whatsapp: whatsInput.value.trim(),
+      palpite: palpiteInput.value.trim(),
+      consentimento: consentInput.checked ? "sim" : "nao",
+      origem: getOrigem()
+    };
+
+    if(GOOGLE_SCRIPT_URL === "MOCK"){
+      // MODO MOCK: sem backend real ainda — apenas loga no console e simula sucesso
+      console.log("[MOCK envio SEVÁ]", payload);
+      setTimeout(onSubmitSuccess, 500);
+      return;
+    }
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors", // Apps Script Web App não retorna CORS headers por padrão
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(function(){
+      // com no-cors não dá pra ler a resposta; consideramos sucesso se não deu erro de rede
+      onSubmitSuccess();
+    })
+    .catch(function(){
+      isSubmitting = false;
+      submitBtn.disabled = false;
+      submitBtn.classList.remove("loading");
+      submitBtn.textContent = "Enviar meu palpite";
+      formMsg.textContent = "Não conseguimos enviar. Tenta de novo?";
+    });
+  });
+
+  function onSubmitSuccess(){
+    form.style.display = "none";
+    document.getElementById("success").classList.add("visible");
+    document.querySelector(".cta-title").style.display = "none";
+    document.querySelector(".cta-sub").style.display = "none";
+    document.querySelector(".cta-fine").style.display = "none";
+
+    // tenta redirecionar direto; se falhar (usuário não sai da página em 1.2s), mostra fallback já visível
+    setTimeout(function(){
+      goToInstagram();
+    }, 300);
+  }
+
+  // ===================================================================
+  // Modal de privacidade
+  // ===================================================================
+  var privacyModal = document.getElementById("privacyModal");
+  document.getElementById("privacyBtn").addEventListener("click", function(){
+    privacyModal.classList.add("visible");
+  });
+  document.getElementById("closePrivacy").addEventListener("click", function(){
+    privacyModal.classList.remove("visible");
+  });
+  privacyModal.addEventListener("click", function(e){
+    if(e.target === privacyModal) privacyModal.classList.remove("visible");
+  });
+
+})();
+</script>
+
+<!--
+===================================================================
+GOOGLE APPS SCRIPT — cole no editor do Apps Script (script.google.com)
+associado à planilha onde você quer salvar os palpites.
+===================================================================
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    new Date(),
+    data.nome,
+    data.whatsapp,
+    data.palpite,
+    data.consentimento,
+    data.origem
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: "ok" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+INSTRUÇÕES DE PUBLICAÇÃO:
+1. Crie uma planilha Google nova (ou use uma existente) com colunas:
+   Data/Hora | Nome | WhatsApp | Palpite | Consentimento | Origem
+2. Abra Extensões > Apps Script na planilha.
+3. Cole o código acima e salve.
+4. Clique em "Implantar" > "Nova implantação".
+5. Tipo: "App da Web".
+   - Executar como: Eu (seu email)
+   - Quem pode acessar: Qualquer pessoa
+6. Implante e copie a URL do App da Web gerada.
+7. Cole essa URL na variável GOOGLE_SCRIPT_URL no topo do <script> deste arquivo.
+===================================================================
+-->
+
+</body>
+</html>
