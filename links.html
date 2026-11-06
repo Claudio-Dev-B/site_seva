@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sevá — Links</title>
+  <meta name="description" content="Sevá Cervejaria e Restaurante: como chegar nas unidades Camburi e Juquehy e cardápio.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="images/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700;800&family=Cormorant+Garamond:ital,wght@1,400&display=swap">
+  <style>
+    :root{
+      --verde:#2D6A4F; --verde-dark:#1B4332; --verde-mid:#40916C; --verde-light:#74C69D;
+      --sand:#F5F0E8; --gold:#C4963A; --gold-light:#E8D49A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh; font-family:'Barlow',sans-serif; color:var(--sand);
+      background:radial-gradient(ellipse at 50% 0%, var(--verde) 0%, var(--verde-dark) 60%, #11291f 100%);
+      display:flex; justify-content:center; padding:48px 20px 32px;
+    }
+    main{width:100%; max-width:440px; text-align:center; display:flex; flex-direction:column; align-items:center}
+    .logo{height:84px; width:auto; filter:brightness(0) invert(1); animation:rise .7s both}
+    .tag{font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:1.2rem; color:var(--gold-light); margin:14px 0 6px; animation:rise .7s .1s both}
+    .sub{font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.2em; font-size:.85rem; color:var(--verde-light); animation:rise .7s .15s both}
+    nav{width:100%; display:flex; flex-direction:column; gap:14px; margin-top:36px}
+    .btn{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:18px 22px; text-decoration:none; color:var(--sand);
+      font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.2rem; letter-spacing:.08em; text-transform:uppercase; text-align:left;
+      border:1.5px solid rgba(116,198,157,.45); border-radius:4px; background:rgba(255,255,255,.04);
+      transition:background .25s, border-color .25s, transform .25s, color .25s;
+      animation:rise .7s both;
+    }
+    .btn small{display:block; font-family:'Barlow',sans-serif; font-weight:400; font-size:.8rem; letter-spacing:.02em; text-transform:none; color:var(--verde-light); margin-top:2px}
+    .btn svg{flex:none; width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .25s}
+    .btn:hover,.btn:focus-visible{background:var(--sand); color:var(--verde-dark); border-color:var(--sand); transform:translateY(-2px)}
+    .btn:hover small,.btn:focus-visible small{color:var(--verde)}
+    .btn:hover svg{transform:translateX(4px)}
+    .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+    .btn.primary{background:var(--gold); border-color:var(--gold); color:var(--verde-dark)}
+    .btn.primary small{color:var(--verde-dark); opacity:.8}
+    .btn.primary:hover{background:var(--gold-light); border-color:var(--gold-light)}
+    nav .btn:nth-child(1){animation-delay:.25s} nav .btn:nth-child(2){animation-delay:.35s} nav .btn:nth-child(3){animation-delay:.45s}
+    footer{margin-top:40px; font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:.18em; font-size:.8rem; color:var(--verde-light)}
+    footer a{color:inherit; text-decoration:none; border-bottom:1px solid currentColor}
+    @keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="images/logo_seva.webp" alt="Sevá" width="120" height="54">
+    <p class="tag">Cervejaria &amp; Restaurante</p>
+    <p class="sub">Mata Atlântica · Litoral Norte</p>
+
+    <nav>
+      <a class="btn primary" href="https://sevacamburi.com.br/cardapio.html" target="_blank" rel="noopener">
+        <span>Cardápio Camburi<small>Cervejas, pratos, drinks e vinhos</small></span>
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn" href="https://maps.app.goo.gl/YgNHXuMxtszQQrXM8" target="_blank" rel="noopener">
+        <span>Como chegar<small>Unidade Camburi</small></span>
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      </a>
+      <a class="btn" href="https://maps.app.goo.gl/KWKYBb31t2snjyBk7" target="_blank" rel="noopener">
+        <span>Como chegar<small>Unidade Juquehy</small></span>
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      </a>
+    </nav>
+
+    <footer><a href="https://sevacamburi.com.br/">sevacamburi.com.br</a></footer>
+  </main>
+</body>
+</html>
