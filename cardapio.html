@@ -510,11 +510,11 @@
     .regua-card:hover .regua-img img { transform: rotate(0deg) scale(1.05); }
     .regua-info { flex: 1; }
 
-    /* régua dentro da grade de cervejas: ocupa o espaço restante da última linha */
-    .cards-grid > .regua-card { grid-column: span 2; align-self: end; margin-top: 64px; flex-wrap: wrap; justify-content: center; padding: 28px 30px; }
-    .cards-grid > .regua-card .regua-img { flex: 1 1 260px; max-width: 460px; margin: -56px auto -30px; }
-    .cards-grid > .regua-card .regua-info { flex: 1 1 200px; }
-    @media (max-width: 768px) { .cards-grid > .regua-card { margin-top: 90px; flex-direction: column; } .cards-grid > .regua-card .regua-img { flex: none; width: min(82%, 340px); margin: -76px auto 0; } .cards-grid > .regua-card .regua-info { flex: none; } }
+    /* régua dentro da grade de cervejas: preenche o espaço restante da última linha */
+    .cards-grid > .regua-card { grid-column: span 2; align-self: stretch; margin-top: 0; flex-direction: column; justify-content: center; text-align: center; gap: 18px; padding: 36px 30px; }
+    .cards-grid > .regua-card .regua-img { flex: none; width: min(92%, 620px); margin: 0 auto; }
+    .cards-grid > .regua-card .regua-info { flex: none; }
+    @media (max-width: 768px) { .cards-grid > .regua-card { margin-top: 90px; align-self: auto; } .cards-grid > .regua-card .regua-img { width: min(82%, 340px); margin: -76px auto 0; } }
     @media (max-width: 768px) {
       .regua-card { margin-top: 90px; }
       .regua-img { flex: none; width: min(82%, 340px); margin: -76px auto 0; }
