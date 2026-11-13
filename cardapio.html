@@ -509,6 +509,12 @@
     .regua-img img { width: 100%; height: auto; filter: drop-shadow(0 22px 22px rgba(0,0,0,.45)); transform: rotate(-3deg); transition: transform .5s cubic-bezier(.22,.61,.36,1); }
     .regua-card:hover .regua-img img { transform: rotate(0deg) scale(1.05); }
     .regua-info { flex: 1; }
+
+    /* régua dentro da grade de cervejas: ocupa o espaço restante da última linha */
+    .cards-grid > .regua-card { grid-column: span 2; align-self: end; margin-top: 64px; flex-wrap: wrap; justify-content: center; padding: 28px 30px; }
+    .cards-grid > .regua-card .regua-img { flex: 1 1 260px; max-width: 460px; margin: -56px auto -30px; }
+    .cards-grid > .regua-card .regua-info { flex: 1 1 200px; }
+    @media (max-width: 768px) { .cards-grid > .regua-card { margin-top: 90px; flex-direction: column; } .cards-grid > .regua-card .regua-img { flex: none; width: min(82%, 340px); margin: -76px auto 0; } .cards-grid > .regua-card .regua-info { flex: none; } }
     @media (max-width: 768px) {
       .regua-card { margin-top: 90px; }
       .regua-img { flex: none; width: min(82%, 340px); margin: -76px auto 0; }
@@ -1057,9 +1063,12 @@
               </div>
             </div>
 
-            <div class="menu-card card-noimg">
+            <div class="menu-card">
+              <div class="menu-card-img img-cover">
+                <img src="images/cervejas/can_quadriple_hazy.webp" alt="Triple e Quadriple IPA" loading="lazy" decoding="async" width="1100" height="1360">
+              </div>
               <div class="menu-card-body">
-                <div class="card-name" data-i18n="cardapio.triple_ipa.name">Triple IPA e Triple Hazy IPA</div>
+                <div class="card-name" data-i18n="cardapio.triple_ipa.name">Triple e Quadriple IPA´s e Hazy IPAs</div>
                 <div class="card-desc" data-i18n="cardapio.triple_ipa.desc">Alta graduação alcoólica e lupulagem intensa. Para os mais experientes.</div>
                 <div class="card-sep"></div>
                 <div class="card-price-row">
@@ -1070,16 +1079,14 @@
               </div>
             </div>
 
-          </div>
-
-          <!-- régua de degustação -->
-          <div class="regua-card">
-            <div class="regua-img"><img src="images/regua.webp" alt="Régua de degustação Sevá: 4 copos de 190 ml" loading="lazy" decoding="async" width="1000" height="281"></div>
-            <div class="regua-info">
-              <h3 data-i18n="cardapio.chopinho.regua.title">Régua de Degustação</h3>
-              <p data-i18n="cardapio.chopinho.regua.desc">4 estilos à escolha — 4 copos de 190 ml cada</p>
+            <div class="regua-card">
+              <div class="regua-img"><img src="images/regua.webp" alt="Régua de degustação Sevá: 4 copos de 190 ml" loading="lazy" decoding="async" width="1000" height="281"></div>
+              <div class="regua-info">
+                <h3 data-i18n="cardapio.chopinho.regua.title">Régua de Degustação</h3>
+                <p data-i18n="cardapio.chopinho.regua.desc">4 estilos à escolha — 4 copos de 190 ml cada</p>
+              </div>
+              <div class="regua-price">R$&nbsp;50</div>
             </div>
-            <div class="regua-price">R$&nbsp;50</div>
           </div>
 
         </div>
