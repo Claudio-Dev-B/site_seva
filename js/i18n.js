@@ -532,6 +532,10 @@
 
       /* Story intro p3 */
       'story.intro.p3': 'Hoje, a Sevá é cervejaria, restaurante e ponto de encontro em Camburi. Um lugar onde gastronomia autoral, cervejas artesanais e o estilo de vida do litoral se encontram para criar momentos que só poderiam existir aqui.',
+    
+      /* ── overrides ── */
+      "story.t6.title": "Mais uma Sevá",
+      "story.t6.text": "Em novembro de 2026, a Sevá abre sua segunda casa em Juquehy, na Av. Mãe Bernarda. Mesma alma, mesmas cervejas autorais e um novo cantinho do litoral norte para brindar.",
     },
 
     /* ── ENGLISH ───────────────────────────────────────────── */
@@ -1028,6 +1032,10 @@
       'brewery.double_ipa.desc': 'Intense, aromatic and full-bodied. Massive hopping that delivers resin, fruit and lasting bitterness in layers. High ABV that still respects the palate.',
       'brewery.stout.name': 'The strongest of the Family',
       'brewery.stout.desc': 'Coffee, dark chocolate, liquorice and burnt caramel. Robust body, chocolate-colored creamy foam and a long warming finish. Sevá in its deepest form.',
+    
+      /* ── overrides ── */
+      "story.t6.title": "Another Sevá",
+      "story.t6.text": "In November 2026, Sevá opens its second home in Juquehy, on Av. Mãe Bernarda. Same soul, same original beers and a new corner of the north coast to raise a glass.",
     },
 
     /* ── ESPAÑOL ────────────────────────────────────────────── */
@@ -1457,6 +1465,10 @@
       'brewery.double_ipa.desc': 'Intensa, aromática y con cuerpo. Lupulado masivo que aporta resina, frutas y amargor duradero en capas. Alta graduación que respeta el paladar.',
       'brewery.stout.name': 'La más fuerte de la Familia',
       'brewery.stout.desc': 'Café, chocolate amargo, regaliz y caramelo quemado. Cuerpo robusto, espuma cremosa color chocolate y final largo que calienta. Sevá en su forma más profunda.',
+    
+      /* ── overrides ── */
+      "story.t6.title": "Otra Sevá",
+      "story.t6.text": "En noviembre de 2026, Sevá abre su segunda casa en Juquehy, en la Av. Mãe Bernarda. La misma alma, las mismas cervezas originales y un nuevo rincón del litoral norte para brindar.",
     }
   };
 
