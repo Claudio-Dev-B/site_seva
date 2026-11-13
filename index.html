@@ -116,6 +116,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   <meta name="theme-color" content="#2D6A4F">
+
+  <style>
+    .other-unit{position:relative;background:var(--verde-dark);color:var(--sand);padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px);overflow:hidden}
+    .other-unit-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+    .other-unit-photo{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+    .other-unit-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+    .other-unit:hover .other-unit-photo img{transform:scale(1.05)}
+    .other-unit-eyebrow{display:block;font-family:var(--caps);font-size:.85rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--verde-light);margin-bottom:18px}
+    .other-unit-title{font-family:var(--caps);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.92;font-size:clamp(2.6rem,6vw,5.2rem);color:#fff;margin-bottom:24px}
+    .other-unit-text{font-family:var(--sans);font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.75;color:rgba(255,255,255,.78);max-width:520px;margin-bottom:34px}
+    .other-unit-cta{display:inline-flex;align-items:center;gap:12px;font-family:var(--caps);font-weight:700;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;padding:16px 30px;border-radius:999px;background:var(--gold);color:var(--verde-dark);text-decoration:none;transition:background .25s,transform .25s}
+    .other-unit-cta:hover{background:var(--gold-light);transform:translateY(-2px)}
+    .other-unit-cta svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+    .other-unit-cta:hover svg{transform:translateX(4px)}
+    @media(max-width:860px){.other-unit-inner{grid-template-columns:1fr}.other-unit-photo{aspect-ratio:3/2}}
+  </style>
 </head>
 <body>
 
@@ -606,6 +622,19 @@
   </section>
 
   <!-- FOOTER -->
+  
+  <section class="other-unit" id="outra-unidade" aria-labelledby="otherUnitTitle">
+    <div class="other-unit-inner">
+      <div class="other-unit-photo reveal-l"><img src="images/unidade_juquehy.webp" alt="Sevá Juquehy" loading="lazy" decoding="async" width="1400" height="933"></div>
+      <div class="other-unit-body reveal-r">
+        <span class="other-unit-eyebrow" data-i18n="other.eyebrow">Duas praias, duas casas</span>
+        <h2 class="other-unit-title" id="otherUnitTitle" data-i18n="other.title">Conheça a Sevá Juquehy</h2>
+        <p class="other-unit-text" data-i18n="other.text">Cada praia é diferente, e cada Sevá também. Em Juquehy, nossa segunda casa tem um cardápio de pratos exclusivos e autorais, criado para aquele pedaço de litoral e para uma experiência só dela, do primeiro chope à última garfada.</p>
+        <a class="other-unit-cta" href="https://sevajuquehy.com.br/" data-i18n="other.cta">Conhecer a Sevá Juquehy<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
   <footer id="footer">
 
     <!-- Topo decorativo: linha verde -->
