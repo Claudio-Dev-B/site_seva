@@ -614,7 +614,29 @@
       }
       /* imagens do belt mais leves — menos custo de composição em GPUs mobile */
       .nome-belt-item { width: 170px; padding-bottom: 48px; }
-      .nome-belt-item img { width: 148px; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35)); }
+      .nome-belt-item img { width: 148px; filter: none; }
+      .nome-belt-track { will-change: transform; transform: translate3d(0,0,0); }
+      .nome-belt-wrap { transform: none !important; scale: none !important; }
+
+      /* texto sempre visível no mobile (sem alternar via IntersectionObserver,
+         que piscava/sumia durante o scroll) e sem fade em transição */
+      .nome-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: none;
+        padding: 72px 24px;
+      }
+      /* sombra de texto única e barata (3 camadas de blur grande custavam caro) */
+      .nome-content .script,
+      .nome-content .caps-label,
+      .nome-content p { text-shadow: 0 2px 14px rgba(10,25,15,0.9); }
+      .flip-l { will-change: transform; backface-visibility: hidden; }
+
+      /* camadas: sem will-change permanente (estourava memória de GPU) e
+         sombras de sobreposição menores */
+      .hs-layer { will-change: auto; }
+      .hs-layer-2, .hs-layer-3, .hs-layer-5, .hs-layer-6 { box-shadow: 0 -12px 30px rgba(0,0,0,0.3); }
+      .hs-layer-4 { box-shadow: 0 -16px 40px rgba(0,0,0,0.5); }
     }
 
     /* ── SEVÁ ↔ AVES letter-swap animation ── */
@@ -1147,6 +1169,7 @@
 
       function updateNomeText() {
         if (!nomeContent) return;
+        if (window.matchMedia('(max-width: 768px)').matches) return; /* mobile: CSS mantém visível */
         const show = nomeIsVisible && coveringCount === 0;
         nomeContent.classList.toggle('nome-content--visible', show);
       }
@@ -1183,10 +1206,22 @@
         fundadorImg.style.transform = `translateY(${shift}px)`;
       }
 
+      const mobileMQ = window.matchMedia('(max-width: 768px)');
+      let rafPending = false;
+
       function onScroll() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => { rafPending = false; runScroll(); });
+      }
+
+      function runScroll() {
         tlParallax();
-        beltParallax();
         fundadorParallax();
+        /* mobile: sem parallax das camadas/belt — só 1 transform por frame
+           nos elementos essenciais; o resto brigava com o scroll nativo */
+        if (mobileMQ.matches) return;
+        beltParallax();
 
         /* cada camada desloca levemente no eixo Y criando profundidade */
         layers.forEach((layer, i) => {
@@ -1306,7 +1341,13 @@
       /* recalcula posições em resize/orientationchange (fonte, layout ou
          rotação de tela podem mudar as larguras das letras) */
       let resizeTimer = null;
+      /* no mobile a barra de endereço aparece/some ao rolar e dispara resize
+         (só a altura muda) — re-medir aí resetava as letras e causava o
+         travamento. Só recalcula se a LARGURA mudou. */
+      let lastW = window.innerWidth;
       window.addEventListener('resize', () => {
+        if (window.innerWidth === lastW) return;
+        lastW = window.innerWidth;
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(measure, 200);
       });
